@@ -107,6 +107,8 @@
     position: relative;
     margin-right: 0;
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
 .notification{
@@ -149,5 +151,27 @@
 
 .root-content{
     margin-top: 60px;
-    padding: 40px;
+    padding: 20px 40px 20px 40px;
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+}
+
+.btn-outline-primary{
+    margin-left: 16px;
+    color: var(--secundary-color);
+    border-color: var(--secundary-color);
+}
+
+.btn-outline-primary:hover{
+    color: #000;
+    background-color: var(--secundary-color);
+}
+
+.dropdown-menu{
+    margin-top: 10px !important;
+}
+
+.dropdown-item i{
+    margin-right: 5px;
 }

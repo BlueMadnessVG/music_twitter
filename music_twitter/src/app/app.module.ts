@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HubPrincipalModule } from './hub-principal/hub-principal.module';
+import { ModalsModule } from './modals/modals.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { HubPrincipalModule } from './hub-principal/hub-principal.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HubPrincipalModule
+    HubPrincipalModule,
+    ModalsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component  } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'music_twitter';
+
+  loggedUser !: string;
+  loggedin() {;
+    this.loggedUser = localStorage.getItem('UsrName')!;
+    return this.loggedUser;
+  }
+
+  onLogOut(){
+    localStorage.removeItem('UsrName');
+  }
 }

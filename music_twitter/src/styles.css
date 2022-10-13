@@ -7,7 +7,6 @@
     --default-font-color: rgba(255, 255, 255, 0.85);
     --border-color: #3c3f50;
     --back-color: #343746;
-    --sec-back-color: # ;
 }
 
 * {
@@ -18,5 +17,20 @@
 }
 
 html, body{
-    background-color:#0c0f1d;
+    background-color: var(--back-color) !important;
+    height: -webkit-fill-available;
+    overflow: hidden;
+}
+
+.nav-link{
+    color: #9a32ef !important;
+}
+
+.active{
+    color: var(--bs-nav-pills-link-active-color) !important;
+    background-color: #9a32ef !important;
+}
+
+.disabled{
+    color: #6c757d !important;
 }
