@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 14, 2022 at 06:46 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.0.23
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-10-2022 a las 00:20:59
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `music_twitter`
+-- Base de datos: `soundclon`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `album`
+-- Estructura de tabla para la tabla `album`
 --
 
 CREATE TABLE `album` (
@@ -39,7 +39,7 @@ CREATE TABLE `album` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria`
+-- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -48,33 +48,42 @@ CREATE TABLE `categoria` (
   `Estatus` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`ID_Categoria`, `Nombre`, `Estatus`) VALUES
+(1, 'hola', 0),
+(2, 'backend', 0),
+(3, 'Reggaeton', 0);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
+-- Estructura de tabla para la tabla `chat`
 --
 
 CREATE TABLE `chat` (
   `ID_remitente` int(10) NOT NULL,
   `ID_destinatario` int(10) NOT NULL,
-  `ID_Mensaje` int(10) NOT NULL,
+  `ID_Mensaje` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat_mensaje`
+-- Estructura de tabla para la tabla `chat_mensaje`
 --
 
 CREATE TABLE `chat_mensaje` (
   `ID_Mensaje` int(10) NOT NULL,
-  `Mensaje` varchar(100) NOT NULL,
+  `Mensaje` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comentario`
+-- Estructura de tabla para la tabla `comentario`
 --
 
 CREATE TABLE `comentario` (
@@ -88,7 +97,7 @@ CREATE TABLE `comentario` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contenido_albun`
+-- Estructura de tabla para la tabla `contenido_albun`
 --
 
 CREATE TABLE `contenido_albun` (
@@ -99,7 +108,7 @@ CREATE TABLE `contenido_albun` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `musica`
+-- Estructura de tabla para la tabla `musica`
 --
 
 CREATE TABLE `musica` (
@@ -107,7 +116,7 @@ CREATE TABLE `musica` (
   `ID_Usuario` int(10) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `ID_Categoria` int(10) NOT NULL,
- `ID_Album` int(10) NOT NULL,
+  `ID_Album` int(10) NOT NULL,
   `Duracion` time NOT NULL,
   `Music_Path` varchar(50) NOT NULL,
   `Estatus` int(1) NOT NULL
@@ -116,7 +125,7 @@ CREATE TABLE `musica` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Estructura de tabla para la tabla `post`
 --
 
 CREATE TABLE `post` (
@@ -132,7 +141,7 @@ CREATE TABLE `post` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -149,100 +158,101 @@ CREATE TABLE `usuario` (
   `Estatus` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Estructura de tabla para la tabla `usuariostoken`
+--
+
+CREATE TABLE `usuariostoken` (
+  `id_usuario` int(10) NOT NULL,
+  `token` varchar(1000) NOT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `estatus` varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `album`
+-- Indices de la tabla `album`
 --
 ALTER TABLE `album`
   ADD PRIMARY KEY (`ID_Album`);
 
 --
--- Indexes for table `categoria`
+-- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`ID_Categoria`);
 
 --
--- Indexes for table `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`ID_Chat`);
-
---
--- Indexes for table `chat_mensaje`
+-- Indices de la tabla `chat_mensaje`
 --
 ALTER TABLE `chat_mensaje`
   ADD PRIMARY KEY (`ID_Mensaje`);
 
 --
--- Indexes for table `comentario`
+-- Indices de la tabla `comentario`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`ID_Comentario`);
 
 --
--- Indexes for table `contenido_albun`
---
-ALTER TABLE `contenido_albun`
-  ADD PRIMARY KEY (`ID_Contenido_Alb`);
-
---
--- Indexes for table `musica`
+-- Indices de la tabla `musica`
 --
 ALTER TABLE `musica`
   ADD PRIMARY KEY (`ID_Musica`);
 
 --
--- Indexes for table `post`
+-- Indices de la tabla `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`ID_Post`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`ID_Usuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `album`
+-- AUTO_INCREMENT de la tabla `album`
 --
 ALTER TABLE `album`
   MODIFY `ID_Album` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `comentario`
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `ID_Categoria` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
   MODIFY `ID_Comentario` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `contenido_albun`
---
-ALTER TABLE `contenido_albun`
-  MODIFY `ID_Contenido_Alb` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `musica`
+-- AUTO_INCREMENT de la tabla `musica`
 --
 ALTER TABLE `musica`
   MODIFY `ID_Musica` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `post`
+-- AUTO_INCREMENT de la tabla `post`
 --
 ALTER TABLE `post`
   MODIFY `ID_Post` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `ID_Usuario` int(10) NOT NULL AUTO_INCREMENT;
