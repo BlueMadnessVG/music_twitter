@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `album` (
   `ID_Album` int(10) NOT NULL,
-  `ID_Contenido_Alb` int(10) NOT NULL,
   `ID_Usuario` int(10) NOT NULL,
   `Nombre_Album` varchar(20) NOT NULL,
   `Fecha_Subida` date NOT NULL,
@@ -56,10 +55,9 @@ CREATE TABLE `categoria` (
 --
 
 CREATE TABLE `chat` (
-  `ID_Chat` int(10) NOT NULL,
-  `ID_Usuario` int(10) NOT NULL,
+  `ID_remitente` int(10) NOT NULL,
+  `ID_destinatario` int(10) NOT NULL,
   `ID_Mensaje` int(10) NOT NULL,
-  `Estatus` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -70,9 +68,7 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `chat_mensaje` (
   `ID_Mensaje` int(10) NOT NULL,
-  `ID_Usuario` int(10) NOT NULL,
   `Mensaje` varchar(100) NOT NULL,
-  `Estatus` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -96,7 +92,6 @@ CREATE TABLE `comentario` (
 --
 
 CREATE TABLE `contenido_albun` (
-  `ID_Contenido_Alb` int(10) NOT NULL,
   `ID_Album` int(10) NOT NULL,
   `ID_Musica` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -111,9 +106,8 @@ CREATE TABLE `musica` (
   `ID_Musica` int(10) NOT NULL,
   `ID_Usuario` int(10) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
-  `Artista` varchar(20) NOT NULL,
-  `Categorias` varchar(100) NOT NULL,
-  `Album` varchar(20) NOT NULL,
+  `ID_Categoria` int(10) NOT NULL,
+ `ID_Album` int(10) NOT NULL,
   `Duracion` time NOT NULL,
   `Music_Path` varchar(50) NOT NULL,
   `Estatus` int(1) NOT NULL
@@ -145,10 +139,10 @@ CREATE TABLE `usuario` (
   `ID_Usuario` int(10) NOT NULL,
   `Nombre_Usuario` varchar(20) DEFAULT NULL,
   `Correo` varchar(50) NOT NULL,
-  `Contraseña` varchar(20) NOT NULL,
+  `Contraseña` varchar(255) NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
   `Foto_Perfil` varchar(100) NOT NULL,
-  `Descripcion` varchar(50) NOT NULL,
+  `Descripcion` varchar(100) NOT NULL,
   `Followers` int(10) NOT NULL,
   `Following` int(10) NOT NULL,
   `Rol` int(1) NOT NULL,
