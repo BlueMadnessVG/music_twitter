@@ -293,6 +293,132 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
         }
 
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=Login'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->login( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=Registro'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->registrarse( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=Darbajausuario'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->darbajausu( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=ComentarPost'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->comentarpost( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=ReaccionarPost'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->reaccionarpost( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=ReaccionarComentario'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->reaccionarcomentario( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=DelComentario'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->delcomentario( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=DelReacPost'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->delreacpost( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=DelReacComm'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->delreaccomm( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        
+        }else if(array_filter( $arrayRutas )[ 2 ] == '?u=DelPost'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );//metemos al json lo que se reciba en el insomnia/front
+
+                $datosArray = json_decode( $json, true );//lo hacemos de tipo asociativo
+                $objUser = new UsuarioController();//objeto de tipo controlador
+                $objUser->delpost( $datosArray );//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        
+        
+        }
+        
+        
         else {
             echo 'No existe la ruta especifica!';
         }
