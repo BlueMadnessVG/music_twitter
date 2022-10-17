@@ -8,9 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class LoginComponent {
 
   constructor() { 
-    /* localStorage.setItem('UsrName', 'asdas'); */
+    localStorage.setItem('UsrName', 'asdas');
   }
-
-
 
 }

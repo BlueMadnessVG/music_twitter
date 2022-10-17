@@ -19,7 +19,13 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
 
-        } else if ( array_filter( $arrayRutas )[ 2 ] == '?u=RegistrarCategoria' ) {
+        } 
+        
+        // --------------------------------------    RUTAS PARA SERVICIOS DE ADMINS   -------------------------------------   
+
+        // --------------------------------------    CRUD DE CATEGORIAS    -------------------------------------- 
+    
+        else if ( array_filter( $arrayRutas )[ 2 ] == '?u=RegistrarCategoria' ) {
 
             if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
 
@@ -29,12 +35,266 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
                 $objAdmin = new AdminController();//objeto de tipo controlador
                 $objAdmin->registrarcat( $datosArray );//mandamos a llamar al método correspondiente (en este caso
                                                         //mandamos como parametro el json asociativo)
+            }
+
+        } else if ( array_filter( $arrayRutas )[ 2 ] == '?u=ModificarCategoria' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> modificarCat( $datosArray );
 
             }
 
-        }else {
+        } else if ( array_filter( $arrayRutas )[ 2 ] == '?u=MostrarCategoria' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> mostrarCat( $datosArray );
+
+            }
+
+        } 
+        
+        // --------------------------------------    CRUD DE ALBUM    --------------------------------------
+
+        else if ( array_filter( $arrayRutas )[2] == '?u=MostrarAlbum' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> monstrarAlbum( $datosArray );
+                
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=RegistrarAlbum' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> registrarAlb( $datosArray );
+                
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=ModificarAlbum' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> modificarAlb( $datosArray );
+
+            }
+
+        } 
+        
+        // --------------------------------------    CRUD DE USUARIOS    --------------------------------------
+
+        else if ( array_filter( $arrayRutas )[2] == '?u=MostrarUsuarios' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> mostrarUsr( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=RegistrarUsuario' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> registrarUsr( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=ModificarUsuario' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> modificarUsr( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=CambiarPassWord' ) {
+            
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> cambiarCont( $datosArray );
+
+            }
+
+        } 
+        
+        // --------------------------------------    CRUD DE PUBLICACIONES    --------------------------------------
+
+        else if ( array_filter( $arrayRutas )[2] == '?u=MostrarPost' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> mostrarPost( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=RegistrarPost' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> registrarPost( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=ModificarPost' ) {
+ 
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> modificarPost( $datosArray );
+
+            }
+
+        } 
+        
+        // --------------------------------------    CRUD DE MUSICA    --------------------------------------
+
+        else if ( array_filter( $arrayRutas )[2] == '?u=MostrarMusica' ) {
+ 
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> mostrarMus( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=RegistrarMusica' ) {
+ 
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> registrarMus( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=ModificarMusica' ) {
+ 
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> modificarMus( $datosArray );
+
+            }
+
+        }
+
+        // --------------------------------------    RUTAS PARA SERVICIOS DE ADMINS   -------------------------------------  
+        
+        // --------------------------------------    PUBLICACIONES    -------------------------------------
+        
+        else if ( array_filter( $arrayRutas )[2] == '?u=Usr_RegistrarPost' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> Usr_registrarPost( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=Usr_ModificarPost' ) {
+ 
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> Usr_modificarPost( $datosArray );
+
+            }
+
+        } 
+
+        // --------------------------------------    DAR DE BAJA    --------------------------------------
+
+        else if ( array_filter( $arrayRutas )[2] == '?u=Usr_BajaPost' ) {
+ 
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> Usr_bajaPost( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=Usr_BajaMusica' ) {
+ 
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> Usr_bajaMus( $datosArray );
+
+            }
+
+        }
+
+        else {
             echo 'No existe la ruta especifica!';
-            echo ($arrayRutas);
         }
     }
 
