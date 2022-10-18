@@ -53,8 +53,8 @@ class UsuarioModel{
 
         $stmt -> execute();
         return ' ¡ Post Eliminado con Exito ! ';
+    
     }
-
     static public function Usr_bajaMus( $data ) {
 
         $stmt = Connection :: connect() -> prepare( 'DELETE FROM musica WHERE ID_Musica = :id_musica' );
@@ -64,7 +64,7 @@ class UsuarioModel{
         $stmt -> execute();
         return ' ¡ Musica Eliminado con Exito ! ';
     }
-}
+
 static public function login($datos){
 try {
     if ( isset( $datos[ 'Correo' ] ) && isset( $datos[ 'Password' ] ) ) {
@@ -356,7 +356,4 @@ static public function delpost($data){
 }
 
 }
-
-
-
 ?>

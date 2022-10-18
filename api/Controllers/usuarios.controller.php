@@ -81,12 +81,15 @@ class UsuarioController{
         catch ( Exception $e1 ) {
                 $json = array( 'message' => 'Le faltan datos compañero', 'status' => 500, 'data' => $e1 );
                 echo json_encode( $json );
+        }
+    }
+    
     static public function login($data){
 
         $datos=UsuarioModel::login($data);
 
     }
-
+    
 
 
     static public function registrarse($data){
@@ -156,7 +159,7 @@ class UsuarioController{
                 $json = array( 'message' => 'Le faltan datos compañero', 'status' => 500, 'data' => $e1 );
                 echo json_encode( $json );
         }
-
+    }
     static public function reaccionarpost($data){
 
         try{
@@ -178,7 +181,7 @@ class UsuarioController{
 
     }
 
-
+    
 
     static public function reaccionarcomentario($data){
 

@@ -285,8 +285,7 @@ class AdminController{
                     echo json_encode( $json );//se codifica para mandarlo pa atras
                     return;
                 }
-        } 
-        catch( Exception $e1 ) {//en caso de que no haya nada en esa cabecera(s)
+        }catch( Exception $e1 ) {//en caso de que no haya nada en esa cabecera(s)
                 $json = array( 'message' => 'Le faltan datos compañero', 'status' => 500, 'data' => $e1 );
                 echo json_encode( $json );
         }
@@ -303,8 +302,7 @@ class AdminController{
                     echo json_encode( $json );//se codifica para mandarlo pa atras
                     return;
                 }
-        }
-        catch ( Exception $e1 ) {
+        }catch ( Exception $e1 ) {
                 $json = array( 'message' => 'Le faltan datos compañero', 'status' => 500, 'data' => $e1 );
                 echo json_encode( $json );
         }

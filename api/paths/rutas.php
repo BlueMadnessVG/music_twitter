@@ -291,8 +291,6 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
 
-        }
-
         }else if(array_filter( $arrayRutas )[ 2 ] == '?u=Login'){
             if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
 
@@ -423,6 +421,7 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
             echo 'No existe la ruta especifica!';
         }
     }
+}
 
 
 ?>
