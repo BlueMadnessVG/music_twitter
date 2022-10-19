@@ -217,7 +217,7 @@ class AdminController{
     static public function registrarAlb( $data ) {
 
         try {
-                if( isset( $data[ 'usuario' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'duracion' ] ) && isset( $data[ 'estatus' ] )  ){
+                if( isset( $data[ 'usuario' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'duracion' ] ) ){
 
                     $mess = AdminModel :: registrarAlb( $data );
 

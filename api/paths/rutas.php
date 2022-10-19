@@ -25,7 +25,19 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
         // --------------------------------------    CRUD DE CATEGORIAS    -------------------------------------- 
     
-        else if ( array_filter( $arrayRutas )[ 2 ] == '?u=RegistrarCategoria' ) {
+        else if ( array_filter( $arrayRutas )[ 2 ] == '?u=MostrarCategoria' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> mostrarCat( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[ 2 ] == '?u=RegistrarCategoria' ) {
 
             if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
 
@@ -46,18 +58,6 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
                 $datosArray = json_decode( $json, true );
                 $objAdmin = new AdminController();
                 $objAdmin -> modificarCat( $datosArray );
-
-            }
-
-        } else if ( array_filter( $arrayRutas )[ 2 ] == '?u=MostrarCategoria' ) {
-
-            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
-
-                $json = file_get_contents( 'php://input' );
-
-                $datosArray = json_decode( $json, true );
-                $objAdmin = new AdminController();
-                $objAdmin -> mostrarCat( $datosArray );
 
             }
 
@@ -235,7 +235,7 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
         }
 
-        // --------------------------------------    RUTAS PARA SERVICIOS DE ADMINS   -------------------------------------  
+        // --------------------------------------    RUTAS PARA SERVICIOS DE USUARIOS   -------------------------------------  
         
         // --------------------------------------    PUBLICACIONES    -------------------------------------
         
@@ -412,8 +412,6 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
                                                         //mandamos como parametro el json asociativo)
 
             }
-        
-        
         }
         
         

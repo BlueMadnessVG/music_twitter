@@ -32,7 +32,7 @@ class AdminModel{
 
     static public function registrarMus( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_categoria, :id_album, :duracion, :path, 0 )' );
+        $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_categoria, :id_album, :duracion, :path, "A" )' );
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
@@ -92,7 +92,7 @@ class AdminModel{
 
     static public function registrarPost( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'INSERT INTO post VALUES ( null, :id_usr, :comentario, :id_musica, :id_album, 0, 0 )' );
+        $stmt = Connection :: connect() -> prepare( 'INSERT INTO post VALUES ( null, :id_usr, :comentario, :id_musica, :id_album, 0, "A" )' );
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':comentario', $data[ 'comentario' ] );
@@ -147,7 +147,7 @@ class AdminModel{
 
     static public function registrarUsr( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( ' INSERT INTO usuario VALUES ( null, :nombre, :correo, :PassWord, :fecha_nacimiento, :foto_perfil, :descripcion, 0, 0, :tipo, 0 ) ' );
+        $stmt = Connection :: connect() -> prepare( ' INSERT INTO usuario VALUES ( null, :nombre, :correo, :PassWord, :fecha_nacimiento, :foto_perfil, :descripcion, 0, 0, :tipo, "A" ) ' );
 
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
         $stmt -> bindparam( ':correo', $data[ 'correo' ] );
@@ -201,7 +201,7 @@ class AdminModel{
 
             $stmt = Connection :: connect() -> prepare( 'SELECT * FROM Album WHERE ID_Album = :id_album' );
                 
-            $stmt -> bindparam( ':id_categoria', $data[ 'id_album' ] );
+            $stmt -> bindparam( ':id_album', $data[ 'id_album' ] );
             $stmt -> execute();
             
             return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
@@ -221,7 +221,7 @@ class AdminModel{
 
     static public function registrarAlb( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( ' INSERT INTO album VALUES (null, :usuario, :nombre, current_date(), :duracion, 0) ' );
+        $stmt = Connection :: connect() -> prepare( ' INSERT INTO album VALUES (null, :usuario, :nombre, current_date(), :duracion, "A") ' );
 
         $stmt -> bindParam( ':usuario', $data[ 'usuario' ] );
         $stmt -> bindParam( ':nombre', $data[ 'nombre' ] );
@@ -275,7 +275,7 @@ class AdminModel{
     //INSERT INTO `categoria`(`ID_Categoria`, `Nombre`, `Estatus`) VALUES (null,'backend',0)
     static public function registrarcat( $data ) {
         //prepara la sentencia sql pero no la ejecuta
-        $stmt = Connection :: connect() -> prepare( 'INSERT INTO categoria VALUES (null, :nombre, 0)' );
+        $stmt = Connection :: connect() -> prepare( 'INSERT INTO categoria VALUES (null, :nombre, "A")' );
         $stmt -> bindParam( ':nombre', $data['nombre'] );//aqui estamos diciendo, en donde encuentres :nombre, cambiamelo
                                                     //por lo que haya en el json con la cabecera 'nombre'
         $stmt -> execute();//ejecuta la sentencia
