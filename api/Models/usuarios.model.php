@@ -149,7 +149,7 @@ static public function ExisteToken( $datos ) {
     return $stmt->fetch( PDO::FETCH_ASSOC );
 
     return null;
-    $stmt->close();
+   
     $stmt = null;
 
 }
@@ -239,7 +239,7 @@ static public function comentarpost($data){
         return 'Comentario registrado correctamente';
 
     }catch(Exception $e){
-        return 'Error:'.$e1->getMessage();
+        return 'Error:'.$e->getMessage();
     }
 
 
@@ -261,7 +261,7 @@ $stmt = Connection::connect()->prepare( "update post set reacciones=reacciones+1
         return 'Reaccion registrada correctamente';
 
 }catch(Exception $e){
-    return 'Error:'.$e1->getMessage();
+    return 'Error:'.$e->getMessage();
     
 }
 
@@ -284,7 +284,7 @@ static public function reaccionarcomentario($data){
             return 'Reaccion registrada correctamente';
     
     }catch(Exception $e){
-        return 'Error:'.$e1->getMessage();
+        return 'Error:'.$e->getMessage();
         
     }
     
@@ -299,7 +299,7 @@ static public function delcomentario($data){
         return 'Comentario borrado correctamente';
         
     }catch(Exception $e){
-        return 'Error:'.$e1->getMessage();
+        return 'Error:'.$e->getMessage();
         
     }
 
@@ -317,7 +317,7 @@ static public function delreacpost($data){
         return 'Reaccion de post borrada correctamente';
         
     }catch(Exception $e){
-        return 'Error:'.$e1->getMessage();
+        return 'Error:'.$e->getMessage();
         
     }
 
@@ -335,7 +335,7 @@ static public function delreaccomm($data){
         return 'Reaccion de comentario borrada correctamente';
         
     }catch(Exception $e){
-        return 'Error:'.$e1->getMessage();
+        return 'Error:'.$e->getMessage();
         
     }
 
