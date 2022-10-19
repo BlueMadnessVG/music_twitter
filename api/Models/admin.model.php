@@ -184,7 +184,8 @@ class AdminModel{
         $stmt = Connection :: connect() -> prepare( 'UPDATE usuario SET contraseña = :PassWord WHERE ID_Usuario = :id_usr ' );
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
-        $stmt -> bindparam( ':PassWord', $data[ 'contraseña' ] );
+        $pass = hash( 'sha512', $data[ 'contraseña' ] );
+        $stmt -> bindparam( ':PassWord',$pass );
 
         $stmt -> execute();
         return '¡ Contraseña Modificada con Exito !';
