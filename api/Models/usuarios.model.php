@@ -47,7 +47,7 @@ class UsuarioModel{
 
     static public function Usr_bajaPost( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'DELETE FROM post WHERE ID_Post = :id_post' );
+        $stmt = Connection :: connect() -> prepare( 'UPDATE post SET estatus = "I" WHERE ID_Post = :id_post' );
 
         $stmt -> bindparam( 'id_post', $data[ 'id_post' ] );
 

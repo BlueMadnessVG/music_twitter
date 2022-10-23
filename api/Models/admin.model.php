@@ -1,5 +1,5 @@
 <?php
-require_once 'Connection.php';
+require_once 'connection.php';
 
 class AdminModel{
 
@@ -125,7 +125,7 @@ class AdminModel{
         //monstrar usuario por id
         if( $data != null ){
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM Usuario WHERE ID_Usuario = :id_usr' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM usuario WHERE ID_Usuario = :id_usr' );
                 
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> execute();
@@ -136,7 +136,7 @@ class AdminModel{
         //mostrar todas las usuario
         else{
         
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM Usuario' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM usuario' );
             $stmt -> execute();
             
             return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
@@ -200,7 +200,7 @@ class AdminModel{
         //monstrar album por id
         if( $data != null ){
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM Album WHERE ID_Album = :id_album' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM album WHERE ID_Album = :id_album' );
                 
             $stmt -> bindparam( ':id_album', $data[ 'id_album' ] );
             $stmt -> execute();
@@ -211,7 +211,7 @@ class AdminModel{
         //mostrar todas las album
         else{
         
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM Album' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM album' );
             $stmt -> execute();
             
             return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
