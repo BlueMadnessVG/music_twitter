@@ -63,3 +63,40 @@
     flex: 1;
     border-radius: 16px;
 }
+
+#btn-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+
+    background-color: var(--secundary-color);
+    border-color: var(--secundary-color);
+}
+
+#btn-chat:hover {
+    background-color: var(--main-color);
+    color: var(--secundary-color);
+}
+
+.chat_menu {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    border-radius: 1rem;
+    margin-bottom: 0%;
+    
+    background-color: var(--main-color);
+    list-style-type: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    
+    border: 1px solid var(--border-color);
+    color: white;
+}
+
+.active {
+
+    
+
+}
