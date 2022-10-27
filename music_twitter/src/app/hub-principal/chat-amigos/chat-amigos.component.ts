@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Usuario } from 'src/app/modelos/usuario.model';
+import { UsrService } from 'src/app/servicios/usuario.service';
+import { TUsuario } from 'src/app/modelos/TUsuario.model';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'chat-amigos',
   templateUrl: './chat-amigos.component.html',
@@ -8,12 +11,32 @@ import { Component, OnInit } from '@angular/core';
 export class ChatAmigosComponent implements OnInit {
 
   chatSelect !: string;
-
-  constructor() { }
+  subcription !: Subscription;
+  datasource: any;
+  constructor(private usrser:UsrService) { }
 
   ngOnInit(): void {
-  }
 
+    this.obtener();
+
+  }
+  
+  obtener(){
+
+    this.usrser.AmigosUsr().subscribe({
+      error: (error) => {
+        alert(error.error);
+      },
+      complete: () => { },
+      next: (response) => {
+        this.datasource = response.data;
+        console.log(response);
+      },
+    });
+
+
+
+  }
   chatSeleccionado() {
 
     this.chatSelect = localStorage.getItem("chat")!;
