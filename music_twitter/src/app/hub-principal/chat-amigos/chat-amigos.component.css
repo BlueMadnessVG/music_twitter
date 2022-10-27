@@ -1,0 +1,174 @@
+@media (max-width: 500px) {
+    .offcanvas-body {
+        grid-template-columns: 22% 1fr !important;
+    }
+}
+
+.header{
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.icon {
+
+    padding-right: 1rem;
+    color: var(--secundary-color);
+
+}
+
+.offcanvas-body {
+
+    padding: 1rem 0.5rem 0 0.5rem;
+    display: grid;
+
+    grid-template-columns: 15% 1fr;
+    height: 91vh;
+    width: 100%;
+
+}
+
+.img{
+
+    height: 4.3rem;
+    width: 4.3rem;
+    border-radius: 50%;
+    padding: 0.1rem;
+    margin: 0.1rem;
+
+}
+
+.amigos_fotos {
+
+        padding-top: 1rem;
+        max-height: 100%;
+    
+
+}
+
+.chat_img {
+
+    right: 0;
+    border-bottom-width: thin;
+    max-height: 100%;
+    padding: 10px 10px 10px 10px;
+    background: none;
+    border: none;
+
+    border-radius: 1rem 0 0 1rem;
+
+}
+
+.chat_img:hover{
+
+    background-color: var(--main-color);
+
+}
+
+.chat_select{
+
+    background-color: var(--main-color);
+    border-radius: 1rem;
+
+}
+
+.noChat {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #76777f;;
+
+}
+
+.selected {
+
+    display: grid;
+    grid-template-rows: 95% 1fr;
+    padding: 0.9rem;
+
+}
+
+.form-control {
+
+    color: var(--font-main-color);
+    background-color: var(--back-color);
+    border-color: var(--border-color);
+
+}
+
+.btn {
+
+    color: var(--secundary-color);
+    border-color: var(--border-color);
+
+}
+
+.btn:hover {
+
+    color: var(--font-main-color);
+    background-color: var(--secundary-color);
+
+}
+
+.mensajes{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    margin-bottom: 10px;
+
+}
+
+.msj {
+
+    margin-bottom: 10px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 1rem;
+    background-color: var(--back-color);
+    max-width: 60%;
+
+}
+
+.remitente {
+
+    position: relative;
+    left: 41%;
+    background-color: #76777f;
+
+}
+
+.remitente .mensaje_info {
+
+    display: flex;
+    text-align: end;
+
+}
+
+.remitente .hora {
+
+    color: var(--back-color);
+    float: left;
+
+}
+
+.mensaje_info {
+
+    margin-bottom: 0;
+    color: var(--font-main-color);
+    font-size: 1rem;
+    font-weight: 400;
+
+}
+
+.hora {
+
+    display: flex;
+    float: right;
+    align-items: flex-end;
+
+    font-size: 0.7rem;
+    color: #76777f;
+
+}

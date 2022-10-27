@@ -1,0 +1,54 @@
+<div class="offcanvas-header header">
+
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+        <i class="bi bi-chat-left-fill icon"></i>
+        Chat de amigos
+    </h5>
+
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+
+<div class="offcanvas-body">
+    <div class="amigos_fotos">
+
+        <button class="chat_img">
+            <img class="img" src="https://pbs.twimg.com/profile_images/1563289121883230209/6KrN6RvO_400x400.jpg" lazy="loaded">
+        </button>
+
+        <button class="chat_img">
+            <img class="img" src="https://pbs.twimg.com/profile_images/1563289121883230209/6KrN6RvO_400x400.jpg" lazy="loaded">
+        </button>
+      
+    </div>
+
+    <div *ngIf="chatSeleccionado()" class="chat_select noChat">
+        <p> SELECCIONE UN CHAT </p>
+    </div>
+
+    <div *ngIf="!chatSeleccionado()" class="chat_select selected">
+        
+        <div class="mensajes">
+            <div class="msj">
+                <p class="mensaje_info"> Informacion del ultimo mensaje </p>
+                <div class="hora">
+                    12:20 PM
+                </div>
+            </div>
+            <div class="msj remitente">
+                <p class="mensaje_info"> Informacion del ultimo mensaje del remitente </p>
+                <div class="hora">
+                    12:20 PM
+                </div>
+            </div>
+        </div>
+
+        <div class="chat_tool">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Mensaje" aria-label="Recipient's username" aria-describedby="enviar_msj">
+                <button class="btn btn-outline-secondary" type="button" id="enviar_msj">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

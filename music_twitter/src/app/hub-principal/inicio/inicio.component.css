@@ -67,3 +67,11 @@
     border: 1px solid var(--border-color);
     color: white;
 }
+
+.offcanvas {
+
+    background-color: var(--back-color);
+    color: var(--default-font-color);
+    --bs-offcanvas-width: 600px !important;
+
+}
