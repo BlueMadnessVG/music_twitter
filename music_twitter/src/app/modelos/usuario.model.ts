@@ -1,7 +1,7 @@
 export interface Usuario {
 
     ID_USUARIO: string;
-    Nombre: string;
+    Nombre_Usuario: string;
     Correo: String;
     Contraseña: string;
     Fecha_N: string;
