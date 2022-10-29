@@ -9,20 +9,20 @@
       <div class="modal-body">
         <p> Bienvenido al himalaya </p>
 
-        <form>
+        <form [formGroup]="frmLogin" (ngSubmit)="submit()">
           <div class="inputs">
             <p> Usuario </p>
-            <input type="text" name="" id="user">
+            <input type="text" name="" id="user" formControlName="Correo">
           </div>
           <div class="inputs pass">
               <p> Contraseña </p>
-              <input type="password" name="" id="pass">
+              <input type="password" name="" id="pass" formControlName="Pass">
           </div>
         </form>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">LogIn</button>
+        <button type="button" class="btn btn-primary" (click)="submit()">LogIn</button>
       </div>
 
     </div>

@@ -4,6 +4,6 @@ export interface TUsuario {
 
     message: string;
     status: number;
-    data: Usuario[];
+    data: Usuario;
 
 }

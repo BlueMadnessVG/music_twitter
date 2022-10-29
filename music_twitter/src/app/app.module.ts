@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HubPrincipalModule } from './hub-principal/hub-principal.module';
 import { ModalsModule } from './modals/modals.module';
+import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { ModalsModule } from './modals/modals.module';
     AppRoutingModule,
     HubPrincipalModule,
     ModalsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

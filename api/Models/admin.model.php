@@ -169,7 +169,8 @@ class AdminModel{
         $stmt -> bindparam( 'id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
         $stmt -> bindparam( ':correo', $data[ 'correo' ] );
-        $stmt -> bindparam( ':PassWord', $data[ 'contraseña' ] );
+        $pass = hash( 'sha512', $data[ 'contraseña' ] );
+        $stmt -> bindparam( ':PassWord', $pass);
         $stmt -> bindparam( ':fecha_nacimiento', $data[ 'fecha_nacimiento' ] );
         $stmt -> bindparam( ':foto_perfil', $data[ 'foto_perfil' ] );
         $stmt -> bindparam( ':descripcion', $data[ 'descripcion' ] );
