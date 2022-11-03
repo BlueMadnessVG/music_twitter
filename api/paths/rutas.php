@@ -413,6 +413,14 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
         }
+        else if(array_filter( $arrayRutas )[ 2 ] == '?u=GetUsuarios'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+                $objUser=new AdminController();
+                $objUser->getusuarios();//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
+        }
         
         
         else {

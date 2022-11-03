@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   frmLogin!: FormGroup;
+  vista:boolean=false;
   constructor(private fb: FormBuilder,private usuarioService:UsrService) {
 
   }
@@ -45,9 +46,9 @@ iniciar_sesion(){
     ).subscribe(
         (x) => {
          // const date = new Date();
-         // this.hideModal();
+          this.hideModal();
           this.usuarioService.saveToken(x.data);
-          //window.location.reload();
+          window.location.reload();
           console.log("jalo we");
         },
         (error) =>
@@ -60,6 +61,11 @@ iniciar_sesion(){
             },
           })
       );
+  }
+
+
+  hideModal(){
+
   }
 
 }

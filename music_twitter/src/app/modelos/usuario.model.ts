@@ -1,15 +1,11 @@
 export interface Usuario {
 
-    ID_USUARIO: string;
-    Nombre_Usuario: string;
-    Correo: String;
-    Contraseña: string;
-    Fecha_N: string;
-    Foto_Perfil: string;
-    Descripcion: string;
-    Followers: number;
-    Following: number;
-    Rol: number;
-    Estatus: string;
+  ID_Usuario: string;
+  Nombre_Usuario: string;
+  Correo: String;
+  Fecha_Nacimiento: string;
+  Foto_Perfil: string;
+  Rol: number;
+  Estatus: string;
 
 }

@@ -297,6 +297,13 @@ class AdminModel{
 
     }
 
+    static public function getusuarios(){
+        $stmt = Connection :: connect() -> prepare( 'SELECT ID_Usuario,Nombre_Usuario,Correo,Fecha_Nacimiento,Foto_Perfil,Rol,Estatus from usuario' );
+        $stmt -> execute();
+
+        return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
+    }
+
 }
 
 

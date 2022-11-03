@@ -35,3 +35,5 @@ html, body{
 .disabled{
     color: #6c757d !important;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

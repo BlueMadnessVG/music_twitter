@@ -1,4 +1,5 @@
 import { Component  } from '@angular/core';
+import { TUsuario } from './modelos/TUsuario.model';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,18 @@ import { Component  } from '@angular/core';
 })
 export class AppComponent {
   title = 'music_twitter';
-
+  datosUser!:TUsuario;
   loggedUser !: string;
   loggedin() {;
-    this.loggedUser = localStorage.getItem('UsrName')!;
+    this.loggedUser = localStorage.getItem('data')!;
+    this.datosUser= JSON.parse(localStorage.getItem('data')!);
     return this.loggedUser;
+
   }
 
   onLogOut(){
-    localStorage.removeItem('UsrName');
+    localStorage.removeItem('data');
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 }

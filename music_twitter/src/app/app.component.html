@@ -2,7 +2,7 @@
 <div class="nav">
 
     <div class="header_left">
-      <h3 class="title"> Music Twitter </h3>
+      <h3 class="title"> SoundClon </h3>
     </div>
 
     <div class="header_main">
@@ -20,26 +20,33 @@
 
         <!-- MENU DE USUARIO -->
         <button class="account_icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="avatar_img" src="https://pbs.twimg.com/profile_images/1563289121883230209/6KrN6RvO_400x400.jpg" lazy="loaded">
+          <img class="avatar_img" src="{{this.datosUser.data.Foto_Perfil}}" lazy="loaded">
         </button>
-        
+
         <ul class="dropdown-menu dropdown-menu-dark">
           <li>
             <a class="dropdown-item" href="#">
               <i class="fa-solid fa-user"></i>
-              Perfil
+             Ver perfil
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="#">
               <i class="fa-solid fa-key"></i>
-              Cambiar Contraseña
+              Cambiar contraseña
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="onLogOut()" href="/editarPerfil">
+
+              <i class="fa-solid fa-list"></i>
+              Editar perfil
             </a>
           </li>
           <li>
             <a class="dropdown-item" (click)="onLogOut()">
               <i class="fa-solid fa-right-from-bracket"></i>
-              Log Out
+              Cerrar sesión
             </a>
           </li>
         </ul>

@@ -7,10 +7,20 @@ import { AppComponent } from './app.component';
 import { HubPrincipalModule } from './hub-principal/hub-principal.module';
 import { ModalsModule } from './modals/modals.module';
 import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditarPerfilComponent,
+    GestionUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +29,13 @@ import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
     ModalsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

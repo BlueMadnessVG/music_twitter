@@ -4,6 +4,14 @@ class AdminController{
 
     // --------------------------------------    CRUD DE MUSICA    --------------------------------------
 
+    public function Error( $e ) {
+        header( 'HTTP/1.0 500' );
+        //Cabecera que Indica que hay un error en el Servidor
+        $json = array( 'message' => '¡Hubo un Error!', 'status'=>500, 'data' => $e->getMessage() );
+        echo json_encode( $json );
+        return ;
+    }
+
     static public function mostrarMus( $data ) {
 
         try {
@@ -307,6 +315,19 @@ class AdminController{
                 echo json_encode( $json );
         }
 
+    }
+
+    static public function getusuarios() {
+        try {
+
+            $datos = AdminModel :: getusuarios();
+
+            $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
+            echo json_encode( $json );
+            return ;
+        } catch( Exception $e1 ) {
+            self::Error( $e1 );
+        }
     }
 
    
