@@ -20,52 +20,47 @@
 
 <div  *ngIf="flag" >
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z3" >
-    <ng-container matColumnDef="ID_USUARIO">
+
+    <ng-container matColumnDef="ID_Usuario">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let items"> {{items.ID_Usuario}} </td>
+      <td mat-cell *matCellDef="let items">{{items.ID_Usuario}}</td>
     </ng-container>
 
     <ng-container matColumnDef="urlImg">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> IMAGEN </th>
-      <td mat-cell *matCellDef="let items"> <img src="{{items.Foto_Perfil}}" class="roundedImage" alt="Imagen"></td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> IMG </th>
+      <td mat-cell *matCellDef="let items"><img src="{{items.Foto_Perfil}}" class="roundedImage"></td>
     </ng-container>
 
     <ng-container matColumnDef="username">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE DE USUARIO </th>
-      <td mat-cell *matCellDef="let items">  {{items.Nombre_Usuario}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Usuario </th>
+      <td mat-cell *matCellDef="let items">{{items.Nombre_Usuario}}</td>
     </ng-container>
 
     <ng-container matColumnDef="Correo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> CORREO </th>
-      <td mat-cell *matCellDef="let items"> {{items.Correo}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+      <td mat-cell *matCellDef="let items">{{items.Correo}}</td>
     </ng-container>
 
     <ng-container matColumnDef="Fecha_Nacimiento">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> FECHA NAC </th>
-      <td mat-cell *matCellDef="let items">  {{items.Fecha_Nacimiento}}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha_Nac </th>
+      <td mat-cell *matCellDef="let items">{{items.Fecha_Nacimiento}}</td>
     </ng-container>
 
     <ng-container matColumnDef="ID_Rol">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ROL </th>
-      <td mat-cell *matCellDef="let items">  {{items.Rol}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
+      <td mat-cell *matCellDef="let items">{{items.Rol}}</td>
     </ng-container>
 
     <ng-container matColumnDef="Estatus">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTATUS </th>
-      <td mat-cell *matCellDef="let items">  {{items.Estatus}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+      <td mat-cell *matCellDef="let items">{{items.Estatus}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="Acciones">
-      <td mat-cell *matCellDef="let items">
-        <div class="btn-group mb-2">
-          <button class="btn btn-warning" (click)="Editar(items)">  <mat-icon>edit</mat-icon></button>
-          <button class="btn btn-secondary" (click)="CambiarPassword(items)">  <mat-icon>key</mat-icon></button>
-         <button class="btn btn-danger" (click)="Eliminar(items.ID_USUARIO)"> <mat-icon>delete</mat-icon></button>
-        </div>
-
-      </td>
-
-      </ng-container>
+  <!--  <ng-container matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones</th>
+  <td mat-cell *matCellDef="let items"><button class="btn btn-warning"(click)="Editar(items.ID_Usuario)"></button></td>
+    </ng-container>
+-->
 
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" [attr.colspan]="displayedColumns.length">

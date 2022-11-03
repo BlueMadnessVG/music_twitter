@@ -16,14 +16,14 @@ export class GestionUsuariosComponent implements OnInit {
   flag: boolean = false;
   subscription!: Subscription;
   displayedColumns: string[] = [
-    'ID_USUARIO',
+    'ID_Usuario',
     'urlImg',
     'username',
-    'Correo',
-    'Fecha_Nacimiento',
-    'ID_Rol',
-    'Estatus',
-    'Acciones'
+     'Correo',
+     'Fecha_Nacimiento',
+     'ID_Rol',
+     'Estatus',
+        
   ];
 
 
