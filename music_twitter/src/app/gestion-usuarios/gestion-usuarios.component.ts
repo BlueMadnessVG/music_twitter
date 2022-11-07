@@ -6,6 +6,7 @@ import { Usuario } from '../modelos/usuario.model';
 import { AdminService } from '../servicios/admin.service';
 import { ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-gestion-usuarios',
   templateUrl: './gestion-usuarios.component.html',
@@ -20,10 +21,10 @@ export class GestionUsuariosComponent implements OnInit {
     'urlImg',
     'username',
      'Correo',
-     'Fecha_Nacimiento',
      'ID_Rol',
      'Estatus',
-        
+     'Acciones'
+
   ];
 
 
@@ -59,13 +60,71 @@ export class GestionUsuariosComponent implements OnInit {
     this.obtenerusers();
   }
 
-  Editar(data:any){
 
+  ChStatus(data:any){
+    if(this.userdata.data.ID_Usuario!=data.ID_Usuario){
+      if(data.Estatus=='I'){
+        this.altastatus(data.ID_Usuario);
+      }else{
+        this.bajastatus(data.ID_Usuario);
+      }
+    }
   }
 
-  CambiarPassword(data:any){}
+bajastatus(data:number){
+  Swal.fire({
+    title: 'Alerta',
+    html: '¿Está seguro de realizar la operación?',
 
-  Eliminar(data:any){}
+    showDenyButton: true,
+    icon: 'info',
+    customClass: {
+      container: 'my-swal',
+    },
+    confirmButtonText: 'Si',
+    denyButtonText: 'No',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.AdminService.darbajausr({
+        ID_USUARIO: data,
+      }).subscribe(
+        (x) => {
+          Swal.fire('Enhorabuena', 'Estatus de usuario cambiado correctamente', 'success');
+          this.obtenerusers();
+        },
+        (error) => console.log(error)
+      );
+    }
+  });
+
+}
+
+altastatus(data:number){
+  Swal.fire({
+    title: 'Alerta',
+    html: '¿Está seguro de realizar la operación?',
+
+    showDenyButton: true,
+    icon: 'info',
+    customClass: {
+      container: 'my-swal',
+    },
+    confirmButtonText: 'Si',
+    denyButtonText: 'No',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.AdminService.daraltausr({
+        ID_USUARIO: data,
+      }).subscribe(
+        (x) => {
+          Swal.fire('Enhorabuena', 'Estatus de usuario cambiado correctamente', 'success');
+          this.obtenerusers();
+        },
+        (error) => console.log(error)
+      );
+    }
+  });
+}
 
 
   obtenerusers(){

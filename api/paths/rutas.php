@@ -141,7 +141,34 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
 
-        } else if ( array_filter( $arrayRutas )[2] == '?u=CambiarPassWord' ) {
+        }else if ( array_filter( $arrayRutas )[2] == '?u=DarBajaUsuario' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> bajausr( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=DarAltaUsuario' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new AdminController();
+                $objAdmin -> altausr( $datosArray );
+
+            }
+
+        } 
+        
+        
+        else if ( array_filter( $arrayRutas )[2] == '?u=CambiarPassWord' ) {
             
             if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
 

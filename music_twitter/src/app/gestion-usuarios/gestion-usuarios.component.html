@@ -11,8 +11,9 @@
 
     </mat-form-field>
 
-      <button class="btn btn-primary" style="float:right;margin-top: 25px;"> <mat-icon style="vertical-align:middle;">add</mat-icon>Registrar usuario</button>
-    <br>
+    <!--  <button class="btn btn-primary" style="float:right;margin-top: 25px;"> <mat-icon style="vertical-align:middle;">add</mat-icon>Registrar usuario</button>
+    -->
+      <br>
     <br>
     </div>
 
@@ -41,11 +42,11 @@
       <td mat-cell *matCellDef="let items">{{items.Correo}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="Fecha_Nacimiento">
+   <!-- <ng-container matColumnDef="Fecha_Nacimiento">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha_Nac </th>
       <td mat-cell *matCellDef="let items">{{items.Fecha_Nacimiento}}</td>
     </ng-container>
-
+-->
     <ng-container matColumnDef="ID_Rol">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
       <td mat-cell *matCellDef="let items">{{items.Rol}}</td>
@@ -56,11 +57,11 @@
       <td mat-cell *matCellDef="let items">{{items.Estatus}}</td>
     </ng-container>
 
-  <!--  <ng-container matColumnDef="Acciones">
+    <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones</th>
-  <td mat-cell *matCellDef="let items"><button class="btn btn-warning"(click)="Editar(items.ID_Usuario)"></button></td>
+  <td mat-cell *matCellDef="let items"><button class="btn btn-warning"(click)="ChStatus(items)">Cambiar estatus<mat-icon>thumbs_up_down</mat-icon></button></td>
     </ng-container>
--->
+
 
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" [attr.colspan]="displayedColumns.length">

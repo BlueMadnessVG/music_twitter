@@ -330,6 +330,39 @@ class AdminController{
         }
     }
 
+    static public function bajausr($data){
+        try{
+            if(isset($data['ID_USUARIO'])){
+                $datos=AdminModel::bajausr($data);
+                $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
+                echo json_encode( $json );
+                return ;
+            }else{
+                $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>500, 'data'=> "datos incompletos" );
+                echo json_encode( $json );
+                return;
+            }
+        }catch(Exception $e){
+            self::Error($e);
+        }
+    }
+    static public function altausr($data){
+        try{
+            if(isset($data['ID_USUARIO'])){
+                $datos=AdminModel::altausr($data);
+                $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
+                echo json_encode( $json );
+                return ;
+            }else{
+                $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>500, 'data'=> "datos incompletos" );
+                echo json_encode( $json );
+                return;
+            }
+        }catch(Exception $e){
+            self::Error($e);
+        }
+    }
+
    
 
 

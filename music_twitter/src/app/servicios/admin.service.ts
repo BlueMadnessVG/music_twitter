@@ -27,6 +27,26 @@ getusers():Observable <usersdata>{
       );
 }
 
+darbajausr(data:any){
+  return this.cliente.post(
+    this.urlApi+'?u=DarBajaUsuario',JSON.stringify(data)
+  ).pipe(
+    tap(()=>{
+      this.refresh.next();
+    })
+  );
+}
+
+daraltausr(data:any){
+  return this.cliente.post(
+    this.urlApi+'?u=DarAltaUsuario',JSON.stringify(data)
+  ).pipe(
+    tap(()=>{
+      this.refresh.next();
+    })
+  );
+}
+
 
 
 }

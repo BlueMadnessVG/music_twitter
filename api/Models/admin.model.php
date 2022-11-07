@@ -303,7 +303,18 @@ class AdminModel{
 
         return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
     }
-
+    static public function bajausr($datos){
+        $stmt = Connection :: connect() -> prepare('update usuario set Estatus="I" where ID_Usuario=:id');
+        $stmt -> bindparam( ':id', $datos[ 'ID_USUARIO' ] );
+        $stmt->execute();
+        return 'Usuario dado de baja correctamente.';
+    }
+    static public function altausr($datos){
+        $stmt = Connection :: connect() -> prepare('update usuario set Estatus="A" where ID_Usuario=:id');
+        $stmt -> bindparam( ':id', $datos[ 'ID_USUARIO' ] );
+        $stmt->execute();
+        return 'Usuario dado de baja correctamente.';
+    }
 }
 
 
