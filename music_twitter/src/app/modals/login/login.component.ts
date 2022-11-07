@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   frmLogin!: FormGroup;
-  vista:boolean=false;
   constructor(private fb: FormBuilder,private usuarioService:UsrService) {
 
   }

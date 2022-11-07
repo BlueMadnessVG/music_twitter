@@ -14,6 +14,39 @@ class UsuarioModel{
                                                     //que nos haya devuelto la sentencia sql
     }
 
+    // --------------------------------------    MENSAJES    --------------------------------------
+
+    static public function enviarMensaje( $data ) {
+
+        $stmt =  Connection :: connect() -> prepare( 'INSERT INTO chat VALUES  ( :id_usr, :id_amigo, :mensaje, now() )' );
+
+        $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+        $stmt -> bindparam( ':id_amigo', $data[ 'id_amigo' ] );
+        $stmt -> bindparam( ':mensaje', $data[ 'mensaje' ] );
+
+        $stmt -> execute();
+        return ' ¡ Mensaje enviado con exito ! ';
+
+    }
+
+    static public function obtenerChat( $data ) {
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM chat WHERE id_remitente = :id_usr OR id_destinatario = :id_usr' );
+            $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+            $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
     // --------------------------------------    PUBLICACIONES    --------------------------------------
 
     static public function Usr_registrarPost( $data ) {
@@ -209,7 +242,6 @@ static public function registrarse($data){
         return 'Usuario registrado correctamente';
     } catch( Exception $e1 ) {
         return 'Error:'.$e1->getMessage();
-
     }
 
 

@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Observable, Subject, tap } from 'rxjs';
 import { LoginModel } from "../modelos/Login.model";
+import { EnviarMensajeModel } from "../modelos/EnviarMensaje.model";
+import { ObtenerChatModel } from "../modelos/ObtenerChat.model";
 
 /* Modelos */
 import { TUsuario } from "../modelos/TUsuario.model";
@@ -33,20 +35,46 @@ export class UsrService {
 
     }
 
-    //Servicio para Login , Regresa un Token
-  login(data: LoginModel): Observable<TUsuario> {
+    enviarMensaje( data: EnviarMensajeModel ): Observable < TUsuario > {
 
-    return this.client.post<TUsuario>(
-      this.urlApi + '?u=Login',
-      JSON.stringify(data),
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-  }
-  saveToken(data: any) {
-    localStorage.setItem('token', data);
-    const helper = new JwtHelperService();
-    localStorage.setItem('data', JSON.stringify(helper.decodeToken(data)));
-  }
+      return this.client.post< TUsuario >(
+        this.urlApi + '?u=EnviarMensaje',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+      .pipe( 
+          tap( () => {
+            this.refresh.next();
+          } ) 
+       );
+
+    }
+
+    obtenerChat(data: ObtenerChatModel ): Observable < TUsuario > {
+      
+      return this.client.post< TUsuario > (
+        this.urlApi + '?u=ObtenerChat',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+
+    } ;
+
+    //Servicio para Login , Regresa un Token
+    login(data: LoginModel): Observable<TUsuario> {
+
+      return this.client.post<TUsuario>(
+        this.urlApi + '?u=Login',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    saveToken(data: any) {
+      localStorage.setItem('token', data);
+      const helper = new JwtHelperService();
+      localStorage.setItem('data', JSON.stringify(helper.decodeToken(data)));
+    }
 
 
 }

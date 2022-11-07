@@ -27,28 +27,36 @@
 
     <div *ngIf="!chatSeleccionado()" class="chat_select selected">
         
-        <div class="mensajes">
-            <div class="msj">
-                <p class="mensaje_info"> Informacion del ultimo mensaje </p>
-                <div class="hora">
-                    12:20 PM
+        <div class="mensajes"  >
+            <div *ngFor="let mensaje_info of mensajes">
+                <div *ngIf=" mensaje_info.ID_remitente == id_usr && mensaje_info.ID_destinatario != id_usr" class="msj">
+                    <p class="mensaje_info"> {{ mensaje_info.Mensaje }} </p>
+                    <div class="hora">
+                        {{ mensaje_info.Fecha }}
+                    </div>
+                </div>
+                <div *ngIf=" mensaje_info.ID_remitente != id_usr && mensaje_info.ID_destinatario == id_usr" class="msj remitente">
+                    <p class="mensaje_info"> {{ mensaje_info.Mensaje }} </p>
+                    <div class="hora">
+                        {{ mensaje_info.Fecha }}
+                    </div>
                 </div>
             </div>
-            <div class="msj remitente">
-                <p class="mensaje_info"> Informacion del ultimo mensaje del remitente </p>
-                <div class="hora">
-                    12:20 PM
-                </div>
-            </div>
+            
         </div>
 
-        <div class="chat_tool">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Mensaje" aria-label="Recipient's username" aria-describedby="enviar_msj">
-                <button class="btn btn-outline-secondary" type="button" id="enviar_msj">
-                    <i class="bi bi-send-fill"></i>
-                </button>
+        <form [formGroup]="frmMensaje" (ngSubmit)="submit()">
+
+            <div class="chat_tool">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Mensaje" aria-label="Recipient's username" aria-describedby="enviar_msj" formControlName="Mensaje">
+                    <button class="btn btn-outline-secondary" type="button" id="enviar_msj" (click)="submit()">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </div>
             </div>
-        </div>
+
+        </form>
+
     </div>
 </div>

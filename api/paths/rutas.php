@@ -19,7 +19,35 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
 
-        } 
+        }
+
+         // --------------------------------------    MENSAJES    -------------------------------------- 
+
+         else if ( array_filter( $arrayRutas )[ 2 ] == '?u=EnviarMensaje' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> enviarMensaje( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[ 2 ] == '?u=ObtenerChat' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> obtenerChat( $datosArray );
+
+            }
+
+        }
         
         // --------------------------------------    RUTAS PARA SERVICIOS DE ADMINS   -------------------------------------   
 
