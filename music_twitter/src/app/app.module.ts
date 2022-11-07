@@ -16,11 +16,13 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableDataSource } from '@angular/material/table';
+import { GestionPostsComponent } from './gestion-posts/gestion-posts.component';
 @NgModule({
   declarations: [
     AppComponent,
     EditarPerfilComponent,
-    GestionUsuariosComponent
+    GestionUsuariosComponent,
+    GestionPostsComponent
   ],
   imports: [
     BrowserModule,
