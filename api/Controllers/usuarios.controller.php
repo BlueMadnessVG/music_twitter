@@ -49,7 +49,7 @@ class UsuarioController{
     static public function obtenerChat( $data ) {
 
         try {
-                if ( isset( $data[ 'id_usr' ] ) ) {
+                if ( isset( $data[ 'id_usr' ] ) && isset( $data[ 'id_amigo' ] ) ) {
 
                     $data = UsuarioModel :: obtenerChat( $data );
 
@@ -65,6 +65,26 @@ class UsuarioController{
 
     }
 
+    // --------------------------------------    AMIGOS    --------------------------------------
+
+    static public function obtenerAmigos( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_usr' ] ) ) {
+
+                    $data = UsuarioModel :: obtenerAmigos( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
 
     // --------------------------------------    PUBLICACIONES    --------------------------------------
 

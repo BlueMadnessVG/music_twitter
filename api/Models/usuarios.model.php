@@ -33,7 +33,28 @@ class UsuarioModel{
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM chat WHERE id_remitente = :id_usr OR id_destinatario = :id_usr' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM chat WHERE (id_remitente = :id_usr AND id_destinatario = :id_amigo) OR (id_remitente = :id_amigo AND id_destinatario = :id_usr)' );
+            $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+            $stmt -> bindparam( ':id_amigo', $data[ 'id_amigo' ] );
+            $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
+    // --------------------------------------    AMIGOS    --------------------------------------
+
+    static public function obtenerAmigos( $data ) {
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT lista_amigos.ID_Amigo, usuario.Foto_Perfil FROM lista_amigos INNER JOIN amigo INNER JOIN usuario WHERE amigo.ID_Usuario = :id_usr AND amigo.ID_Amigo = lista_amigos.ID_Amigos AND usuario.ID_Usuario = lista_amigos.ID_Amigo; ' );
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> execute();
 

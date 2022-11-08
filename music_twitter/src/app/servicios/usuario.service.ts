@@ -5,9 +5,11 @@ import { Observable, Subject, tap } from 'rxjs';
 import { LoginModel } from "../modelos/Login.model";
 import { EnviarMensajeModel } from "../modelos/EnviarMensaje.model";
 import { ObtenerChatModel } from "../modelos/ObtenerChat.model";
+import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
 
 /* Modelos */
 import { TUsuario } from "../modelos/TUsuario.model";
+import { TAmigos } from "../modelos/TAmigos.model";
 
 @Injectable( {
 
@@ -58,7 +60,17 @@ export class UsrService {
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-    } ;
+    };
+
+    obtenerAmigos(data: ObtenerAmigosModel): Observable < TAmigos > {
+
+      return this.client.post< TAmigos > (
+        this.urlApi + "?u=ObtenerAmigos",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    };
 
     //Servicio para Login , Regresa un Token
     login(data: LoginModel): Observable<TUsuario> {
