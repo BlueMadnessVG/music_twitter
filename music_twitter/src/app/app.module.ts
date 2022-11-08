@@ -17,12 +17,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableDataSource } from '@angular/material/table';
 import { GestionPostsComponent } from './gestion-posts/gestion-posts.component';
+import { CambioPwdComponent } from './cambio-pwd/cambio-pwd.component';
 @NgModule({
   declarations: [
     AppComponent,
     EditarPerfilComponent,
     GestionUsuariosComponent,
-    GestionPostsComponent
+    GestionPostsComponent,
+    CambioPwdComponent
   ],
   imports: [
     BrowserModule,

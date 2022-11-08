@@ -387,5 +387,25 @@ static public function delpost($data){
 
 }
 
+static public function veroldpwd($datos){
+    $pass = hash( 'sha512', $datos[ 'Passold' ] );
+    $stmt = Connection::connect()->prepare( "select * from usuario where ID_Usuario=:id_usuario and Contraseña=:Password and Estatus='A' " );
+    $stmt->bindParam( ':id_usuario', $datos[ 'ID_USUARIO' ] );
+    $stmt->bindParam( ':Password', $pass );
+    $stmt->execute();
+    if ( $stmt->rowCount()>0 ) 
+    return true;
+    return false;
+}
+
+static public function Modpwd( $data ) {
+    $stmt = Connection::connect()->prepare( 'update usuario set Contraseña=:pass where ID_Usuario=:ID_USUARIO' );
+    $stmt->bindParam( ':ID_USUARIO', $data[ 'ID_USUARIO' ] );
+    $pass = hash( 'sha512', $data[ 'Pass' ] );
+    $stmt->bindParam( ':pass', $pass );
+    $stmt->execute();
+    return '¡Se Modifico Correctamente la Contraseña!';
+}
+
 }
 ?>

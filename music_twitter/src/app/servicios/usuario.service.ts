@@ -42,16 +42,16 @@ export class UsrService {
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )
-      .pipe( 
+      .pipe(
           tap( () => {
             this.refresh.next();
-          } ) 
+          } )
        );
 
     }
 
     obtenerChat(data: ObtenerChatModel ): Observable < TUsuario > {
-      
+
       return this.client.post< TUsuario > (
         this.urlApi + '?u=ObtenerChat',
         JSON.stringify(data),
@@ -74,6 +74,12 @@ export class UsrService {
       localStorage.setItem('token', data);
       const helper = new JwtHelperService();
       localStorage.setItem('data', JSON.stringify(helper.decodeToken(data)));
+    }
+
+    cambiopwd(data:any):Observable<TUsuario>{
+      return this.client.post<TUsuario>(
+        this.urlApi+'?u=ModificarPWD',JSON.stringify(data)
+      );
     }
 
 

@@ -475,6 +475,16 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
                                                         //mandamos como parametro el json asociativo)
 
             }
+        } else if(array_filter( $arrayRutas )[ 2 ] == '?u=ModificarPWD'){
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+                $json = file_get_contents('php://input');
+                $datosArray = json_decode( $json, true );
+                $objUser=new UsuarioController();
+                
+                $objUser->cambiopwd($datosArray);//mandamos a llamar al método correspondiente (en este caso
+                                                        //mandamos como parametro el json asociativo)
+
+            }
         }
         
         

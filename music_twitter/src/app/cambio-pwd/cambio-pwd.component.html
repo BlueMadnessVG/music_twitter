@@ -1,0 +1,61 @@
+<div class="form-group">
+
+  <form class="example-form" data-aos="fade-up" aria-required="true" [formGroup]="frmDatos" >
+    <div class="example-container__centrado">
+
+      <!--input para comprobar contraseña-->
+
+      <mat-form-field appearance="fill" style="width: 65%">
+        <mat-label>Ingrese su contraseña actual</mat-label>
+        <input [type]="hide3 ? 'password' : 'text'" formControlName="pwdold" id="@" matInput required />
+        <button type="button" style="border: none" mat-icon-button matSuffix (click)="hide3 = !hide3"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
+          <mat-icon>{{ hide3 ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="frmDatos.invalid">
+          No deje el campo vacío</mat-error>
+      </mat-form-field>
+
+
+
+      <mat-form-field appearance="fill" style="width: 65%">
+
+        <mat-label>Ingrese su nueva contraseña</mat-label>
+        <input [type]="hide ? 'password' : 'text'" formControlName="pwd1" id="@" matInput required />
+        <button type="button" style="border: none" mat-icon-button matSuffix (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="frmDatos.invalid">
+          No deje el campo vacío</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="width: 65%">
+        <mat-label>Reingrese la nueva contraseña</mat-label>
+        <input [type]="hide2 ? 'password' : 'text'" formControlName="pwd2" matInput required />
+        <button type="button" style="border: none" mat-icon-button matSuffix (click)="hide2 = !hide2"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+          <mat-icon>{{ hide2 ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="frmDatos.invalid">No deje el campo vacío</mat-error>
+
+      </mat-form-field>
+
+
+      <ul class="consejos">
+        <div class="content section-heading-4">
+          <h2>Consejos</h2>
+        </div>
+        <li>1. Que no sean palabras comunes o de diccionario</li>
+        <li>2. La contraseña no puede ser igual a la clave de usuario</li>
+        <li>3. Deberá de contener una longitud mínima de 8 caracteres</li>
+      </ul>
+    </div>
+
+    <div class="btn-group mb-3">
+      <button type="submit" class="btn btn-primary"(click)="submit()">Guardar Datos</button>
+      <button (click)="Limpiar()" class="btn btn-warning">Limpiar</button>
+    </div>
+    <br />
+  </form>
+</div>

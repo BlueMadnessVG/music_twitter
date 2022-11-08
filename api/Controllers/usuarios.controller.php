@@ -328,6 +328,25 @@ class UsuarioController{
 
     }
 
+    static public function cambiopwd($data){
+        try{
+            if(isset($data["ID_USUARIO"]) && isset($data["Pass"]) && isset($data["Passold"])){
+                if(UsuarioModel::veroldpwd($data)){
+                    $datos=UsuarioModel::Modpwd($data);
+                    $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
+                echo json_encode( $json );
+                return;
+                }
+            }else{
+                header( 'HTTP/1.0 500 ' );
+                    echo 'Datos incompletos';
+            }
+        }catch(Exception $e){
+            self::Error($e);
+        }
+    }
+
+
 }
 
 
