@@ -75,3 +75,31 @@
     --bs-offcanvas-width: 600px !important;
 
 }
+
+.main_header{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0.5rem 13rem 0.5rem 13rem;
+
+    font-size: 1rem;
+    color: var(--default-font-color);
+    border-bottom: 1px solid #76777f;
+}
+
+.header_link {
+
+    text-decoration: none;
+    color: var(--default-font-color);
+
+}
+
+.header_link:hover{
+    font-weight: bold;
+}
+
+.link_active {
+    font-weight: bold; 
+}

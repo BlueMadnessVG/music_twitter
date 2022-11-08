@@ -48,6 +48,22 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
             }
 
         }
+
+         // --------------------------------------    CRUD DE AMIGOS    --------------------------------------
+
+        else if ( array_filter( $arrayRutas )[ 2 ] == '?u=ObtenerAmigos' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+        
+                $json = file_get_contents( 'php://input' );
+        
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> obtenerAmigos( $datosArray );
+        
+            }
+        
+        }
         
         // --------------------------------------    RUTAS PARA SERVICIOS DE ADMINS   -------------------------------------   
 
@@ -90,7 +106,7 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
             }
 
         } 
-        
+
         // --------------------------------------    CRUD DE ALBUM    --------------------------------------
 
         else if ( array_filter( $arrayRutas )[2] == '?u=MostrarAlbum' ) {
