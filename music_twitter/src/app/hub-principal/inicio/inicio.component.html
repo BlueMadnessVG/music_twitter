@@ -4,38 +4,51 @@
 
         <ul class="nav nav-pills flex-column mb-auto icons-menu">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link" aria-current="page" routerLink="/inicio" routerLinkActive="active">
                     <i class="bi bi-house-fill icon"></i>
                     Home
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="offcanvas" href="#Modal_chatAmigos" role="button" aria-controls="Modal_chatAmigos">
+                <a class="nav-link" routerLink="/amigos" routerLinkActive="active">
                     <i class="bi bi-person-lines-fill icon"></i>
                     Amigos
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" data-bs-toggle="offcanvas" href="#Modal_chatAmigos" role="button" aria-controls="Modal_chatAmigos">
+                    <i class="bi bi-chat-left-dots-fill"></i>
+                    Chat
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/playList" routerLinkActive="active">
                     <i class="bi bi-vinyl-fill icon"></i>
                     PlayLists
                 </a>
             </li>
         </ul>
 
+        <!-- PLAY LIST SELECCIONADA -->
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            </div>
+        </div>
         <hr>
 
-        <div>
-            <p>PLAY LIST AQUI? MEABY?</p>
+        <div class="play-list">
+            
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <i class="bi bi-caret-up"></i>
+            </button>
+            
         </div>
 
 
     </div>
     <div class="root-cont-right">
-        <div class="main_header">
-            <a class="header_link link_active"> RECOMENDADOS </a>
-            <a class="header_link"> AMIGOS </a>
-        </div>
+        <router-outlet></router-outlet>
     </div>
 
 </div>
