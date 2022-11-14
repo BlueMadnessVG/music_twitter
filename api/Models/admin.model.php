@@ -32,13 +32,14 @@ class AdminModel{
 
     static public function registrarMus( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_categoria, :id_album, :duracion, :path, "A" )' );
+        $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_categoria, :id_album, :duracion, :img, :path, "A" )' );
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
         $stmt -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
         $stmt -> bindparam( ':id_album', $data[ 'id_album' ] );
         $stmt -> bindparam( ':duracion', $data[ 'duracion' ] );
+        $stmt -> bindparam( ':img', $data[ 'img' ] );
         $stmt -> bindparam( ':path', $data[ 'path' ] );
 
         $stmt -> execute();

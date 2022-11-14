@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2022 at 07:13 AM
+-- Generation Time: Nov 14, 2022 at 09:14 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -194,9 +194,17 @@ CREATE TABLE `musica` (
   `ID_Categoria` int(10) NOT NULL,
   `ID_Album` int(10) NOT NULL,
   `Duracion` time NOT NULL,
-  `Music_Path` varchar(50) NOT NULL,
+  `Img_Path` varchar(200) DEFAULT NULL,
+  `Music_Path` varchar(200) NOT NULL,
   `Estatus` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `musica`
+--
+
+INSERT INTO `musica` (`ID_Musica`, `ID_Usuario`, `Nombre`, `ID_Categoria`, `ID_Album`, `Duracion`, `Img_Path`, `Music_Path`, `Estatus`) VALUES
+(3, 3, 'Monas Chinas', 1, 1, '03:30:00', 'https://soundclon.000webhostapp.com/music_img/image.png', 'https://soundclon.000webhostapp.com/musica/y2mate.com%20-%20ずっと真夜中でいいのに残機MV%20ZUTOMAYO%20%20Time%20Left.mp3', '1');
 
 -- --------------------------------------------------------
 
@@ -434,7 +442,7 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT for table `musica`
 --
 ALTER TABLE `musica`
-  MODIFY `ID_Musica` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Musica` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `post`

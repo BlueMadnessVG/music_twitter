@@ -5,11 +5,13 @@ import { Observable, Subject, tap } from 'rxjs';
 import { LoginModel } from "../modelos/Login.model";
 import { EnviarMensajeModel } from "../modelos/EnviarMensaje.model";
 import { ObtenerChatModel } from "../modelos/ObtenerChat.model";
+import { ObtenerMusicaModel } from "../modelos/ObtenerMusica.model";
 import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
 
 /* Modelos */
 import { TUsuario } from "../modelos/TUsuario.model";
 import { TAmigos } from "../modelos/TAmigos.model";
+import { TMusica } from "../modelos/TMusica.model";
 
 @Injectable( {
 
@@ -52,6 +54,7 @@ export class UsrService {
 
     }
 
+  /* servicios del chat */
     obtenerChat(data: ObtenerChatModel ): Observable < TUsuario > {
 
       return this.client.post< TUsuario > (
@@ -71,6 +74,21 @@ export class UsrService {
       )
 
     };
+  /* servicios del chat */
+
+  /* servicios de musica */
+
+    obtenerMusica(data: ObtenerMusicaModel): Observable < TMusica > {
+
+      return this.client.post< TMusica > (
+        this.urlApi + "?u=MostrarMusica",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
+  /* servicios de musica */
 
     //Servicio para Login , Regresa un Token
     login(data: LoginModel): Observable<TUsuario> {

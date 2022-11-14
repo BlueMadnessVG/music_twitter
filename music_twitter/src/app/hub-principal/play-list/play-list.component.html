@@ -1,1 +1,25 @@
-<p>play-list works!</p>
+<div class="reproductor">
+
+    <div class="img_conteiner">
+        <img *ngIf = "musica" class="musica_img" [src] = "musica[0].Img_Path">
+
+        <div class="button_player">
+            <button *ngIf="!audioState" (click) = "playSound()" class="img_btn"> <i class="bi bi-play-circle"></i> </button>
+            <button (click) = "pauseSound()" *ngIf="audioState" class="img_btn"> <i class="bi bi-pause-circle"></i> </button>
+        </div>
+    </div>
+    
+
+    <div class = "datos_musica">
+
+        <p> {{ musica[0].Nombre }} </p>
+
+        <div class="btns">
+            <button class="btn_icon"> <i class="bi bi-skip-backward-circle"></i></button>
+            <button class="btn_icon"> <i class="bi bi-skip-forward-circle"></i> </button>
+        </div>
+
+    </div>
+
+    
+</div>

@@ -90,13 +90,16 @@
 .play-list{
 
     display: flex;
+    flex-direction: column;
 
 }
 
 .btn {
 
     position:relative;
-    top:-35px;
+
+    max-width: 2.5rem;
+    max-height: 2.5rem;
 
     border-radius: 50%;
     background-color: var(--secundary-color);
