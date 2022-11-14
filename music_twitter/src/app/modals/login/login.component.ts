@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   frmLogin!: FormGroup;
-  constructor(private fb: FormBuilder,private usuarioService:UsrService) {
+  constructor(private fb: FormBuilder, private usuarioService:UsrService) {
 
   }
 

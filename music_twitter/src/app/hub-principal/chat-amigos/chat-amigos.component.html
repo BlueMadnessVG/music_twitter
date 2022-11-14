@@ -23,22 +23,25 @@
 
     <div *ngIf="chatSelect" class="chat_select selected">
         
-        <div class="mensajes"  >
-            <div *ngFor="let mensaje_info of mensajes">
-                <div *ngIf=" mensaje_info.ID_remitente == id_usr && mensaje_info.ID_destinatario != id_usr" class="msj remitente">
-                    <p class="mensaje_info"> {{ mensaje_info.Mensaje }} </p>
-                    <div class="hora">
-                        {{ mensaje_info.Fecha }}
+        <div class="chat">
+
+            <div class="mensajes">
+                <div *ngFor="let mensaje_info of mensajes">
+                    <div *ngIf=" mensaje_info.ID_remitente == id_usr && mensaje_info.ID_destinatario != id_usr" class="msj remitente">
+                        <p class="mensaje_info"> {{ mensaje_info.Mensaje }} </p>
+                        <div class="hora">
+                            {{ mensaje_info.Fecha }}
+                        </div>
                     </div>
-                </div>
-                <div *ngIf=" mensaje_info.ID_remitente != id_usr && mensaje_info.ID_destinatario == id_usr" class="msj">
-                    <p class="mensaje_info"> {{ mensaje_info.Mensaje }} </p>
-                    <div class="hora">
-                        {{ mensaje_info.Fecha }}
+                    <div *ngIf=" mensaje_info.ID_remitente != id_usr && mensaje_info.ID_destinatario == id_usr" class="msj">
+                        <p class="mensaje_info"> {{ mensaje_info.Mensaje }} </p>
+                        <div class="hora">
+                            {{ mensaje_info.Fecha }}
+                        </div>
                     </div>
-                </div>
+                </div> 
             </div>
-            
+
         </div>
 
         <form [formGroup]="frmMensaje" (ngSubmit)="submit_chat()">
@@ -51,8 +54,9 @@
                     </button>
                 </div>
             </div>
-
+    
         </form>
 
     </div>
+
 </div>

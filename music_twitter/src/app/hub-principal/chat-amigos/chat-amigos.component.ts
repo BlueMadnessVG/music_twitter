@@ -8,7 +8,6 @@ import { amigos } from 'src/app/modelos/Amigos.model';
 import { ObtenerChatModel } from 'src/app/modelos/ObtenerChat.model';
 import { ObtenerAmigosModel } from 'src/app/modelos/ObtenerAmigos.model';
 import { Mensaje } from 'src/app/modelos/mensaje.model';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'chat-amigos',

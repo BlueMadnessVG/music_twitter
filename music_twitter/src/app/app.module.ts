@@ -18,6 +18,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableDataSource } from '@angular/material/table';
 import { GestionPostsComponent } from './gestion-posts/gestion-posts.component';
 import { CambioPwdComponent } from './cambio-pwd/cambio-pwd.component';
+import { ActivatedRoute, Router } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,4 +45,12 @@ import { CambioPwdComponent } from './cambio-pwd/cambio-pwd.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor( private route: Router ) {
+      if( localStorage.getItem("data") === null ) {
+        this.route.navigate(['/NoLogin']);
+      }
+  }
+
+}

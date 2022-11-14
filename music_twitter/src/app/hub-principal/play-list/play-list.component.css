@@ -61,7 +61,7 @@
 
 }
 
-.btn_icon {
+.btn_icon, .img_btn {
 
     background: none;
     color: var(--secundary-color);
@@ -73,10 +73,7 @@
 
 .img_btn {
 
-    background: none;
-    color: var(--secundary-color);
-    border: none;
-
-    font-size: 3.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 
 }

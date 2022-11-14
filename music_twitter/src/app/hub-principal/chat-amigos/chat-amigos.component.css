@@ -90,9 +90,26 @@
 
 .selected {
 
-    display: grid;
-    grid-template-rows: 95% 1fr;
+    display: flex;
+    position: relative;
+    flex-direction: column;
     padding: 0.9rem;
+
+}
+
+.chat {
+    
+    max-height: 77vh;
+    overflow-y:scroll;
+    overflow-x: hidden;
+
+}
+
+.chat_tool {
+
+    width: 95%;
+    position: absolute;
+    bottom: 0;
 
 }
 
@@ -177,5 +194,11 @@
 
     font-size: 0.7rem;
     color: #76777f;
+
+}
+
+.offcanvas-body {
+
+    overflow: hidden;
 
 }
