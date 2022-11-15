@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { CommonModule } from '@angular/common';
 import { InicioComponent } from './inicio/inicio.component';
 import { ChatAmigosComponent } from './chat-amigos/chat-amigos.component';
@@ -10,6 +11,11 @@ import { AppRoutingModule } from '../app-routing.module';
 import { PlayListComponent } from './play-list/play-list.component';
 import { AmigosComponent } from './amigos/amigos.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRippleModule } from '@angular/material/core';
+import {MatSliderModule} from '@angular/material/slider';
+import { MusicPlayerComponent } from './music-player/music-player.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +23,19 @@ import { MatIconModule } from '@angular/material/icon';
     ChatAmigosComponent,
     FeedComponent,
     PlayListComponent,
-    AmigosComponent
+    AmigosComponent,
+    MusicPlayerComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatRippleModule,
+    MatSliderModule
   ]
 })
 export class HubPrincipalModule { }

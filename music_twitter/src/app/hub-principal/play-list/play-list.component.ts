@@ -3,6 +3,10 @@ import { ObtenerMusicaModel } from 'src/app/modelos/ObtenerMusica.model';
 import { Subscription } from 'rxjs';
 import { UsrService } from 'src/app/servicios/usuario.service';
 import { Musica } from 'src/app/modelos/Musica.model';
+import { MusicService } from 'src/app/servicios/music.service';
+import { MusicState } from 'src/app/modelos/Music.model';
+import { state } from '@angular/animations';
+import { ObtenerPlayListModel } from 'src/app/modelos/ObtenerPlayList.model';
 
 
 @Component({
@@ -12,61 +16,35 @@ import { Musica } from 'src/app/modelos/Musica.model';
 })
 export class PlayListComponent implements OnInit {
 
-  audio = new Audio();
-  audioState!: boolean;
-  musica!: Musica[];
+  PlayLists!: Array<any>;
 
-  subcription !: Subscription;
+  constructor( private usuarioService : UsrService) { }
 
-  constructor( private usuarioService : UsrService ) { 
-    this.audioState = false;
-  }
+  ngOnInit(  ): void {
 
-  ngOnInit(): void {
-
-    this.ObtenerMusica();
-
+    this.ObtenerPlayList();
 
   }
 
-  ObtenerMusica() {
+  ObtenerPlayList() {
 
-    this.usuarioService.obtenerMusica(
-      new ObtenerMusicaModel(
-        3
+    this.usuarioService.obtenerPlayList(
+      new ObtenerPlayListModel(
+        JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
       )
-    ).subscribe(
-      (data : any) => {
-          this.musica = data.data;
-          console.log("jalo wey ", this.musica[0].Img_Path);
-          this.audio.src = this.musica[0].Music_Path;
-          this.audio.load();
-      }
-    )
+    ).subscribe( (data: any) => {
+
+      this.PlayLists = data.data;
+      console.log(this.PlayLists);
+
+    });
 
   }
 
-  playSound(){
+  SelectPlayList(){
 
-    this.audio.play();
-    this.audioState = true;
-
-  }
-
-  pauseSound() {
-
-    this.audioState = false;
-    this.audio.pause();
+    this.usuarioService.refresh.next();
 
   }
-
-  resumeSound() {
-
-    this.audioState = false;
-    this.audio.play();
-
-  }
-
-
 
 }

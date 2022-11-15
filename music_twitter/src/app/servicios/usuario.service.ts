@@ -12,6 +12,8 @@ import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
 import { TUsuario } from "../modelos/TUsuario.model";
 import { TAmigos } from "../modelos/TAmigos.model";
 import { TMusica } from "../modelos/TMusica.model";
+import { ObtenerPlayListModel } from "../modelos/ObtenerPlayList.model";
+import { TPlayList } from "../modelos/TPlayList.model";
 
 @Injectable( {
 
@@ -81,7 +83,17 @@ export class UsrService {
     obtenerMusica(data: ObtenerMusicaModel): Observable < TMusica > {
 
       return this.client.post< TMusica > (
-        this.urlApi + "?u=MostrarMusica",
+        this.urlApi + "?u=obtenerMusicaPlayList",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
+    obtenerPlayList( data: ObtenerPlayListModel ): Observable < TPlayList > {
+
+      return this.client.post< TPlayList > (
+        this.urlApi + "?u=obtenerUsuarioPlayList ",
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )

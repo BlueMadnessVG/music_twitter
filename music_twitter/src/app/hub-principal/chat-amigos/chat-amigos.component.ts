@@ -58,7 +58,6 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
   submit_amigos( id_amigo: number ){
 
     this.chatSelect = id_amigo;
-    console.log( this.chatSelect );
     this.obtenerChat();
 
   }
@@ -72,7 +71,6 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     ).subscribe(
       ( data: any ) => {
         this.amigos = data.data;
-        console.log("jalo we", this.amigos[0].ID_Amigo);
       }
     )
 
@@ -99,7 +97,6 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     ).subscribe(
       (data: any) => {
         this.mensajes = data.data;
-        console.log( "jalo we", this.mensajes );
       }
     );
 
@@ -114,7 +111,6 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
       )
     ).subscribe(
       (x) => {
-        console.log("jalo we");
       }
     );
 

@@ -1,5 +1,5 @@
 export class ObtenerMusicaModel{
 
-    constructor( private id_musica : number ) { }
+    constructor( private id_playlist : number ) { }
 
 }

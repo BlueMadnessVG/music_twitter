@@ -5,7 +5,6 @@ export interface Musica {
     Nombre: string;
     ID_Categoria: number;
     ID_Album: number;
-    Duracion: string;
     Img_Path: string;
     Music_Path: string;
     Estatus: number;

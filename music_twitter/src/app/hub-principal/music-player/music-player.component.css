@@ -1,0 +1,127 @@
+.reproductor {
+
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 10px;
+    margin-top: 5px;
+
+    border-top: 1px solid var(--default-font-color);
+
+}
+
+.img_conteiner {
+    position: relative;
+}
+
+.musica_img{
+
+    opacity: 1;
+    display: block;
+    width: 100% !important;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+
+    border-radius: 1rem 1rem 0 0;
+    max-width: auto;
+    max-height: auto;
+
+}
+
+.img_conteiner:hover .musica_img {
+
+    opacity: 0.3;
+
+}
+
+.img_conteiner:hover .button_player{
+
+    opacity: 1;
+
+}
+
+
+.button_player {
+
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+.btns {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.btn_icon, .img_btn {
+
+    background: none;
+    color: var(--secundary-color);
+    border: none;
+
+    font-size: 2rem;
+
+}
+
+.img_btn {
+
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+}
+
+.time-slider {
+    width: 100% !important;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: var(--back-color);
+}
+
+.time {
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.datos_musica {
+
+    margin-top: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    font-size: 1.2rem;
+
+
+
+}
+
+.Nombre{
+    margin: 0;
+}
+
+.NoPlayList {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #76777f;
+
+    background-color: var(--back-color);
+    padding: 1.5rem;
+    border-radius: 1rem;
+
+}

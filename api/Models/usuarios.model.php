@@ -14,6 +14,44 @@ class UsuarioModel{
                                                     //que nos haya devuelto la sentencia sql
     }
 
+    // --------------------------------------    MUSICA    --------------------------------------
+
+    static public function obtenerMusicaPlayList( $data ){
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT musica.* FROM musica INNER JOIN album WHERE album.ID_Album = musica.ID_Album AND album.ID_Album = :id_playlist;' );
+            $stmt -> bindparam( ':id_playlist', $data[ 'id_playlist' ] );
+            $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
+    static public function obtenerUsuarioPlayList( $data ){
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT album.* FROM `albums_usuario` INNER JOIN album WHERE albums_usuario.ID_Album = album.ID_Album AND albums_usuario.ID_Usuario = :id_usr;' );
+            $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+            $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
     // --------------------------------------    MENSAJES    --------------------------------------
 
     static public function enviarMensaje( $data ) {

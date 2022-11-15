@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/modelos/Login.model';
 import { UsrService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   frmLogin!: FormGroup;
-  constructor(private fb: FormBuilder, private usuarioService:UsrService) {
+  constructor(private fb: FormBuilder, private usuarioService:UsrService, private route: Router) {
 
   }
 
@@ -45,10 +46,9 @@ iniciar_sesion(){
     ).subscribe(
         (x) => {
          // const date = new Date();
-          this.hideModal();
+         document.getElementById("btn-close")?.click();
           this.usuarioService.saveToken(x.data);
-          window.location.reload();
-          console.log("jalo we");
+          this.route.navigate(['/inicio']);
         },
         (error) =>
           Swal.fire({
@@ -60,11 +60,6 @@ iniciar_sesion(){
             },
           })
       );
-  }
-
-
-  hideModal(){
-
   }
 
 }

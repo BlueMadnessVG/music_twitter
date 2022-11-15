@@ -1,0 +1,40 @@
+<div class="reproductor" *ngIf="this.files?.length">
+
+    <div class="datos_musica">
+        <p class="Nombre"> {{ currentFile.file["Nombre"] }} </p>
+    </div>
+
+    <div class="img_conteiner">
+        <img class="musica_img" [src] = "currentFile.file['Img_Path']">
+
+        <div class="button_player">
+            <button [disabled]="isFirstPlaying()" (click)="previous()" class="btn_icon"> <i class="bi bi-skip-backward-circle"></i></button>
+            <button (click)="play()" [disabled]="state?.error" *ngIf="!state?.playing" class="img_btn"> <i class="bi bi-play-circle"></i> </button>
+            <button (click)="pause()" *ngIf="state?.playing" class="img_btn"> <i class="bi bi-pause-circle"></i> </button>
+            <button [disabled]="isLastPlaying()" (click)="next()" class="btn_icon"> <i class="bi bi-skip-forward-circle"></i> </button>
+        </div>
+    </div>
+    
+
+    <div>
+
+        <mat-toolbar-row>
+            <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFile.index === undefined"></mat-slider>
+            
+            <div class="time">
+                <p>{{ state?.readableCurrentTime }}</p>
+                <p>{{ state?.readableDuration }}</p>
+            
+            </div>
+         </mat-toolbar-row>
+
+    </div>
+
+    
+</div>
+
+<div class="NoPlayList" *ngIf="!this.files?.length">
+
+    <p class="Nombre"> SELECCIONE UNA PLAY LIST </p>
+
+</div>
