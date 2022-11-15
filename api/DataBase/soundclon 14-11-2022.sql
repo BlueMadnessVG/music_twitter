@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2022 at 09:14 AM
+-- Generation Time: Nov 15, 2022 at 07:35 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -31,8 +31,8 @@ CREATE TABLE `album` (
   `ID_Album` int(10) NOT NULL,
   `ID_Usuario` int(10) NOT NULL,
   `Nombre_Album` varchar(20) NOT NULL,
+  `Img_Path` varchar(200) NOT NULL,
   `Fecha_Subida` date NOT NULL,
-  `Duracion` time NOT NULL,
   `Estatus` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,8 +40,27 @@ CREATE TABLE `album` (
 -- Dumping data for table `album`
 --
 
-INSERT INTO `album` (`ID_Album`, `ID_Usuario`, `Nombre_Album`, `Fecha_Subida`, `Duracion`, `Estatus`) VALUES
-(1, 1, 'tryhard', '2022-10-19', '03:30:00', 'I');
+INSERT INTO `album` (`ID_Album`, `ID_Usuario`, `Nombre_Album`, `Img_Path`, `Fecha_Subida`, `Estatus`) VALUES
+(1, 1, 'Monas Chinas', 'https://soundclon.000webhostapp.com/music_img/ずっと真夜中でいいのに。『こんなこと騒動』MV.png', '2022-10-19', 'A'),
+(2, 1, 'Funki', 'https://soundclon.000webhostapp.com/music_img/ずっと真夜中でいいのに。『こんなこと騒動』MV.png', '2022-11-14', 'A');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `albums_usuario`
+--
+
+CREATE TABLE `albums_usuario` (
+  `ID_Album` int(10) NOT NULL,
+  `ID_Usuario` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `albums_usuario`
+--
+
+INSERT INTO `albums_usuario` (`ID_Album`, `ID_Usuario`) VALUES
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -114,7 +133,8 @@ INSERT INTO `chat` (`ID_remitente`, `ID_destinatario`, `Mensaje`, `Fecha`) VALUE
 (3, 1, 'Y el ggp es un pendejo por apostar por DRX', '2022-11-07 01:16:49'),
 (3, 1, 'puto', '2022-11-07 01:21:34'),
 (3, 1, 'el ggp es puto', '2022-11-07 22:50:06'),
-(3, 4, 'el ggp es puto', '2022-11-07 22:51:45');
+(3, 4, 'el ggp es puto', '2022-11-07 22:51:45'),
+(3, 1, 'asdfs', '2022-11-14 22:08:58');
 
 -- --------------------------------------------------------
 
@@ -153,17 +173,6 @@ INSERT INTO `comentario` (`ID_Comentario`, `ID_Publicacion`, `id_usuario`, `Come
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contenido_albun`
---
-
-CREATE TABLE `contenido_albun` (
-  `ID_Album` int(10) NOT NULL,
-  `ID_Musica` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `lista_amigos`
 --
 
@@ -190,10 +199,9 @@ INSERT INTO `lista_amigos` (`ID_Amigos`, `ID_Amigo`) VALUES
 CREATE TABLE `musica` (
   `ID_Musica` int(10) NOT NULL,
   `ID_Usuario` int(10) NOT NULL,
-  `Nombre` varchar(20) NOT NULL,
+  `Nombre` varchar(100) NOT NULL,
   `ID_Categoria` int(10) NOT NULL,
   `ID_Album` int(10) NOT NULL,
-  `Duracion` time NOT NULL,
   `Img_Path` varchar(200) DEFAULT NULL,
   `Music_Path` varchar(200) NOT NULL,
   `Estatus` varchar(1) NOT NULL
@@ -203,8 +211,9 @@ CREATE TABLE `musica` (
 -- Dumping data for table `musica`
 --
 
-INSERT INTO `musica` (`ID_Musica`, `ID_Usuario`, `Nombre`, `ID_Categoria`, `ID_Album`, `Duracion`, `Img_Path`, `Music_Path`, `Estatus`) VALUES
-(3, 3, 'Monas Chinas', 1, 1, '03:30:00', 'https://soundclon.000webhostapp.com/music_img/image.png', 'https://soundclon.000webhostapp.com/musica/y2mate.com%20-%20ずっと真夜中でいいのに残機MV%20ZUTOMAYO%20%20Time%20Left.mp3', '1');
+INSERT INTO `musica` (`ID_Musica`, `ID_Usuario`, `Nombre`, `ID_Categoria`, `ID_Album`, `Img_Path`, `Music_Path`, `Estatus`) VALUES
+(2, 3, 'ずっと真夜中でいいのに。『こんなこと騒動』MV', 1, 1, 'https://soundclon.000webhostapp.com/music_img/ずっと真夜中でいいのに。『こんなこと騒動』MV.png', 'https://soundclon.000webhostapp.com/musica/ずっと真夜中でいいのに。『こんなこと騒動』MV.mp3', '1'),
+(3, 3, 'ずっと真夜中でいいのに。『残機』MV (ZUTOMAYO - Time Left)', 1, 1, 'https://soundclon.000webhostapp.com/music_img/ずっと真夜中でいいのに。『残機』MV (ZUTOMAYO - Time Left).png', 'https://soundclon.000webhostapp.com/musica/ずっと真夜中でいいのに。『残機』MV%20(ZUTOMAYO%20-%20Time%20Left).mp3', '1');
 
 -- --------------------------------------------------------
 
@@ -345,6 +354,13 @@ ALTER TABLE `album`
   ADD PRIMARY KEY (`ID_Album`);
 
 --
+-- Indexes for table `albums_usuario`
+--
+ALTER TABLE `albums_usuario`
+  ADD PRIMARY KEY (`ID_Album`,`ID_Usuario`),
+  ADD KEY `usuario_album` (`ID_Usuario`);
+
+--
 -- Indexes for table `amigo`
 --
 ALTER TABLE `amigo`
@@ -418,7 +434,7 @@ ALTER TABLE `usuariostoken`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `ID_Album` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Album` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `amigo`
@@ -442,7 +458,7 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT for table `musica`
 --
 ALTER TABLE `musica`
-  MODIFY `ID_Musica` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Musica` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `post`
@@ -465,6 +481,13 @@ ALTER TABLE `usuario`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `albums_usuario`
+--
+ALTER TABLE `albums_usuario`
+  ADD CONSTRAINT `album` FOREIGN KEY (`ID_Album`) REFERENCES `album` (`ID_Album`),
+  ADD CONSTRAINT `usuario_album` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuario` (`ID_Usuario`);
 
 --
 -- Constraints for table `amigo`
