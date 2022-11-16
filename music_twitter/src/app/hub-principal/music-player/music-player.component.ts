@@ -19,6 +19,7 @@ export class MusicPlayerComponent implements OnInit {
   index!: number;
   currentFile: any = {};
   subcription !: Subscription;
+  ID_Album: number = 0;
 
   constructor( private usuarioService : UsrService, private musicService: MusicService ) { }
 
@@ -36,9 +37,12 @@ export class MusicPlayerComponent implements OnInit {
       }) 
     }
 
-    this.subcription = this.usuarioService.refresh.subscribe( () => {
+    this.musicService.MusicTrigger.subscribe( (data: any) => {
+
+      this.ID_Album = data.ID_Album;
       this.ObtenerMusica();
-  } )
+
+    });
 
   }
 
@@ -51,7 +55,7 @@ export class MusicPlayerComponent implements OnInit {
 
     this.usuarioService.obtenerMusica(
       new ObtenerMusicaModel(
-        1
+        this.ID_Album
       )
     ).subscribe(
       (data : any) => {

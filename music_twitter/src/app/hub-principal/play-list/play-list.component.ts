@@ -18,7 +18,7 @@ export class PlayListComponent implements OnInit {
 
   PlayLists!: Array<any>;
 
-  constructor( private usuarioService : UsrService) { }
+  constructor( private usuarioService : UsrService, private musicService: MusicService) { }
 
   ngOnInit(  ): void {
 
@@ -41,9 +41,10 @@ export class PlayListComponent implements OnInit {
 
   }
 
-  SelectPlayList(){
-
-    this.usuarioService.refresh.next();
+  SelectPlayList(id_album: number){
+    this.musicService.MusicTrigger.emit(
+      { ID_Album: id_album }
+    );
 
   }
 

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable, Output } from "@angular/core";
 import { Observable, BehaviorSubject, Subject, observable } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import * as moment from "moment";
@@ -156,4 +156,6 @@ export class MusicService {
         return moment.utc(momentTime).format(format);
       }
 
+      /* Reproducir playList */
+      @Output() MusicTrigger: EventEmitter<any> = new EventEmitter(); 
 }
