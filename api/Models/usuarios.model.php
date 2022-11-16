@@ -38,7 +38,7 @@ class UsuarioModel{
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT album.* FROM `albums_usuario` INNER JOIN album WHERE albums_usuario.ID_Album = album.ID_Album AND albums_usuario.ID_Usuario = :id_usr;' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT album.*, usuario.Nombre_Usuario FROM `albums_usuario` INNER JOIN album INNER JOIN usuario WHERE albums_usuario.ID_Album = album.ID_Album AND usuario.ID_Usuario = album.ID_Usuario AND albums_usuario.ID_Usuario = :id_usr;' );
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> execute();
 

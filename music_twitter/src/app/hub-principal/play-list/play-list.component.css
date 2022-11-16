@@ -104,3 +104,37 @@
     color: var(--secundary-color);
 
 }
+
+.info_playlist {
+
+    display: flex;
+    flex-direction: column;
+    padding-top: 7px;
+    padding-left: 7px;
+
+}
+
+.playlist_name {
+
+    color: var(--default-font-color);
+    font-weight: 200;
+    font-size: large;
+
+    margin: 0;
+}
+
+.playlist_creator {
+
+    color: #303240;
+    font-size: medium;
+
+    margin: 0;
+    margin-top: 4px;
+    
+}
+
+.playList:hover .playlist_creator {
+
+    color: #1d1f29;
+
+}

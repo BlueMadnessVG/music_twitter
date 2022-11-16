@@ -6,6 +6,7 @@ export interface Playlist {
     Img_Path: string;
     Fecha_Subida: string;
     Estatus: string;
+    Nombre_Usuario: string;
 
 }
   

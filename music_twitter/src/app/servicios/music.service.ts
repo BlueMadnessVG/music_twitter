@@ -137,25 +137,25 @@ export class MusicService {
 
     play() {
         this.musicObj.play();
-      }
+    }
     
-      pause() {
+    pause() {
         this.musicObj.pause();
-      }
+    }
     
-      stop() {
+    stop() {
         this.stop$.next(true);
-      }
+    }
     
-      seekTo( seconds: any ) {
+    seekTo( seconds: any ) {
         this.musicObj.currentTime = seconds;
-      }
+    }
     
-      formatTime(time: number, format: string = "mm:ss") {
+    formatTime(time: number, format: string = "mm:ss") {
         const momentTime = time * 1000;
         return moment.utc(momentTime).format(format);
-      }
+    }
 
-      /* Reproducir playList */
-      @Output() MusicTrigger: EventEmitter<any> = new EventEmitter(); 
+    /* Reproducir playList */
+    @Output() MusicTrigger: EventEmitter<any> = new EventEmitter();
 }
