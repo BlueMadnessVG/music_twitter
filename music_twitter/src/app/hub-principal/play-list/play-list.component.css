@@ -1,0 +1,76 @@
+.playList-Conteiner {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.playList {
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: var(--back-color);
+    border-radius: 0.5rem;
+    margin: 1rem;
+    padding: 0.5rem;
+
+}
+
+.img_conteiner {
+    position: relative;
+    margin-right: 1rem;
+}
+
+.musica_img{
+
+    width: 8rem;
+    height: 8rem;
+    overflow: auto;
+
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+
+    border-radius: 50%;
+    border: 1px solid var(--back-color);
+    max-width: auto;
+    max-height: auto;
+
+}
+
+.img_conteiner:hover .musica_img {
+
+    opacity: 0.3;
+
+}
+
+.img_conteiner:hover .button_player{
+
+    opacity: 1;
+
+}
+
+.button_player {
+
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+.img_btn {
+
+    background: none;
+    color: var(--default-font-color);
+    border: none;
+
+    font-size: 3.5rem;
+
+}

@@ -1,1 +1,22 @@
-<button (click)="SelectPlayList()" >asdjhas</button>
+<div *ngIf="this.PlayLists?.length">
+
+    <div class="playList-Conteiner" *ngFor="let playlist of PlayLists">
+
+        <div class="playList">
+            <div class="img_conteiner">
+                <img class="musica_img" src = "{{ playlist.Img_Path }}">
+        
+                <div class="button_player">
+                    <button class="img_btn"> <i class="bi bi-play-circle"></i> </button>
+                </div>
+            </div>
+
+            <div>
+                asdñkajsldñkaj
+            </div>
+        </div>
+
+    </div>    
+
+</div>
+
