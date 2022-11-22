@@ -16,6 +16,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRippleModule } from '@angular/material/core';
 import {MatSliderModule} from '@angular/material/slider';
 import { MusicPlayerComponent } from './music-player/music-player.component';
+import { MusicComponent } from './music/music.component';
+import { AddAlbumComponent } from '../modals/add-album/add-album.component';
+import { ModalsModule } from '../modals/modals.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,10 +30,12 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
     FeedComponent,
     PlayListComponent,
     AmigosComponent,
-    MusicPlayerComponent
+    MusicPlayerComponent,
+    MusicComponent
   ],
   imports: [
     CommonModule,
+    ModalsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     MatIconModule,
@@ -35,7 +43,10 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
     MatButtonModule,
     MatFormFieldModule,
     MatRippleModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTableModule,
+    MatPaginatorModule,
+    HttpClientModule
   ]
 })
 export class HubPrincipalModule { }

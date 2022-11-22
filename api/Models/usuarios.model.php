@@ -34,6 +34,24 @@ class UsuarioModel{
 
     }
 
+    static public function obtenerMusicaUsuario( $data ){
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, musica.Nombre, musica.Img_Path, album.Nombre_Album, categoria.Nombre AS Nombre_categoria FROM musica INNER JOIN album INNER JOIN categoria WHERE musica.ID_Categoria = categoria.ID_Categoria and musica.ID_Album = album.ID_Album and musica.ID_Usuario = :id_usr;' );
+            $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+            $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
     static public function obtenerUsuarioPlayList( $data ){
 
         try{
@@ -49,6 +67,18 @@ class UsuarioModel{
         } catch( Exception $e1 ) {
             return 'Error'.$e1->getMessage();
         }
+
+    }
+
+    static public function agregarPlayList( $data ){
+
+        $stmt =  Connection :: connect() -> prepare( 'INSERT INTO albums_usuario VALUES  ( :id_playlist, :id_usr)' );
+
+        $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+        $stmt -> bindparam( ':id_playlist', $data[ 'id_playlist' ] );
+        
+        $stmt -> execute();
+        return ' ¡ Mensaje enviado con exito ! ';
 
     }
 

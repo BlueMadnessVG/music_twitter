@@ -29,7 +29,7 @@ class UsuarioController{
     static public function obtenerMusicaPlayList( $data ) {
 
         try {
-                if ( isset( $data[ 'id_playlist' ] ) && isset( $data[ 'id_playlist' ] ) ) {
+                if ( isset( $data[ 'id_playlist' ] ) ) {
 
                     $data = UsuarioModel :: obtenerMusicaPlayList( $data );
 
@@ -44,13 +44,52 @@ class UsuarioController{
         }
 
     }
+
+    static public function obtenerMusicaUsuario( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_usr' ] ) ) {
+
+                    $data = UsuarioModel :: obtenerMusicaUsuario( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
+
     
     static public function obtenerUsuarioPlayList( $data ) {
 
         try {
-                if ( isset( $data[ 'id_usr' ] ) && isset( $data[ 'id_usr' ] ) ) {
+                if ( isset( $data[ 'id_usr' ] ) ) {
 
                     $data = UsuarioModel :: obtenerUsuarioPlayList( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
+
+    static public function agregarPlayList( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_usr' ] ) && isset( $data[ 'id_playlist' ] ) ) {
+
+                    $data = UsuarioModel :: agregarPlayList( $data );
 
                     $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
                     echo json_encode( $json );

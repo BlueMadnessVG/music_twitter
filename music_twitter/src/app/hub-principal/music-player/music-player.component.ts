@@ -16,7 +16,7 @@ export class MusicPlayerComponent implements OnInit {
 
   files!: Array<any>;
   state!: MusicState;
-  index!: number;
+  index: number = 0;
   currentFile: any = {};
   subcription !: Subscription;
   ID_Album: number = 0;
@@ -26,7 +26,6 @@ export class MusicPlayerComponent implements OnInit {
   ngOnInit(  ): void {
 
     this.ObtenerMusica();
-
     if( !this.files?.length ) {
 
       this.musicService.getState().subscribe( (state: any) => {
@@ -40,6 +39,13 @@ export class MusicPlayerComponent implements OnInit {
     this.musicService.MusicTrigger.subscribe( (data: any) => {
 
       this.ID_Album = data.ID_Album;
+      if( data.index ) {
+        this.index = data.index;
+      }
+      else{
+        this.index = 0;
+      }
+
       this.ObtenerMusica();
 
     });
@@ -60,9 +66,8 @@ export class MusicPlayerComponent implements OnInit {
     ).subscribe(
       (data : any) => {
           this.files = data.data;
-
           if( this.files.length ) {
-            this.openFile( this.files[0], this.index );
+            this.openFile( this.files[this.index], this.index );
           }
       }
     )

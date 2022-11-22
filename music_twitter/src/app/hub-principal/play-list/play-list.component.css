@@ -125,16 +125,164 @@
 
 .playlist_creator {
 
-    color: #303240;
+    color: var(--default-font-color);
     font-size: medium;
 
     margin: 0;
-    margin-top: 4px;
+    margin-top: 10px;
     
 }
 
 .playList:hover .playlist_creator {
 
-    color: #1d1f29;
+    color: #51525a;
+
+}
+
+.tittle {
+
+    color: white;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-left: 0.7rem;
+
+}
+
+.offcanvas{
+    background-color: var(--back-color);
+    color: var(--default-font-color);
+    --bs-offcanvas-width: 500px !important;
+}
+
+.header {
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    gap: 10px;
+
+}
+
+.btn-close{
+
+    position: absolute;
+    right: 1rem;
+
+}
+
+.playlist-tittle {
+
+    display: flex;
+    flex-direction: row;
+    padding-top: 1rem;
+    gap: 10px;
+
+}
+
+.img_album{
+
+    height: 20vh;
+    width: 20vh;
+    display: block;
+    border-radius: 0.5rem;
+
+}
+
+h1, h4 {
+    margin: 0;
+}
+
+.playlist-data{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    gap: 20px;
+
+}
+
+.playlist-autor {
+
+    font-size: 1rem;
+
+}
+
+.offcanvas-title {
+
+    font-size: 3rem;
+    font-weight: bolder;
+
+}
+
+.offcanvas-body{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+    padding: 0 !important;
+
+}
+
+.music_playlist{
+
+    font-size: 1rem;
+
+}
+
+.music_list {
+
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.music_list:hover {
+
+    background-color: var(--main-color);
+
+}
+
+.music_list:hover .play-song{
+    opacity: 1;
+}
+
+.music_list:hover .button_container p{
+    opacity: 0;
+}
+
+.button_container{
+
+    display: flex;
+    position: relative;
+
+}
+
+.button_container p{
+    margin: 0;
+}
+
+.play-song{
+
+    position: absolute;
+
+    background: none;
+    color: var(--default-font-color);
+    border: none;
+    opacity: 0;
+
+    font-size: 1.5rem;
+
+}
+
+.img_music_list{
+
+    width: 8vh;
+    height: 8vh;
+    border-radius: 0.5rem;
 
 }

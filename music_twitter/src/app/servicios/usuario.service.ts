@@ -14,6 +14,13 @@ import { TAmigos } from "../modelos/TAmigos.model";
 import { TMusica } from "../modelos/TMusica.model";
 import { ObtenerPlayListModel } from "../modelos/ObtenerPlayList.model";
 import { TPlayList } from "../modelos/TPlayList.model";
+import { TCrearPlayList } from "../modelos/TCrearPlayList.model";
+import { crearPlayListModel } from "../modelos/CrearPlayList.model";
+import { JsonPipe } from "@angular/common";
+import { agregarPlayListModel } from "../modelos/agregarPlayList.model";
+import { TMusicaUsuario } from "../modelos/TMusicaUsuario.model";
+import { TAgregarMusica } from "../modelos/TAgregarMusica.model";
+import { agregarMusicaModel } from "../modelos/AgregarMusicaModel.model";
 
 @Injectable( {
 
@@ -90,12 +97,56 @@ export class UsrService {
 
     }
 
+    obtenerMusicaUsuario(data: any): Observable < TMusicaUsuario > {
+
+      return this.client.post< TMusicaUsuario > (
+        this.urlApi + "?u=obtenerMusicaUsuario",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
     obtenerPlayList( data: ObtenerPlayListModel ): Observable < TPlayList > {
 
       return this.client.post< TPlayList > (
         this.urlApi + "?u=obtenerUsuarioPlayList ",
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
+    agregarPlayList( data: agregarPlayListModel ) : Observable < TPlayList > {
+
+      return this.client.post< TPlayList > (
+        this.urlApi + "?u=AgregarPlayList",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      ).pipe(
+        tap( () => {
+          this.refresh.next();
+        } )
+     );
+
+    }
+
+    crearPlayList( data: crearPlayListModel ) : Observable < TCrearPlayList > {
+
+      return this.client.post< TCrearPlayList > (
+        this.urlApi + "?u=RegistrarAlbum",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
+    agregarMusica( data: File ) : Observable < any > {
+      console.log(data);
+
+      return this.client.post(
+        this.urlApi + "?u=RegistrarMusica",
+        data
       )
 
     }

@@ -34,7 +34,7 @@ class AdminController{
 
         try {
 
-            if( isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'id_categoria' ] ) && isset( $data[ 'id_album' ] ) && isset( $data[ 'duracion' ] ) && isset( $data[ 'img' ] ) && isset( $data[ 'path' ] ) ) {
+            if( isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'id_categoria' ] ) && isset( $data[ 'id_album' ] ) && isset( $data[ 'img' ] ) && isset( $data[ 'music' ] ) ) {
 
                 $data = AdminModel :: registrarMus( $data );
 
@@ -225,7 +225,7 @@ class AdminController{
     static public function registrarAlb( $data ) {
 
         try {
-                if( isset( $data[ 'usuario' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'duracion' ] ) ){
+                if( isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'img_path' ] ) ) {
 
                     $mess = AdminModel :: registrarAlb( $data );
 

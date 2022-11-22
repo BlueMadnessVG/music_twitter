@@ -17,12 +17,20 @@ import { ObtenerPlayListModel } from 'src/app/modelos/ObtenerPlayList.model';
 export class PlayListComponent implements OnInit {
 
   PlayLists!: Array<any>;
+  Id_Album: number = 0;
+  index: number = 0;
+  files!: Array<any>;
+  Selected_playlist!: number;
+  subcription !: Subscription;
 
   constructor( private usuarioService : UsrService, private musicService: MusicService) { }
 
   ngOnInit(  ): void {
 
     this.ObtenerPlayList();
+    this.subcription = this.usuarioService.refresh.subscribe( () => {
+      this.ObtenerPlayList();
+    } )
 
   }
 
@@ -42,10 +50,36 @@ export class PlayListComponent implements OnInit {
   }
 
   SelectPlayList(id_album: number){
+    this.musicService.stop();
     this.musicService.MusicTrigger.emit(
       { ID_Album: id_album }
     );
+  }
 
+  SelectSong(id_album: number, index: number) {
+    this.musicService.stop();
+    this.musicService.MusicTrigger.emit(
+      { ID_Album: id_album,
+        index: index
+      }
+    );
+  }
+
+  ShowMusic(id_album: number) {
+
+    this.Id_Album = id_album;
+
+    this.usuarioService.obtenerMusica(
+      new ObtenerMusicaModel(
+        id_album
+      )
+    ).subscribe(
+      (data : any) => {
+          this.files = data.data;
+          console.log(this.files);
+          console.log(this.files.length);
+      }
+    )
   }
 
 }

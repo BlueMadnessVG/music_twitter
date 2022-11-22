@@ -32,18 +32,19 @@ class AdminModel{
 
     static public function registrarMus( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_categoria, :id_album, :duracion, :img, :path, "A" )' );
+/*         $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_categoria, :id_album, :img, :path, "A" )' );
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
         $stmt -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
         $stmt -> bindparam( ':id_album', $data[ 'id_album' ] );
-        $stmt -> bindparam( ':duracion', $data[ 'duracion' ] );
         $stmt -> bindparam( ':img', $data[ 'img' ] );
-        $stmt -> bindparam( ':path', $data[ 'path' ] );
+        $stmt -> bindparam( ':path', $data[ 'path' ] ); */
 
-        $stmt -> execute();
-        return ' ¡ Se Registro Correctamente la Musica ! ';
+        $upload_path = '/';
+        /* $music_name = basename( $data["music"]["name"] ); */
+
+        return $_FILES['music'];
 
     }
 
@@ -216,7 +217,7 @@ class AdminModel{
             $stmt = Connection :: connect() -> prepare( 'SELECT * FROM album' );
             $stmt -> execute();
             
-            return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
+            return $stmt -> fetchAll( PDO::FETCH_ASSOC );
         
         }
 
@@ -224,14 +225,17 @@ class AdminModel{
 
     static public function registrarAlb( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( ' INSERT INTO album VALUES (null, :usuario, :nombre, current_date(), :duracion, "A") ' );
+        $stmt = Connection :: connect() -> prepare( ' INSERT INTO album VALUES (null, :id_usr, :nombre, :img_path, current_date(), "A") ' );
 
-        $stmt -> bindParam( ':usuario', $data[ 'usuario' ] );
+        $stmt -> bindParam( ':id_usr', $data[ 'id_usr' ] );
         $stmt -> bindParam( ':nombre', $data[ 'nombre' ] );
-        $stmt -> bindParam( ':duracion', $data[ 'duracion' ] );
-
+        $stmt -> bindParam( ':img_path', $data[ 'img_path' ] );
         $stmt -> execute();
-        return '¡ Se Registro Correctamente el Album !';
+
+        $stmtA = Connection :: connect() -> prepare( 'SELECT ID_Album FROM `album`ORDER by ID_Album DESC LIMIT 1;' );
+
+        $stmtA -> execute();
+        return $stmtA -> fetchAll( PDO::FETCH_ASSOC );
 
     }
 

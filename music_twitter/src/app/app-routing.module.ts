@@ -6,6 +6,7 @@ import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.co
 import { AmigosComponent } from './hub-principal/amigos/amigos.component';
 import { FeedComponent } from './hub-principal/feed/feed.component';
 import { InicioComponent } from './hub-principal/inicio/inicio.component';
+import { MusicComponent } from './hub-principal/music/music.component';
 import { PlayListComponent } from './hub-principal/play-list/play-list.component';
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
         ]
       },
       {path:'playList', component : PlayListComponent},
-      {path:'amigos', component : AmigosComponent}
+      {path:'amigos', component : AmigosComponent},
+      {path:'musica', component : MusicComponent}
     ]
   },
   {path:'GestionUsuarios',component:GestionUsuariosComponent},

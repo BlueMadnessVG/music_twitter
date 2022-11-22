@@ -1,0 +1,60 @@
+.tittle {
+
+    color: white;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-left: 0.7rem;
+
+}
+
+table {
+    width: 100%;
+    background-color: var(--back-color);    
+    
+}
+
+.mat-header-cell {
+
+    font-weight: 200;
+    font-weight: 600;
+    font-size: 1rem !important;
+    border-bottom: 1px solid var(--default-font-color) !important;
+
+}
+
+.mat-column-Nombre, .mat-column-Nombre_Album, .mat-column-Nombre_categoria {
+    color: var(--default-font-color);
+    max-width: 10vw;
+    font-size: 0.9rem;
+    border: none;
+    margin-top: 100px !important;
+}
+
+.nombre {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.text {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.text p {
+    margin: 0;
+}
+
+.img_music {
+
+    max-width: 7vh;
+    height: 7vh;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin: 0.3rem;
+    margin-right: 0.5rem;
+
+}

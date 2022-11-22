@@ -1,0 +1,37 @@
+<div>
+
+    <h1 class="tittle"> Tu Musica </h1>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+        <ng-container matColumnDef="Nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> 
+            <div class="nombre">
+                <img [src]="  element.Img_Path " class="img_music">
+                <div class="text">
+                    <p> {{element.Nombre}}  </p>
+                </div>
+
+            </div> 
+        
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Nombre_Album">
+          <th mat-header-cell *matHeaderCellDef> Album </th>
+          <td mat-cell *matCellDef="let element"> {{element.Nombre_Album}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Nombre_categoria">
+          <th mat-header-cell *matHeaderCellDef> Categoria </th>
+          <td mat-cell *matCellDef="let element"> {{element.Nombre_categoria}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> 
+
+    <input type="file" accept=".mp3,audio/*" (change)="onSelectFile($event)">
+
+</div>

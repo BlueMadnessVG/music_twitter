@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { Form, ReactiveFormsModule } from '@angular/forms';
+import { AddAlbumComponent } from './add-album/add-album.component';
+import { AddMusicComponent } from './add-music/add-music.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    AddAlbumComponent,
+    AddMusicComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +21,8 @@ import { Form, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    AddAlbumComponent
   ]
 })
 

@@ -1,0 +1,38 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Nueva playList </h1>
+        <button type="button" class="btn-close btn-close-white" id="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        
+        <form [formGroup]="uploadForm" (ngSubmit)="submit()">
+
+          <div class="img_conteiner">
+            <img class="musica_img img-fluid" [src]="imageUrl" [alt]="uploadForm.value.name">
+    
+            <div class="img_input">
+              <input type="file" id="file" accept="image/*" (change)="onSelectFile($event)">
+              <label for="file" class="img_btn"> <i class="bi bi-pencil-fill"></i></label>
+            </div>
+          </div>
+
+          <div class="inputs">
+              <input type="text" name="" id="user" formControlName="Correo" placeholder="Nombre" formControlName="name">
+              <span> Nombre </span>
+          </div>
+
+        </form>
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="submit()"> Guardar </button>
+      </div>
+
+    </div>
+ 
+</div>
+
