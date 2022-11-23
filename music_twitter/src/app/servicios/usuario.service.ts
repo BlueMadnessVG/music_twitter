@@ -175,5 +175,10 @@ export class UsrService {
       );
     }
 
+    islogin(){
+      return localStorage.getItem("token")!=null;
+    }
+
+
 
 }

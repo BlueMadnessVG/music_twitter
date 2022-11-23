@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject, tap } from 'rxjs';
+import { Teditperfil } from '../modelos/Teditperfil.model';
 import { usersdata } from '../modelos/usersdata.model';
 import { Usuario } from '../modelos/usuario.model';
 @Injectable({
@@ -46,6 +48,19 @@ daraltausr(data:any){
     })
   );
 }
+
+editarperfil(data:any):Observable <Teditperfil>{
+return this.cliente.post<Teditperfil>(
+  this.urlApi+'?u=ModificarUsuario',
+  JSON.stringify(data)
+)
+}
+saveToken(data: any) {
+  localStorage.setItem('token', data);
+  const helper = new JwtHelperService();
+  localStorage.setItem('data', JSON.stringify(helper.decodeToken(data)));
+}
+
 
 
 

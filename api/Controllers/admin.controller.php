@@ -12,6 +12,18 @@ class AdminController{
         return ;
     }
 
+    static function base64img($base64_image_string)
+  {
+      list($data, $base64_image_string) = explode(';', $base64_image_string);
+      list(, $extension) = explode('/', $data);
+      $output_file_with_extension = uniqid() . '.' . $extension;
+      list(, $imageData)      = explode(',', $base64_image_string);
+      file_put_contents('../api/images/imagesusr/' . $output_file_with_extension, base64_decode($imageData));
+      return "http://$_SERVER[HTTP_HOST]/api/images/imagesusr/" . $output_file_with_extension;
+  }
+
+
+
     static public function mostrarMus( $data ) {
 
         try {
@@ -169,7 +181,12 @@ class AdminController{
     static public function modificarUsr( $data ) {
 
         try {
-                if (  isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'correo' ] ) && isset( $data[ 'contraseña' ] ) && isset( $data[ 'fecha_nacimiento' ] ) && isset( $data[ 'foto_perfil' ] ) && isset( $data[ 'descripcion' ] ) && isset( $data[ 'tipo' ] ) ) {
+                if(isset($data['foto_perfil']) && isset($data['id_usr'])){
+                    $rutaimg=self::base64img($data['foto_perfil']);
+                    $arrchimg=array('id_usuario'=>$data['id_usr'],'urlimg'=>$rutaimg);
+                    AdminModel::ModificarImgUsuario($arrchimg);
+                }
+                if (  isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'correo' ] ) && isset( $data[ 'descripcion' ] ) ) {
 
                     $data = AdminModel :: modificarUsr( $data );
 

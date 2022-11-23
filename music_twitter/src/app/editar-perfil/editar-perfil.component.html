@@ -1,1 +1,52 @@
-<p>editar-perfil works!</p>
+<div class="container">
+  <main style="align-items: center">
+    <div class="py-5 text-center">
+      <h2>Editar perfil de usuario</h2>
+      <img class="d-block mx-auto mb-4" [src]="imgurl" alt="" width="200" height="160" style="border-radius: 210px">
+    </div>
+
+    <div class="mb-3">
+      <label for="formFileMultiple" class="form-label">Subir nueva foto de perfil</label>
+
+    </div>
+
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Información personal</h4>
+
+        <form #f [formGroup]="frmEditar">
+          <input #file class="form-control" type="file" id="formFileMultiple" accept="image/*" (change)="preview(file.files)" multiple formControlName="filePost">
+          <div class="row g-3 " style="margin:auto">
+
+
+            <div class="col-12">
+              <label for="username" class="form-label">Nombre de usuario</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="username" >
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Correo electrónico <span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="correo" >
+            </div>
+
+            <div class="col-12">
+              <label for="username" class="form-label">Descripción</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="descripcion" >
+              </div>
+            </div>
+              <button type="submit" (click)="submit()"class="w-100 btn btn-lg btn-primary"  style="background-color: #5011a1; border-color: #66A548;">Guardar Cambios</button>
+          </div>
+        </form>
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="form-validation.js"></script>
+</div>
+</main>
+</div>

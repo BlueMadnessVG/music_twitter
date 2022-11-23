@@ -166,21 +166,28 @@ class AdminModel{
 
     static public function modificarUsr( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'UPDATE usuario SET Nombre_Usuario = :nombre, Correo = :correo, Contraseña = :PassWord, Fecha_Nacimiento = :fecha_nacimiento, Foto_Perfil = :foto_perfil, Descripcion = :descripcion, Rol = :tipo WHERE ID_Usuario = :id_usr' );
+        $stmt = Connection :: connect() -> prepare( 'UPDATE usuario SET Nombre_Usuario = :nombre, Correo = :correo, Descripcion = :descripcion WHERE ID_Usuario = :id_usr' );
 
         $stmt -> bindparam( 'id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
         $stmt -> bindparam( ':correo', $data[ 'correo' ] );
-        $pass = hash( 'sha512', $data[ 'contraseña' ] );
-        $stmt -> bindparam( ':PassWord', $pass);
-        $stmt -> bindparam( ':fecha_nacimiento', $data[ 'fecha_nacimiento' ] );
-        $stmt -> bindparam( ':foto_perfil', $data[ 'foto_perfil' ] );
         $stmt -> bindparam( ':descripcion', $data[ 'descripcion' ] );
-        $stmt -> bindparam( ':tipo', $data[ 'tipo' ] );
 
         $stmt -> execute();
         return '¡ Usuario Modificado Correctamente !';
     }
+
+    static public function ModificarImgUsuario( $datos ) {
+
+        $stmt = Connection::connect()->prepare( 'update usuario set Foto_Perfil=:img where ID_Usuario=:ID_USUARIO' );
+        $stmt->bindParam( ':ID_USUARIO', $datos[ 'id_usuario' ] );
+        $stmt->bindParam( ':img', $datos[ 'urlimg' ] );
+        $stmt->execute();
+  
+        return '  Se modifico correctamente  la Imagen';
+    }
+
+
 
     static public function cambiarCont( $data ) {
 
