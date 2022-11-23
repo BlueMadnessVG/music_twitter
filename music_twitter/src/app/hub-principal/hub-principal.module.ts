@@ -23,6 +23,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { AngularFireStorageModule, 
+  AngularFireStorageReference, 
+  AngularFireUploadTask
+} from '@angular/fire/compat/storage';
+
 @NgModule({
   declarations: [
     InicioComponent,
@@ -46,7 +53,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatSliderModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+
+    AngularFireModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase, "cloud")
   ]
 })
 export class HubPrincipalModule { }

@@ -4,6 +4,9 @@ import { UsrService } from 'src/app/servicios/usuario.service';
 import { agregarMusicaModel } from 'src/app/modelos/AgregarMusicaModel.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { AngularFireStorage } from '@angular/fire/compat/storage'
 
 @Component({
   selector: 'music',
@@ -15,13 +18,15 @@ export class MusicComponent implements OnInit {
 
   dataSource!: MusicaUsuario[];
   displayedColumns: string[] = [ 'Nombre', 'Nombre_Album', 'Nombre_categoria'];
-  public file : any = {};
+  public file!: File;
+  downloadURL!: Observable<string>;
 
-  constructor( private fb: FormBuilder, private usuarioService : UsrService, private http: HttpClient) {
+  constructor( private usuarioService : UsrService, private storage: AngularFireStorage ) {
 
   }
 
   ngOnInit(): void {
+
 
     this.ObtenerMusicaUsuario();
 
@@ -41,8 +46,9 @@ export class MusicComponent implements OnInit {
 
   onSelectFile( event: any ): any{
     
-    this.file = event.target.files[0];
-    this.upleadMusic();
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `Music/${n}`
 
   }
 
