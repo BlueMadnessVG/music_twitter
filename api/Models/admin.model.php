@@ -298,9 +298,8 @@ class AdminModel{
 
     static public function modificarCat( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( ' UPDATE categoria SET Nombre = :nombre, Estatus = :estatus WHERE ID_Categoria = :id_categoria; ' );
+        $stmt = Connection :: connect() -> prepare( ' UPDATE categoria SET Estatus = :estatus WHERE ID_Categoria = :id_categoria ' );
 
-        $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
         $stmt -> bindparam( ':estatus', $data[ 'estatus' ] );
         $stmt -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
 

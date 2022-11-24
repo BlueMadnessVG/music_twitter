@@ -20,7 +20,7 @@
 
         <!-- MENU DE USUARIO -->
         <button class="account_icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="avatar_img" src="../assets{{this.datosUser.data.Foto_Perfil}}" lazy="loaded">
+          <img class="avatar_img"[src]="imgurl" lazy="loaded">
         </button>
 
         <ul class="dropdown-menu dropdown-menu-dark">
@@ -46,8 +46,8 @@
         <!-- MENU DE USUARIO -->
 
     </div>
-
-    <div *ngIf="!loggedin()" class="header_rigth">
+<!--*-->
+    <div  class="header_rigth" *ngIf="!loggedin()">
       <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signUpModal">  SignUp </button>
       <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">  Login </button>
     </div>

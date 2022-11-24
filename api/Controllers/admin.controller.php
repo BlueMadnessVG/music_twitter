@@ -319,7 +319,7 @@ class AdminController{
     static public function modificarCat( $data ) {
 
         try {
-                if (  isset( $data['id_categoria'] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'estatus' ] ) ){
+                if (isset( $data['id_categoria'] ) && isset( $data[ 'estatus' ] ) ){
 
                     $mess = AdminModel :: modificarCat( $data );
 

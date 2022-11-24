@@ -8,12 +8,14 @@ import { AddMusicComponent } from './add-music/add-music.component';
 
 
 
+
 @NgModule({
   declarations: [
     LoginComponent,
     SignUpComponent,
     AddAlbumComponent,
-    AddMusicComponent
+    AddMusicComponent,
+  
   ],
   imports: [
     CommonModule,

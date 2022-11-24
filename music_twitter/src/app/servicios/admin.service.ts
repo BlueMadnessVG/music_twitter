@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject, tap } from 'rxjs';
+import { TCategorias } from '../modelos/TCategorias.model';
 import { Teditperfil } from '../modelos/Teditperfil.model';
 import { usersdata } from '../modelos/usersdata.model';
 import { Usuario } from '../modelos/usuario.model';
@@ -62,6 +63,9 @@ saveToken(data: any) {
 }
 
 
+modestatuscat(data:any){
+  return this.cliente.post(this.urlApi+'?u=ModificarCategoria',JSON.stringify(data));
+}
 
 
 }

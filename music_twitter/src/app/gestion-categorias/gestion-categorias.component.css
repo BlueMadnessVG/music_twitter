@@ -1,0 +1,35 @@
+.roundedImage{
+  width:100%;
+  border-radius:30px;
+  border: 1px solid black;
+
+  }
+
+  table{
+    width:100%;
+
+  }
+
+
+  .mat-cell {
+    padding: 7px;
+  }
+
+  .mat-column-select {
+      overflow: initial;
+    }
+
+  h1{
+
+  display:inline-block;
+
+
+  }
+
+  button{
+  margin-top: 3px;
+  border-radius: 5%;
+
+
+  }
+

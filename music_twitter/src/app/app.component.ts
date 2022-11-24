@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'music_twitter';
   datosUser!:TUsuario;
   loggedUser !: string;
+  imgurl:any;
   loggedin() {;
     this.loggedUser = localStorage.getItem('data')!;
     this.datosUser= JSON.parse(localStorage.getItem('data')!);

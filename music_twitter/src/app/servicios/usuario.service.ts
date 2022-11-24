@@ -2,11 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Observable, Subject, tap } from 'rxjs';
-import { LoginModel } from "../modelos/Login.model";
-import { EnviarMensajeModel } from "../modelos/EnviarMensaje.model";
-import { ObtenerChatModel } from "../modelos/ObtenerChat.model";
-import { ObtenerMusicaModel } from "../modelos/ObtenerMusica.model";
-import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
+
 
 /* Modelos */
 import { TUsuario } from "../modelos/TUsuario.model";
@@ -21,7 +17,12 @@ import { agregarPlayListModel } from "../modelos/agregarPlayList.model";
 import { TMusicaUsuario } from "../modelos/TMusicaUsuario.model";
 import { TAgregarMusica } from "../modelos/TAgregarMusica.model";
 import { agregarMusicaModel } from "../modelos/AgregarMusicaModel.model";
-
+import { TCategorias } from "../modelos/TCategorias.model";
+import { LoginModel } from "../modelos/Login.model";
+import { EnviarMensajeModel } from "../modelos/EnviarMensaje.model";
+import { ObtenerChatModel } from "../modelos/ObtenerChat.model";
+import { ObtenerMusicaModel } from "../modelos/ObtenerMusica.model";
+import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -177,6 +178,17 @@ export class UsrService {
 
     islogin(){
       return localStorage.getItem("token")!=null;
+    }
+
+
+    getcategorias():Observable<TCategorias>{
+      return this.client.post<TCategorias>(
+        this.urlApi+'?u=pruebaget',null
+      ).pipe(
+        tap(()=> {
+            this.refresh.next();
+        })
+    );
     }
 
 

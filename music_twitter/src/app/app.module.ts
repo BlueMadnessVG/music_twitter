@@ -19,13 +19,18 @@ import { MatTableDataSource } from '@angular/material/table';
 import { GestionPostsComponent } from './gestion-posts/gestion-posts.component';
 import { CambioPwdComponent } from './cambio-pwd/cambio-pwd.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GestionCategoriasComponent } from './gestion-categorias/gestion-categorias.component';
+import { ModalAddcategoriaComponent } from './modal-addcategoria/modal-addcategoria.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     EditarPerfilComponent,
     GestionUsuariosComponent,
     GestionPostsComponent,
-    CambioPwdComponent
+    CambioPwdComponent,
+    GestionCategoriasComponent,
+    ModalAddcategoriaComponent,
   ],
   imports: [
     BrowserModule,

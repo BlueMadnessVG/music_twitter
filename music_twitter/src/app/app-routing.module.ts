@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CambioPwdComponent } from './cambio-pwd/cambio-pwd.component';
 import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
+import { GestionCategoriasComponent } from './gestion-categorias/gestion-categorias.component';
 import { GestionPostsComponent } from './gestion-posts/gestion-posts.component';
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { GuardAdminGuard } from './guardians/guard-admin.guard';
@@ -28,6 +29,7 @@ const routes: Routes = [
   },
   {path:'GestionUsuarios',component:GestionUsuariosComponent,canActivate:[GuardAdminGuard]},
   {path:'GestionPosts',component:GestionPostsComponent},
+  {path:'GestionCategorias',component:GestionCategoriasComponent,canActivate:[GuardAdminGuard]},
   {path:'CambioPassword',component:CambioPwdComponent,canActivate:[GuardLoginGuard]},
   {path:'editarperfil',component:EditarPerfilComponent,canActivate:[GuardLoginGuard]}
 ];
