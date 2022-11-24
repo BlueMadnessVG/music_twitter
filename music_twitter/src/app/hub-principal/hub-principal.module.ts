@@ -16,7 +16,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRippleModule } from '@angular/material/core';
 import {MatSliderModule} from '@angular/material/slider';
 import { MusicPlayerComponent } from './music-player/music-player.component';
-import { MusicComponent } from './music/music.component';
 import { AddAlbumComponent } from '../modals/add-album/add-album.component';
 import { ModalsModule } from '../modals/modals.module';
 import { MatTableModule } from '@angular/material/table';
@@ -25,10 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
-import { AngularFireStorageModule, 
-  AngularFireStorageReference, 
-  AngularFireUploadTask
-} from '@angular/fire/compat/storage';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -38,7 +34,6 @@ import { AngularFireStorageModule,
     PlayListComponent,
     AmigosComponent,
     MusicPlayerComponent,
-    MusicComponent
   ],
   imports: [
     CommonModule,

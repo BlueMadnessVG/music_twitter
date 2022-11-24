@@ -11,11 +11,11 @@
         <form [formGroup]="uploadForm" (ngSubmit)="submit()">
 
           <div class="img_conteiner">
-            <img class="musica_img img-fluid" [src]="imageUrl" [alt]="uploadForm.value.name">
+            <img class="musica_img img-fluid" [src]="imageUrl_Album" [alt]="uploadForm.value.name">
     
             <div class="img_input">
-              <input type="file" id="file" accept="image/*" (change)="onSelectFile($event)">
-              <label for="file" class="img_btn"> <i class="bi bi-pencil-fill"></i></label>
+              <input type="file" id="file_album" accept="image/*" (change)="onSelectFile($event)">
+              <label for="file_album" class="img_btn"> <i class="bi bi-pencil-fill"></i></label>
             </div>
           </div>
 

@@ -68,16 +68,19 @@
 .img_conteiner {
     position: relative;
     width: 50%;
+    height: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 
     margin-bottom: 1rem;
+    background-size: cover;
 }
 
 .musica_img{
 
-    height: 50%;
+    object-fit: cover;
+
     border-radius: 0.5rem;
 
     opacity: 1;
@@ -118,6 +121,10 @@
     border: none;
 
     font-size: 3rem;
+}
+
+.img_btn:hover {
+    color: var(--secundary-color);
 }
 
 input[type="file"] {

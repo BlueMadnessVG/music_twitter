@@ -21,6 +21,7 @@ import { CambioPwdComponent } from './cambio-pwd/cambio-pwd.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GestionCategoriasComponent } from './gestion-categorias/gestion-categorias.component';
 import { ModalAddcategoriaComponent } from './modal-addcategoria/modal-addcategoria.component';
+import { MusicComponent } from './hub-principal/music/music.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ModalAddcategoriaComponent } from './modal-addcategoria/modal-addcatego
     CambioPwdComponent,
     GestionCategoriasComponent,
     ModalAddcategoriaComponent,
+    MusicComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { ModalAddcategoriaComponent } from './modal-addcategoria/modal-addcatego
     MatTableModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

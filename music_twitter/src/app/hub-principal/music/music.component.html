@@ -1,37 +1,50 @@
-<div>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel"> Nuevo Post </h1>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
 
-    <h1 class="tittle"> Tu Musica </h1>
-
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      
-        <ng-container matColumnDef="Nombre">
-          <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let element"> 
-            <div class="nombre">
-                <img [src]="  element.Img_Path " class="img_music">
-                <div class="text">
-                    <p> {{element.Nombre}}  </p>
-                </div>
-
-            </div> 
+      <div class="file_conteiner">
         
-          </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Nombre_Album">
-          <th mat-header-cell *matHeaderCellDef> Album </th>
-          <td mat-cell *matCellDef="let element"> {{element.Nombre_Album}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Nombre_categoria">
-          <th mat-header-cell *matHeaderCellDef> Categoria </th>
-          <td mat-cell *matCellDef="let element"> {{element.Nombre_categoria}} </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table> 
+        <h3> Imagen de la Cancion </h3>
 
-    <input type="file" accept=".mp3,audio/*" (change)="onSelectFile($event)">
+        <div class="img_conteiner">
+          <img class="musica_img img-fluid" [src]="imageUrl">
+  
+          <div class="img_input">
+            <input type="file" id="file" accept="image/*" (change)="onSelectImage($event)">
+            <label for="file" class="img_btn"> <i class="bi bi-pencil-fill"></i></label>
+          </div>
+        </div>
 
+        <div class="mb-3 inputs">
+          <label for="formFile" class="form-label">Musica</label>
+          <input class="form-control" type="file" id="formFile" (change)="onSelectFile($event)">
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="inputs">
+          <input type="text" name="" id="user" formControlName="Correo" placeholder="Nombre" formControlName="name">
+          <span> Nombre </span>
+        </div>
+
+        <div class="mb-3">
+          <select class="form-select" required aria-label="select example">
+            <option *ngFor="let categoria of Categorias" value="{{ categoria['ID_Categoria'] }}"> {{ categoria['Nombre'] }} </option>
+          </select>
+          <div class="invalid-feedback">Example invalid select feedback</div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary"> Publicar </button>
+    </div>
 </div>

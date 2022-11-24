@@ -1,60 +1,148 @@
-.tittle {
-
-    color: white;
-    font-weight: 500;
-    margin-bottom: 10px;
-    padding-left: 0.7rem;
-
+.modal-header, .modal-footer {
+    border-bottom: none !important;
+    border-top: none !important; 
 }
 
-table {
-    width: 100%;
-    background-color: var(--back-color);    
-    
+.modal-header{
+    padding-bottom: 0;
 }
 
-.mat-header-cell {
-
-    font-weight: 200;
-    font-weight: 600;
-    font-size: 1rem !important;
-    border-bottom: 1px solid var(--default-font-color) !important;
-
-}
-
-.mat-column-Nombre, .mat-column-Nombre_Album, .mat-column-Nombre_categoria {
+.modal-content{
+    background-color: var(--main-color) !important;
     color: var(--default-font-color);
-    max-width: 10vw;
-    font-size: 0.9rem;
+}
+
+.inputs {
+    position: relative;
+    width: 100%;
+}
+
+
+
+.inputs input, select, option{
+    font-size: 1rem;
+    padding: .5rem .5rem;
     border: none;
-    margin-top: 100px !important;
-}
-
-.nombre {
-    display: flex;
-    flex-direction: row;
-    
-}
-
-.text {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.text p {
-    margin: 0;
-}
-
-.img_music {
-
-    max-width: 7vh;
-    height: 7vh;
-    overflow: hidden;
     border-radius: 0.5rem;
-    margin: 0.3rem;
-    margin-right: 0.5rem;
+    background-color: var(--back-color);
+    outline: none;
+    min-width: 100%;
+    color: var(--default-font-color);
+
+    transition-duration: .2s;
+}
+
+.inputs span{
+    font-size: 15px;
+    position: absolute;
+    left: 0;
+    padding: 0.1rem .5rem;
+    pointer-events: none;
+    font-size: 1em;
+    color: #b2b6be;
+
+    background-color: var(--main-color);
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.inputs input:focus ~ span {
+    transform: translateX(10px) translateY(-15px);
+    opacity: 1;
+}
+
+
+.inputs input:focus, select:focus{
+    background: none;
+    border: 1px solid var(--secundary-color);
+}
+
+
+.btn-primary{
+    background-color: var(--secundary-color);
+    border-color: var(--secundary-color);
+}
+
+.btn-primary:hover{
+    background-color: rgba(154, 50, 239, 0.85);
+    border-color: rgba(154, 50, 239, 0.85);
+}
+
+.img_conteiner {
+    position: relative;
+    width: 30vh;
+    display: block;
+    padding-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.musica_img{
+
+    object-fit: cover;
+    border-radius: 0.5rem;
+
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.img_conteiner:hover .musica_img {
+
+    opacity: 0.3;
+
+}
+
+.img_conteiner:hover .img_input{
+
+    opacity: 1;
+
+}
+
+.img_input {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.img_btn{
+    background: none;
+    color: var(--default-font-color);
+    border: none;
+
+    font-size: 3rem;
+}
+
+.img_btn:hover {
+    color: var(--secundary-color);
+}
+
+.img_conteiner input[type="file"] {
+    display: none;
+}
+
+.modal-body{
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+}
+
+.file_conteiner{
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 1rem;
+    border-radius: 0.5rem;
 
 }

@@ -11,12 +11,12 @@ import { agregarPlayListModel } from 'src/app/modelos/agregarPlayList.model';
 })
 export class AddAlbumComponent implements OnInit {
 
-  imageUrl: string;
+  imageUrl_Album: string;
   uploadForm: FormGroup;
 
   constructor( private fb: FormBuilder, private usuarioService : UsrService ) {
 
-    this.imageUrl = "./assets/images/album_default.jpg";
+    this.imageUrl_Album = "./assets/images/album_default.jpg";
     this.uploadForm = this.fb.group({
       image : [null],
       name : ['', Validators.required]
@@ -32,7 +32,7 @@ export class AddAlbumComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.imageUrl = reader.result as string
+      this.imageUrl_Album = reader.result as string;
     }
     reader.onerror = () => {
       console.log("error en la lactura de la imagen");
@@ -44,10 +44,10 @@ export class AddAlbumComponent implements OnInit {
   submit(){
     
 
-    if( this.imageUrl != "./assets/images/album_default.jpg" ) {
+    if( this.imageUrl_Album != "./assets/images/album_default.jpg" ) {
 
       this.uploadForm.patchValue( {
-        image: this.imageUrl
+        image: this.imageUrl_Album
       } )
 
       console.log( this.uploadForm.value );

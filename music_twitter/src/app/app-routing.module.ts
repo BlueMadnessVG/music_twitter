@@ -24,7 +24,6 @@ const routes: Routes = [
       },
       {path:'playList', component : PlayListComponent,canActivate:[GuardLoginGuard]},
       {path:'amigos', component : AmigosComponent,canActivate:[GuardLoginGuard]},
-      {path:'musica', component : MusicComponent,canActivate:[GuardLoginGuard]}
     ]
   },
   {path:'GestionUsuarios',component:GestionUsuariosComponent,canActivate:[GuardAdminGuard]},

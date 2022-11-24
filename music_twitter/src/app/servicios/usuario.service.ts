@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Observable, Subject, tap } from 'rxjs';
 
+import { AngularFireStorage } from "@angular/fire/compat/storage";
 
 /* Modelos */
 import { TUsuario } from "../modelos/TUsuario.model";
@@ -15,14 +16,13 @@ import { crearPlayListModel } from "../modelos/CrearPlayList.model";
 import { JsonPipe } from "@angular/common";
 import { agregarPlayListModel } from "../modelos/agregarPlayList.model";
 import { TMusicaUsuario } from "../modelos/TMusicaUsuario.model";
-import { TAgregarMusica } from "../modelos/TAgregarMusica.model";
-import { agregarMusicaModel } from "../modelos/AgregarMusicaModel.model";
 import { TCategorias } from "../modelos/TCategorias.model";
 import { LoginModel } from "../modelos/Login.model";
 import { EnviarMensajeModel } from "../modelos/EnviarMensaje.model";
 import { ObtenerChatModel } from "../modelos/ObtenerChat.model";
 import { ObtenerMusicaModel } from "../modelos/ObtenerMusica.model";
 import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
+import { TObtenerCategorias } from "../modelos/TObternerCategorias.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -37,7 +37,16 @@ export class UsrService {
         return this._refresh$;
     }
 
-    constructor( private client: HttpClient ) {}
+    constructor( private client: HttpClient, private storage: AngularFireStorage ) {}
+
+    //Upload file
+    uploadFile( fileName: string, data: any ) {
+      return this.storage.upload(fileName, data);
+    }
+
+    storageReference( fileName: string ) {
+      return this.storage.ref( fileName );
+    }
 
     AmigosUsr(): Observable <TUsuario> {
 
@@ -142,12 +151,11 @@ export class UsrService {
 
     }
 
-    agregarMusica( data: File ) : Observable < any > {
-      console.log(data);
+    obtenerCategorias() : Observable < TObtenerCategorias > {
 
-      return this.client.post(
-        this.urlApi + "?u=RegistrarMusica",
-        data
+      return this.client.post < TObtenerCategorias > (
+        this.urlApi + "?u=MostrarCategoria",
+        null
       )
 
     }

@@ -20,7 +20,7 @@ class UsuarioModel{
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT musica.* FROM musica INNER JOIN album WHERE album.ID_Album = musica.ID_Album AND album.ID_Album = :id_playlist;' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT musica.* FROM musica INNER JOIN album_musica WHERE album_musica.ID_Musica = musica.ID_Musica AND album_musica.ID_Album = :id_playlist;' );
             $stmt -> bindparam( ':id_playlist', $data[ 'id_playlist' ] );
             $stmt -> execute();
 
@@ -38,7 +38,7 @@ class UsuarioModel{
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, musica.Nombre, musica.Img_Path, album.Nombre_Album, categoria.Nombre AS Nombre_categoria FROM musica INNER JOIN album INNER JOIN categoria WHERE musica.ID_Categoria = categoria.ID_Categoria and musica.ID_Album = album.ID_Album and musica.ID_Usuario = :id_usr;' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, musica.Nombre, musica.Img_Path, categoria.Nombre AS Nombre_categoria FROM musica INNER JOIN categoria WHERE musica.ID_Categoria = categoria.ID_Categoria and musica.ID_Usuario = :id_usr;' );
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> execute();
 

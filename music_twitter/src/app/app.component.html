@@ -14,7 +14,7 @@
 
     <div *ngIf="loggedin()" class="header_right">
 
-        <div class="div_icon">
+        <div class="div_icon" data-bs-toggle="modal" data-bs-target="#newPost">
           <i class="fa-solid fa-pen"></i>
         </div>
 
@@ -68,6 +68,9 @@
     <sign-up></sign-up>
   </div>
 
+  <div class="modal fade modal-lg" id="newPost" tabindex="-1" aria-hidden="true">
+    <music></music>
+  </div>
 
   <router-outlet></router-outlet>
 </main>
