@@ -67,5 +67,10 @@ modestatuscat(data:any){
   return this.cliente.post(this.urlApi+'?u=ModificarCategoria',JSON.stringify(data));
 }
 
+agregarcat(data:any){
+  return this.cliente.post(this.urlApi+'?u=RegistrarCategoria',JSON.stringify(data));
+
+}
+
 
 }

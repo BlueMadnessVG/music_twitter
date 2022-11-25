@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Form, FormBuilder, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { AdminService } from '../servicios/admin.service';
 @Component({
   selector: 'app-modal-addcategoria',
@@ -12,7 +13,24 @@ export class ModalAddcategoriaComponent implements OnInit {
   constructor(private fb:FormBuilder,private Admservice:AdminService) { }
 
   agregarcat(){
-    alert(this.frmaddcat.controls['nombre'].value);
+    if(this.frmaddcat.valid)
+    this.submit();
+    Swal.fire('ERROR','POR FAVOR LLENE EL FORMULARIO CORRECTAMENTE E INTENTELO DE NUEVO','error');
+  }
+
+
+  submit(){
+    this.Admservice.agregarcat({
+      nombre:this.frmaddcat.controls['nombre'].value,
+  }).subscribe((x)=>
+  {Swal.fire('Enhorabuena', 'Categoría agregada correctamente', 'success')
+  },
+  ((error)=>
+  Swal.fire('ERROR', error.data, 'error'
+  )
+
+  ));
+
   }
 
   ngOnInit(): void {
@@ -21,7 +39,7 @@ export class ModalAddcategoriaComponent implements OnInit {
 
   initform(){
     this.frmaddcat=this.fb.group({
-      nombre:['',Validators,require],
+      nombre:['',Validators.required]
   });
   }
 

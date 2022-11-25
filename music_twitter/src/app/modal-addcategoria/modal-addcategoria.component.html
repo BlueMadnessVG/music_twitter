@@ -7,12 +7,12 @@
     </div>
 
     <div class="modal-body">
-
-        <div class="inputs"[formGroup]="frmaddcat">
+      <form [formGroup]="frmaddcat">
+        <div class="inputs">
           <b> Nombre de la categoría a registrar</b>
-          <input type="text" name="" id="user" formControlName="nombre">
+          <input type="text" formControlName="nombre">
         </div>
-      
+      </form>
     </div>
 
     <div class="modal-footer">

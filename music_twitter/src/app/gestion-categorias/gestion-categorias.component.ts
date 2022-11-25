@@ -106,7 +106,6 @@ export class GestionCategoriasComponent implements OnInit {
       denyButtonText: 'No',
     }).then((result) => {
       if (result.isConfirmed) {
-        alert(idcat);
         if(oper==0){//se va a dar de baja
           this.AdminService.modestatuscat({
             id_categoria:idcat,
