@@ -1,29 +1,22 @@
-<div class="modal-dialog modal-dialog-centered"*ngIf="flag">
+<div class="modal-dialog modal-dialog-centered">
   <div class="modal-content">
 
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Log in</h1>
+      <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTRO DE CATEGORÍA NUEVA</h1>
       <button type="button" class="btn-close btn-close-white" id="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
 
     <div class="modal-body">
-      <p> Bienvenido al himalaya </p>
 
-
-        <div class="inputs">
-          <p> Usuario </p>
-          <input type="text" name="" id="user" formControlName="Correo">
+        <div class="inputs"[formGroup]="frmaddcat">
+          <b> Nombre de la categoría a registrar</b>
+          <input type="text" name="" id="user" formControlName="nombre">
         </div>
-        <div class="inputs pass">
-            <p> Contraseña </p>
-            <input type="password" name="" id="pass" formControlName="Pass">
-        </div>
-
-
+      
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" >LogIn</button>
+      <button type="button" class="btn btn-primary" (click)="agregarcat()" >Registrar categoría</button>
     </div>
 
   </div>

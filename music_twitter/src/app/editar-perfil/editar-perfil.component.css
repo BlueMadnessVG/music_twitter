@@ -52,7 +52,9 @@
 
 .container{
 
-overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: var(--default-font-color);
 
 
 }

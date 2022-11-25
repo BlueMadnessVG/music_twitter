@@ -11,7 +11,7 @@
 
     </mat-form-field>
 
-     <button class="btn btn-primary" (click)="modal.showmodal()"m style="float:right;margin-top: 25px;margin-right: 125px;"> <mat-icon style="vertical-align:middle;">add</mat-icon>Agregar categoría nueva</button>
+     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-cat" style="float:right;margin-top: 25px;margin-right: 125px;"> <mat-icon style="vertical-align:middle;">add</mat-icon>Agregar categoría nueva</button>
 
       <br>
     <br>
@@ -58,4 +58,6 @@
 
 </div>
 
-<app-modal-addcategoria #modal></app-modal-addcategoria>
+<div class="modal fade" id="add-cat" tabindex="-1" aria-hidden="true">
+  <app-modal-addcategoria></app-modal-addcategoria>
+</div>
