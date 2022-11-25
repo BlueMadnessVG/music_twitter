@@ -140,12 +140,11 @@ class UsuarioModel{
 
     static public function Usr_registrarPost( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'INSERT INTO post VALUES ( null, :id_usr, :comentario, :id_musica, :id_album, 0, 0 )' );
+        $stmt = Connection :: connect() -> prepare( 'INSERT INTO post VALUES ( null, :id_usr, :comment, :id_music, 0, "A" )' );
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
-        $stmt -> bindparam( ':comentario', $data[ 'comentario' ] );
-        $stmt -> bindparam( ':id_musica', $data[ 'id_musica' ] );
-        $stmt -> bindparam( 'id_album', $data[ 'id_album' ] );
+        $stmt -> bindparam( ':comment', $data[ 'comment' ] );
+        $stmt -> bindparam( ':id_music', $data[ 'id_music' ] );
 
         $stmt -> execute();
         return ' ¡ Post Publicado con Exito ! ';

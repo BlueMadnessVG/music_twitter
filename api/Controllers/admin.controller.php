@@ -46,7 +46,7 @@ class AdminController{
 
         try {
 
-            if( isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'id_categoria' ] ) && isset( $data[ 'id_album' ] ) && isset( $data[ 'img' ] ) && isset( $data[ 'music' ] ) ) {
+            if( isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'id_cat' ] ) && isset( $data[ 'img_path' ] ) && isset( $data[ 'music_path' ] ) ) {
 
                 $data = AdminModel :: registrarMus( $data );
 

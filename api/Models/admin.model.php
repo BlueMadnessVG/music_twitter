@@ -32,19 +32,19 @@ class AdminModel{
 
     static public function registrarMus( $data ) {
 
-/*         $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_categoria, :id_album, :img, :path, "A" )' );
+        $stmt = Connection :: connect() -> prepare( 'INSERT INTO musica VALUES ( null, :id_usr, :nombre, :id_cat, :img_path, :music_path, "A" )' );
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
-        $stmt -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
-        $stmt -> bindparam( ':id_album', $data[ 'id_album' ] );
-        $stmt -> bindparam( ':img', $data[ 'img' ] );
-        $stmt -> bindparam( ':path', $data[ 'path' ] ); */
+        $stmt -> bindparam( ':id_cat', $data[ 'id_cat' ] );
+        $stmt -> bindparam( ':img_path', $data[ 'img_path' ] );
+        $stmt -> bindparam( ':music_path', $data[ 'music_path' ] ); 
+        $stmt -> execute();
 
-        $upload_path = '/';
-        /* $music_name = basename( $data["music"]["name"] ); */
+        $stmt2 = Connection :: connect() -> prepare( 'SELECT ID_Musica FROM musica ORDER BY ID_Musica DESC LIMIT 1' );
+        $stmt2 -> execute();
 
-        return $_FILES['music'];
+        return $stmt2 -> fetchAll( PDO::FETCH_ASSOC );
 
     }
 

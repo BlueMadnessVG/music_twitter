@@ -23,6 +23,8 @@ import { ObtenerChatModel } from "../modelos/ObtenerChat.model";
 import { ObtenerMusicaModel } from "../modelos/ObtenerMusica.model";
 import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
 import { TObtenerCategorias } from "../modelos/TObternerCategorias.model";
+import { guardarMusicaModel } from "../modelos/guardarMusica.model";
+import { publicarPostModel } from "../modelos/publicarPost.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -156,6 +158,25 @@ export class UsrService {
       return this.client.post < TObtenerCategorias > (
         this.urlApi + "?u=MostrarCategoria",
         null
+      )
+
+    }
+
+    guardarMusica( data : guardarMusicaModel ) : Observable < TMusica > {
+      return this.client.post < TMusica > (
+        this.urlApi + "?u=RegistrarMusica",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
+    publicarPost( data: publicarPostModel ) : Observable < any > {
+      console.log(data);
+      return this.client.post < any > (
+        this.urlApi + "?u=Usr_RegistrarPost",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
       )
 
     }

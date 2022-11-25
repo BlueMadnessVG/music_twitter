@@ -2,49 +2,62 @@
   <div class="modal-content">
     <div class="modal-header">
       <h1 class="modal-title fs-5" id="exampleModalLabel"> Nuevo Post </h1>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <button type="button" class="btn-close btn-close-white" id="btn-close-post" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <div class="modal-body">
+    <form [formGroup]="uploadForm" (ngSubmit)="submit()">
+      <div class="modal-body">
 
-      <div class="file_conteiner">
-        
-        <h3> Imagen de la Cancion </h3>
+          <div class="file_conteiner">
+            
+            <h3> Imagen de la Cancion </h3>
 
-        <div class="img_conteiner">
-          <img class="musica_img img-fluid" [src]="imageUrl">
-  
-          <div class="img_input">
-            <input type="file" id="file" accept="image/*" (change)="onSelectImage($event)">
-            <label for="file" class="img_btn"> <i class="bi bi-pencil-fill"></i></label>
+            <div class="img_conteiner">
+              <img class="musica_img img-fluid" [src]="imageUrl">
+      
+              <div class="img_input">
+                <input type="file" id="file" accept="image/*" (change)="onSelectImage($event)">
+                <label for="file" class="img_btn"> <i class="bi bi-pencil-fill"></i></label>
+              </div>
+            </div>
+
+            <div class="mb-3 inputs">
+              <label for="formFile" class="form-label">Musica</label>
+              <input class="form-control" type="file" id="formFile" (change)="onSelectFile($event)" accept=".mp3,audio/*">
+            </div>
+
           </div>
-        </div>
 
-        <div class="mb-3 inputs">
-          <label for="formFile" class="form-label">Musica</label>
-          <input class="form-control" type="file" id="formFile" (change)="onSelectFile($event)">
-        </div>
+          <div class="info_container">
+
+            <h2> Informacion del post </h2>
+
+            <div class="inputs">
+              <input type="text" name="" id="user" formControlName="Correo" placeholder="Nombre" formControlName="name" formControlName="name">
+              <span> Nombre </span>
+            </div>
+
+            <div class="mb-3">
+              <h3> Categorias </h3>
+              <select class="form-select" required aria-label="select example" formControlName="categoria">
+                <option *ngFor="let categoria of Categorias" value="{{ categoria['ID_Categoria'] }}"> {{ categoria['Nombre'] }} </option>
+              </select>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"> Descripcion </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" maxlength="400" formControlName="comment"></textarea>
+            </div>
+
+          </div>
 
       </div>
-
-      <div>
-
-        <div class="inputs">
-          <input type="text" name="" id="user" formControlName="Correo" placeholder="Nombre" formControlName="name">
-          <span> Nombre </span>
-        </div>
-
-        <div class="mb-3">
-          <select class="form-select" required aria-label="select example">
-            <option *ngFor="let categoria of Categorias" value="{{ categoria['ID_Categoria'] }}"> {{ categoria['Nombre'] }} </option>
-          </select>
-          <div class="invalid-feedback">Example invalid select feedback</div>
-        </div>
-
-      </div>
-
-
-    </div>
+    </form>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary"> Publicar </button>
+      <button type="button" class="btn btn-primary" (click)="submit()" *ngIf = "!cargando"> Publicar </button>
+      <button class="btn btn-primary" type="button" disabled *ngIf = "cargando">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+      </button>
     </div>
 </div>

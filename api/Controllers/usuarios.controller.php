@@ -170,7 +170,7 @@ class UsuarioController{
     static public function Usr_registrarPost( $data ) {
 
         try {
-                if ( isset( $data[ 'id_usr' ] ) && isset( $data[ 'comentario' ] ) && isset( $data[ 'id_musica' ] ) && isset( $data[ 'id_album' ] ) ) {
+                if ( isset( $data[ 'id_usr' ] ) && isset( $data[ 'comment' ] ) && isset( $data[ 'id_music' ] ) ) {
 
                     $data = UsuarioModel :: Usr_registrarPost( $data );
 
