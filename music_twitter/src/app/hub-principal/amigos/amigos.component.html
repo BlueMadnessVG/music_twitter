@@ -1,1 +1,20 @@
-<p>amigos works!</p>
+<div>
+
+    <h1 class="tittle"> Amigos </h1>
+
+    <div class="friends-Conteiner" >
+        
+        <div class="friends" *ngFor="let friend of Friends" (click)="ShowFriend(friend.ID_Amigo)">
+            <div class="img_conteiner">
+                <img class="friend_img img-fluid" src = "{{ friend.Foto_Perfil }}">
+            </div>
+
+            <div class="info_playlist">
+                <p class="friend_name" > {{ friend.Nombre_Usuario }} </p>
+                <p class="friend_followers" > {{ friend.Descripcion }} </p>
+            </div>
+        </div >
+
+    </div>
+
+</div>

@@ -1,7 +1,9 @@
 export interface amigos {
 
     ID_Amigo: number;
-    Foto_perfil: string;
+    Nombre_Usuario: string;
+    Descripcion: string;
+    Foto_Perfil: string;
   
   }
   

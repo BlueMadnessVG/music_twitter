@@ -351,7 +351,6 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
             }
 
         } 
-
         // --------------------------------------    RUTAS PARA SERVICIOS DE USUARIOS   -------------------------------------  
         
         // --------------------------------------    PUBLICACIONES    -------------------------------------

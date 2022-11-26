@@ -1,5 +1,7 @@
 import { Component  } from '@angular/core';
+import { Router } from '@angular/router';
 import { TUsuario } from './modelos/TUsuario.model';
+import { UsrService } from './servicios/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +14,32 @@ export class AppComponent {
   loggedUser !: string;
   imgurl:any;
   loggedin() {
-    this.loggedUser = localStorage.getItem('data')!;
-    this.datosUser= JSON.parse(localStorage.getItem('data')!);
+
+    if( localStorage.getItem('data') != null ){
+      this.loggedUser = localStorage.getItem('data')!;
+      this.datosUser= JSON.parse(localStorage.getItem('data')!);
+      this.imgurl = this.datosUser.data.Foto_Perfil;
+    }
+
 
     return this.loggedUser;
 
   }
 
-  ngOnInit():void{
+  constructor( private usuarioService: UsrService, private route: Router ) {
 
   }
 
   onLogOut(){
     localStorage.removeItem('data');
     localStorage.removeItem('token');
-    window.location.reload();
   }
+
+  showProfile(){
+
+    this.usuarioService.sendData( JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario );
+    this.route.navigate(['/usuario_info']);
+
+  }
+
 }

@@ -1,0 +1,92 @@
+.friends-Conteiner {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13vw, 1fr));
+
+}
+
+.friends {
+
+    min-height: 30vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #1d1f29;
+    border-radius: 0.5rem;
+    margin: 0.6rem;
+    padding: 0.7rem;
+    cursor: pointer;
+
+}
+
+.friends:hover {
+
+    background-color: #303240;
+
+}
+
+.img_conteiner {
+    position: relative;
+    display: flex;
+}
+
+.friend_img{
+
+    width: 100%;
+    height: 20vh;
+    border-radius: 0.5rem;
+
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.info_playlist {
+
+    display: flex;
+    flex-direction: column;
+    padding-top: 7px;
+    padding-left: 7px;
+
+}
+
+.friend_name {
+
+    color: var(--default-font-color);
+    font-weight: 200;
+    font-size: large;
+
+    margin: 0;
+}
+
+.friend_followers {
+
+    color: var(--default-font-color);
+    font-size: medium;
+
+    margin: 0;
+    margin-top: 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+.friends:hover .friend_followers {
+
+    color: #51525a;
+}
+
+.tittle {
+
+    color: white;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-left: 0.7rem;
+
+}

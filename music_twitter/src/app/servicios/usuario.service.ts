@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable, Output } from "@angular/core";
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 
 import { AngularFireStorage } from "@angular/fire/compat/storage";
 
@@ -39,7 +39,7 @@ export class UsrService {
         return this._refresh$;
     }
 
-    constructor( private client: HttpClient, private storage: AngularFireStorage ) {}
+    constructor( private client: HttpClient, private storage: AngularFireStorage ) { }
 
     //Upload file
     uploadFile( fileName: string, data: any ) {
@@ -172,13 +172,18 @@ export class UsrService {
     }
 
     publicarPost( data: publicarPostModel ) : Observable < any > {
-      console.log(data);
       return this.client.post < any > (
         this.urlApi + "?u=Usr_RegistrarPost",
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )
+    }
 
+
+    public dataSource = new BehaviorSubject< number >( 0 );
+
+    sendData( data: number ){
+      this.dataSource.next(data);
     }
 
   /* servicios de musica */

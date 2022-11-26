@@ -5,14 +5,14 @@
       <h3 class="title"> SoundClon </h3>
     </div>
 
-    <div class="header_main">
-      <div class="search-bar">
+    <div  class="header_main" >
+      <div class="search-bar" *ngIf="loggedin()">
         <input type="text" placeholder="Search post or user" autocomplete="off" class="search-bar-tipe">
         <i class="fa-solid fa-magnifying-glass icon"></i>
       </div>
     </div>
 
-    <div *ngIf="loggedUser" class="header_right">
+    <div *ngIf="loggedin()" class="header_right">
 
         <div class="div_icon" data-bs-toggle="modal" data-bs-target="#newPost">
           <i class="fa-solid fa-pen"></i>
@@ -24,6 +24,12 @@
         </button>
 
         <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <a class="dropdown-item" (click)="showProfile()">
+              <i class="bi bi-person-fill"></i>
+              Ver Perfil
+            </a>
+          </li>
           <li>
             <a class="dropdown-item" href="/CambioPassword">
               <i class="fa-solid fa-key"></i>
@@ -37,7 +43,7 @@
             </a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="onLogOut()"href="/">
+            <a class="dropdown-item" (click)="onLogOut()" href="/">
               <i class="fa-solid fa-right-from-bracket"></i>
               Cerrar sesión
             </a>
@@ -47,7 +53,7 @@
 
     </div>
 <!--*-->
-    <div  class="header_rigth" *ngIf="!loggedUser">
+    <div  class="header_rigth" *ngIf="!loggedin()">
       <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signUpModal">  SignUp </button>
       <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">  Login </button>
     </div>

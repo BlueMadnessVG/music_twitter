@@ -122,7 +122,7 @@ class UsuarioModel{
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT lista_amigos.ID_Amigo, usuario.Foto_Perfil FROM lista_amigos INNER JOIN amigo INNER JOIN usuario WHERE amigo.ID_Usuario = :id_usr AND amigo.ID_Amigo = lista_amigos.ID_Amigos AND usuario.ID_Usuario = lista_amigos.ID_Amigo; ' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT lista_amigos.ID_Amigo, usuario.Nombre_Usuario, usuario.Descripcion, usuario.Foto_Perfil FROM lista_amigos INNER JOIN amigo INNER JOIN usuario WHERE amigo.ID_Usuario = :id_usr AND amigo.ID_Amigo = lista_amigos.ID_Amigos AND usuario.ID_Usuario = lista_amigos.ID_Amigo; ' );
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> execute();
 

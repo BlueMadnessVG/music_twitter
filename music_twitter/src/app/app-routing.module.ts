@@ -10,8 +10,8 @@ import { GuardLoginGuard } from './guardians/guard-login.guard';
 import { AmigosComponent } from './hub-principal/amigos/amigos.component';
 import { FeedComponent } from './hub-principal/feed/feed.component';
 import { InicioComponent } from './hub-principal/inicio/inicio.component';
-import { MusicComponent } from './hub-principal/music/music.component';
 import { PlayListComponent } from './hub-principal/play-list/play-list.component';
+import { UsuarioInfoComponent } from './hub-principal/usuario-info/usuario-info.component';
 
 const routes: Routes = [
   {path:'', component:InicioComponent,
@@ -24,6 +24,7 @@ const routes: Routes = [
       },
       {path:'playList', component : PlayListComponent,canActivate:[GuardLoginGuard]},
       {path:'amigos', component : AmigosComponent,canActivate:[GuardLoginGuard]},
+      {path:'usuario_info', component: UsuarioInfoComponent, canActivate:[GuardLoginGuard]}
     ]
   },
   {path:'GestionUsuarios',component:GestionUsuariosComponent,canActivate:[GuardAdminGuard]},

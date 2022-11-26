@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { UsuarioInfoComponent } from './usuario-info/usuario-info.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     PlayListComponent,
     AmigosComponent,
     MusicPlayerComponent,
+    UsuarioInfoComponent,
   ],
   imports: [
     CommonModule,
