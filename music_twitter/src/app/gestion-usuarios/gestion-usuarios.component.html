@@ -5,7 +5,7 @@
       <mat-form-field class="example-full-width"appearance="fill" style="width: 60%;float: left; margin: 10px;">
         <mat-label>Buscar a un usuario</mat-label>
 
-        <input type="search"     matInput placeholder="Ingrese una Palabra"    (keyup) ="applyFilter($event)"  required>
+        <input type="search"     matInput placeholder="Ingrese un usuario"    (keyup) ="applyFilter($event)"  required>
         <mat-icon matPrefix>search</mat-icon>
 
 
@@ -27,7 +27,7 @@
       <td mat-cell *matCellDef="let items">{{items.ID_Usuario}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="urlImg">
+    <ng-container matColumnDef="urlImg" class="celda-img">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> IMG </th>
       <td mat-cell *matCellDef="let items"><img class="roundedImage" src="{{items.Foto_Perfil}}" ></td>
     </ng-container>

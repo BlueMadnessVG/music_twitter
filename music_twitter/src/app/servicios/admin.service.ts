@@ -72,5 +72,13 @@ agregarcat(data:any){
 
 }
 
+sendcorreoban(data:any){
+  return this.cliente.post(this.urlApi+'?u=EnviarCorreoBan',JSON.stringify(data));
+}
+
+sendcorreodesban(data:any){
+  return this.cliente.post(this.urlApi+'?u=EnviarCorreodesBan',JSON.stringify(data));
+}
+
 
 }

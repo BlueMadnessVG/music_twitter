@@ -64,18 +64,18 @@ export class GestionUsuariosComponent implements OnInit {
   ChStatus(data:any){
     if(this.userdata.data.ID_Usuario!=data.ID_Usuario){
       if(data.Estatus=='I'){
-        this.altastatus(data.ID_Usuario);
+        this.altastatus(data.ID_Usuario,data.Correo);
       }else{
-        this.bajastatus(data.ID_Usuario);
+        this.bajastatus(data.ID_Usuario,data.Correo);
       }
     }
   }
 
-bajastatus(data:number){
+bajastatus(data:number,correo:string){
   Swal.fire({
     title: 'Alerta',
     html: '¿Está seguro de realizar la operación?',
-
+    input:'text',
     showDenyButton: true,
     icon: 'info',
     customClass: {
@@ -91,6 +91,14 @@ bajastatus(data:number){
         (x) => {
           Swal.fire('Enhorabuena', 'Estatus de usuario cambiado correctamente', 'success');
           this.obtenerusers();
+          this.obtenerusers();
+          this.AdminService.sendcorreoban({
+            correo:correo,
+            motivo:result.value,
+          }).subscribe((x)=>{
+
+
+        })
         },
         (error) => console.log(error)
       );
@@ -99,7 +107,7 @@ bajastatus(data:number){
 
 }
 
-altastatus(data:number){
+altastatus(data:number,correo:string){
   Swal.fire({
     title: 'Alerta',
     html: '¿Está seguro de realizar la operación?',
@@ -119,6 +127,12 @@ altastatus(data:number){
         (x) => {
           Swal.fire('Enhorabuena', 'Estatus de usuario cambiado correctamente', 'success');
           this.obtenerusers();
+          this.AdminService.sendcorreodesban({
+            correo:correo,
+          }).subscribe((x)=>{
+
+
+        })
         },
         (error) => console.log(error)
       );

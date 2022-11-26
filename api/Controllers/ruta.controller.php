@@ -1,5 +1,5 @@
 <?php
- require "./models/Cors.model.php";
+ require "./Models/Cors.model.php";
 class RutaController {
 
     public function inicio() {

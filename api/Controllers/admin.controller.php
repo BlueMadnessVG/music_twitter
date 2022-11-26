@@ -186,7 +186,7 @@ class AdminController{
                     $arrchimg=array('id_usuario'=>$data['id_usr'],'urlimg'=>$rutaimg);
                     AdminModel::ModificarImgUsuario($arrchimg);
                 }
-                if (  isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'correo' ] ) && isset( $data[ 'descripcion' ] ) ) {
+                if (  isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'Correo' ] ) && isset( $data[ 'descripcion' ] ) ) {
 
                     $data = AdminModel :: modificarUsr( $data );
 

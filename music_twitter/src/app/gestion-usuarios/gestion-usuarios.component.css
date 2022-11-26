@@ -1,12 +1,17 @@
 .roundedImage{
-width:100%;
-border-radius:30px;
+width:60px;
+height: 60px;
+border-radius:50%;
 border: 1px solid black;
 
 }
 
-table{
+.celda-img{
   width:50%;
+}
+
+table{
+  width:100%;
   float:center;
 }
 
@@ -19,8 +24,8 @@ table{
     overflow: initial;
   }
 
-h1{
-
+h2{
+color: aliceblue;
 display:inline-block;
 
 

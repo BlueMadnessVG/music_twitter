@@ -11,10 +11,15 @@ export class AppComponent {
   datosUser!:TUsuario;
   loggedUser !: string;
   imgurl:any;
-  loggedin() {;
+  loggedin() {
     this.loggedUser = localStorage.getItem('data')!;
     this.datosUser= JSON.parse(localStorage.getItem('data')!);
+
     return this.loggedUser;
+
+  }
+
+  ngOnInit():void{
 
   }
 

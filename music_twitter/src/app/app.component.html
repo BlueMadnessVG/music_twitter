@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div *ngIf="loggedin()" class="header_right">
+    <div *ngIf="loggedUser" class="header_right">
 
         <div class="div_icon" data-bs-toggle="modal" data-bs-target="#newPost">
           <i class="fa-solid fa-pen"></i>
@@ -47,7 +47,7 @@
 
     </div>
 <!--*-->
-    <div  class="header_rigth" *ngIf="!loggedin()">
+    <div  class="header_rigth" *ngIf="!loggedUser">
       <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signUpModal">  SignUp </button>
       <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">  Login </button>
     </div>

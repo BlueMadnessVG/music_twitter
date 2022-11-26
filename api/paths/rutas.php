@@ -547,10 +547,25 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
                                                         //mandamos como parametro el json asociativo)
 
             }
-        }
-        
-        
-        else {
+        }else if ( array_filter( $arrayRutas )[ 2 ] == '?u=EnviarCorreoBan' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+                $json=file_get_contents('php://input');
+                $datosarrary=json_decode($json,true);
+                $objMail = new CorreoController();
+                $objMail->sendcorreoban($datosarrary);
+           }
+            }else if ( array_filter( $arrayRutas )[ 2 ] == '?u=EnviarCorreodesBan' ) {
+
+                if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+                    $json=file_get_contents('php://input');
+                    $datosarrary=json_decode($json,true);
+                    $objMail = new CorreoController();
+                    $objMail->sendcorreodesban($datosarrary);
+               }
+    
+    
+              }else {
             echo 'No existe la ruta especifica!';
         }
     }

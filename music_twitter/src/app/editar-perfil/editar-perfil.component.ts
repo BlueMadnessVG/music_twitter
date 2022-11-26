@@ -57,13 +57,14 @@ export class EditarPerfilComponent implements OnInit {
     this.AdminService.editarperfil({
       id_usr:JSON.parse(localStorage.getItem("data")||'{}').data.ID_Usuario,
       nombre:this.frmEditar.controls['username'].value,
-      correo:this.frmEditar.controls['correo'].value,
+      Correo:this.frmEditar.controls['correo'].value,
       descripcion:this.frmEditar.controls['descripcion'].value,
       foto_perfil:this.reader.result,
 
     }).subscribe((x)=>{
       console.log(x);
       localStorage.removeItem('token');
+      alert(x.data);
       this.AdminService.saveToken(x.data);
 
       Swal.fire({

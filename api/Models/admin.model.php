@@ -170,11 +170,14 @@ class AdminModel{
 
         $stmt -> bindparam( 'id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
-        $stmt -> bindparam( ':correo', $data[ 'correo' ] );
+        $stmt -> bindparam( ':correo', $data[ 'Correo' ] );
         $stmt -> bindparam( ':descripcion', $data[ 'descripcion' ] );
 
         $stmt -> execute();
-        return '¡ Usuario Modificado Correctamente !';
+         $datosUser = UsuarioModel::MostrarUsuarioEspecifico( $data[ 'Correo' ] );
+
+        return UsuarioModel::ActualizarToken( $datosUser );
+        
     }
 
     static public function ModificarImgUsuario( $datos ) {
