@@ -1,0 +1,48 @@
+.modal-content{
+  background-color: var(--main-color) !important;
+  color: var(--default-font-color);
+}
+
+.btn-primary{
+  background-color: var(--secundary-color);
+  border-color: var(--secundary-color);
+}
+
+.btn-primary:hover{
+  background-color: rgba(154, 50, 239, 0.85);
+  border-color: rgba(154, 50, 239, 0.85);
+}
+
+.modal-body p{
+  color: #76777f;
+}
+
+
+.pass{
+  margin-top: 1rem;
+}
+
+.inputs p{
+  color: #b2b6be;
+  margin: 0;
+}
+
+.inputs input{
+  font-size: 15px;
+  padding: .3rem .5rem     ;
+  border: none;
+  border-radius: 24px;
+  background-color: var(--back-color);
+  outline: none;
+  min-width: 25em;
+  color: var(--default-font-color);
+
+  transition-duration: .2s;
+}
+
+
+
+.inputs input:focus, .inputs input:hover{
+  background: none;
+  border: 1px solid var(--secundary-color);
+}

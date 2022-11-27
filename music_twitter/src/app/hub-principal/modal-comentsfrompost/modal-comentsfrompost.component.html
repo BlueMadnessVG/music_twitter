@@ -1,0 +1,27 @@
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">¿Qué opina la gente de esta publicación?</h1>
+      <button type="button" class="btn-close btn-close-white" id="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="comentarios">
+
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <form [formGroup]="frmcoment"></form>
+      <input type="text"id="user" formControlName="comentario" style="border-radius:10px;width:80%" placeholder="Agrega un comentario aquí">
+      <button type="button" class="btn btn-primary" ><i class="bi bi-send-fill"></i></button>
+    </div>
+
+  </div>
+
+</div>
+

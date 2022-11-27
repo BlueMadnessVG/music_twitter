@@ -22,7 +22,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GestionCategoriasComponent } from './gestion-categorias/gestion-categorias.component';
 import { ModalAddcategoriaComponent } from './modal-addcategoria/modal-addcategoria.component';
 import { MusicComponent } from './hub-principal/music/music.component';
-import { ModalComentsfrompostComponent } from './modal-comentsfrompost/modal-comentsfrompost.component';
+
 import { PagPrincComponent } from './pag-princ/pag-princ.component';
 
 @NgModule({
@@ -35,7 +35,7 @@ import { PagPrincComponent } from './pag-princ/pag-princ.component';
     GestionCategoriasComponent,
     ModalAddcategoriaComponent,
     MusicComponent,
-    ModalComentsfrompostComponent,
+    
     PagPrincComponent
   ],
   imports: [

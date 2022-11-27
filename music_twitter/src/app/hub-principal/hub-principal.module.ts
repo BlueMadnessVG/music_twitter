@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { InicioComponent } from './inicio/inicio.component';
 import { ChatAmigosComponent } from './chat-amigos/chat-amigos.component';
 import { UsrService } from 'src/app/servicios/usuario.service';
 import { Router, RouterModule } from '@angular/router';
-import { Form, ReactiveFormsModule } from '@angular/forms';
+import { Form, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { PlayListComponent } from './play-list/play-list.component';
@@ -23,11 +23,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule} from '@angular/material/menu';
 
+
+import { Validators } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { UsuarioInfoComponent } from './usuario-info/usuario-info.component';
-
+import { ModalComentsfrompostComponent } from './modal-comentsfrompost/modal-comentsfrompost.component';
 @NgModule({
   declarations: [
     InicioComponent,
@@ -37,6 +39,7 @@ import { UsuarioInfoComponent } from './usuario-info/usuario-info.component';
     AmigosComponent,
     MusicPlayerComponent,
     UsuarioInfoComponent,
+    ModalComentsfrompostComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +56,7 @@ import { UsuarioInfoComponent } from './usuario-info/usuario-info.component';
     MatMenuModule,
     MatPaginatorModule,
     HttpClientModule,
+    FormsModule,
 
     AngularFireModule,
     AngularFireStorageModule,

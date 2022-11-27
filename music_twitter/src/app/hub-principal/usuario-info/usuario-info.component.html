@@ -18,7 +18,7 @@
         <div class="post" >
             <div class="post_img_container">
                 <img [src] = " post.Img_Path ">
-                        
+
                 <div class="post_player">
                     <button class="post_btn_player" (click)="SelectSong( post.ID_Album , i)"> <i class="bi bi-play-circle"></i> </button>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="btns_post">
                     <button class="post_btn" *ngIf="!reaccion"> <p> {{ post.Reacciones }} </p> <i class="bi bi-heart"></i> </button>
                     <button class="post_btn" *ngIf="reaccion"> <p> {{ post.Reacciones }} </p> <i class="bi bi-heart-fill"></i> </button>
-                    <button class="post_btn"> <i class="bi bi-chat-right"></i> </button>
+                    <button class="post_btn"data-bs-toggle="modal" data-bs-target="#coments"> <i class="bi bi-chat-right"></i> </button>
                     <button type="button" class="post_btn add_playlist"  [matMenuTriggerFor]="menu"> <i class="bi bi-bookmark-plus-fill"></i> </button>
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item *ngFor="let playlist of user_playlists" (click)="addPlayList( playlist.ID_Album, post.ID_Musica )"> {{ playlist.Nombre_Album }} </button>
@@ -46,4 +46,10 @@
 
     </div>
 
+</div>
+
+
+
+<div class="modal fade" id="coments" tabindex="-1" aria-hidden="true">
+  <app-modal-comentsfrompost></app-modal-comentsfrompost>
 </div>
