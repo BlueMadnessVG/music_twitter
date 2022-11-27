@@ -9,7 +9,7 @@
         <form [formGroup]="frmsign" (ngSubmit)="submit()">
           <div class="inputs">
             <p> Ingresa un correo electrónico </p>
-            <input type="email" name="" id="user" formControlName="Correo">
+            <input type="email" name="" id="user" formControlName="correo">
             <br>
             <p> Ingresa un nombre de usuario </p>
             <input type="text" name="" id="user" formControlName="usuario">
@@ -19,19 +19,23 @@
           </div>
           <div class="inputs pass">
               <p> Contraseña </p>
-              <input [type]="hidepass ? 'password':'text'" name="" id="@" formControlName="Pass">
-              <button type="button" style="border: none" mat-icon-button matSuffix (click)="hidepass = !hidepass"
+              <input [type]="hidepass ? 'password':'text'" name="" id="@" formControlName="pass">
+              <button type="button" style="border: none;width: 25px;height: 25px; border-radius: 50%;" mat-icon-button matSuffix (click)="hidepass = !hidepass"
               [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepass">
               <mat-icon>{{ hidepass ? "visibility_off" : "visibility" }}</mat-icon>
             </button>
               <p> Confirmar Contraseña </p>
-              <input [type]="hidepass ? 'password':'text'" name="" id="pass" formControlName="@">
+              <input [type]="hidepass2 ? 'password':'text'" name="" id="@" formControlName="pass2">
+              <button type="button" style="border: none;width: 25px;height: 25px; border-radius: 50%;" mat-icon-button matSuffix (click)="hidepass2 = !hidepass2"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepass2">
+              <mat-icon>{{ hidepass2 ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Registrarte</button>
+        <button type="button" class="btn btn-primary"(click)="submit()">Registrarte</button>
       </div>
     </div>
 </div>

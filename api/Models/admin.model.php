@@ -135,18 +135,18 @@ class AdminModel{
 
     static public function registrarUsr( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( ' INSERT INTO usuario VALUES ( null, :nombre, :correo, :PassWord, :fecha_nacimiento, :foto_perfil, :descripcion, 0, 0, :tipo, "A" ) ' );
+        $stmt = Connection :: connect() -> prepare( ' INSERT INTO usuario VALUES (null,:nombre, :correo, :PassWord,null, "http://localhost/api/images/imagesusr/6382dc8fe1f6f.webp", :descripcion,1 , "A" ) ' );
 
-        $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
+        $stmt -> bindparam( ':nombre', $data[ 'nombre_usuario' ] );
         $stmt -> bindparam( ':correo', $data[ 'correo' ] );
-        $stmt -> bindparam( ':PassWord', $data[ 'contraseña' ] );
-        $stmt -> bindparam( ':fecha_nacimiento', $data[ 'fecha_nacimiento' ] );
-        $stmt -> bindparam( ':foto_perfil', $data[ 'foto_perfil' ] );
-        $stmt -> bindparam( ':descripcion', $data[ 'descripcion' ] );
-        $stmt -> bindparam( ':tipo', $data[ 'tipo' ] );
+        $pass = hash( 'sha512', $data[ 'contraseña' ] );
+        $stmt -> bindparam( ':PassWord', $pass );
 
+        $stmt -> bindparam( ':descripcion', $data[ 'descripcion' ] );
         $stmt -> execute();
-        return '¡ Se Registro Correctamente el Usuario !';
+        $datosUser = UsuarioModel::MostrarUsuarioEspecifico( $data[ 'correo' ] );
+
+        return 'Usuario registrado correctamente';
 
     }
 
@@ -156,11 +156,11 @@ class AdminModel{
 
         $stmt -> bindparam( 'id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':nombre', $data[ 'nombre' ] );
-        $stmt -> bindparam( ':correo', $data[ 'Correo' ] );
+        $stmt -> bindparam( ':correo', $data[ 'correo' ] );
         $stmt -> bindparam( ':descripcion', $data[ 'descripcion' ] );
 
         $stmt -> execute();
-         $datosUser = UsuarioModel::MostrarUsuarioEspecifico( $data[ 'Correo' ] );
+         $datosUser = UsuarioModel::MostrarUsuarioEspecifico( $data[ 'correo' ] );
 
         return UsuarioModel::ActualizarToken( $datosUser );
         

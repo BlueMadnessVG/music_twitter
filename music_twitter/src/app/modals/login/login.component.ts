@@ -47,13 +47,14 @@ iniciar_sesion(){
         (x) => {
          // const date = new Date();
          document.getElementById("btn-close")?.click();
+        // alert(x.data)
           this.usuarioService.saveToken(x.data);
           this.route.navigate(['/inicio']);
         },
         (error) =>
           Swal.fire({
-            title: 'Alerta',
-            html: 'Error: ' + error.error.data,
+            title: 'Error de inicio de sesión',
+            html: 'Error: ' + 'Datos introducidos inválidos, por favor, inténtelo de nuevo',
             icon: 'error',
             customClass: {
               container: 'my-swal',

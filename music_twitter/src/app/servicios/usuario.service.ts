@@ -246,7 +246,14 @@ export class UsrService {
         })
     );
     }
+    registrarse(data:any): Observable<TUsuario> {
 
+      return this.client.post<TUsuario>(
+        this.urlApi + '?u=RegistrarUsuario',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
 
 }

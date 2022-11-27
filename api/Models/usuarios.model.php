@@ -240,7 +240,7 @@ try {
 
         } else {
             header( 'HTTP/1.0 401 Not Authorized ' );
-            echo 'El Correo o la Contraseña no Coinciden!';
+            return 'El Correo o la Contraseña no Coinciden!';
         }
     } else {
         header( 'HTTP/1.0 401 Not Authorized ' );

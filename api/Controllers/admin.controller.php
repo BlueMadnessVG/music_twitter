@@ -166,7 +166,7 @@ class AdminController{
     static public function registrarUsr( $data ) {
 
         try {
-                if ( isset( $data[ 'nombre' ] ) && isset( $data[ 'correo' ] ) && isset( $data[ 'contraseña' ] ) && isset( $data[ 'fecha_nacimiento' ] ) && isset( $data[ 'foto_perfil' ] ) && isset( $data[ 'descripcion' ] ) && isset( $data[ 'tipo' ] ) ) {
+                if ( isset( $data[ 'nombre_usuario' ] ) && isset( $data[ 'correo' ] ) && isset( $data[ 'contraseña' ] )  && isset( $data[ 'descripcion' ] ) ) {
 
                     $data = AdminModel :: registrarUsr( $data );
 
@@ -190,7 +190,7 @@ class AdminController{
                     $arrchimg=array('id_usuario'=>$data['id_usr'],'urlimg'=>$rutaimg);
                     AdminModel::ModificarImgUsuario($arrchimg);
                 }
-                if (  isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'Correo' ] ) && isset( $data[ 'descripcion' ] ) ) {
+                if (  isset( $data[ 'id_usr' ] ) && isset( $data[ 'nombre' ] ) && isset( $data[ 'correo' ] ) && isset( $data[ 'descripcion' ] ) ) {
 
                     $data = AdminModel :: modificarUsr( $data );
 

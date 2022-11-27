@@ -12,9 +12,11 @@ import { FeedComponent } from './hub-principal/feed/feed.component';
 import { InicioComponent } from './hub-principal/inicio/inicio.component';
 import { PlayListComponent } from './hub-principal/play-list/play-list.component';
 import { UsuarioInfoComponent } from './hub-principal/usuario-info/usuario-info.component';
+import { PagPrincComponent } from './pag-princ/pag-princ.component';
 
 const routes: Routes = [
-  {path:'', component:InicioComponent,
+  {path:'principal',component:PagPrincComponent},
+  {path:'', component:InicioComponent,canActivate:[GuardLoginGuard],
     children: [
       {path:'inicio', component : FeedComponent,
         children: [
@@ -31,7 +33,8 @@ const routes: Routes = [
   {path:'GestionPosts',component:GestionPostsComponent},
   {path:'GestionCategorias',component:GestionCategoriasComponent,canActivate:[GuardAdminGuard]},
   {path:'CambioPassword',component:CambioPwdComponent,canActivate:[GuardLoginGuard]},
-  {path:'editarperfil',component:EditarPerfilComponent,canActivate:[GuardLoginGuard]}
+  {path:'editarperfil',component:EditarPerfilComponent,canActivate:[GuardLoginGuard]},
+
 ];
 
 @NgModule({
