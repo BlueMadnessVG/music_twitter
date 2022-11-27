@@ -50,6 +50,8 @@
     max-width: auto;
     flex: 1;
     border-radius: 16px;
+
+    overflow: scroll;
 }
 
 .chat_menu {

@@ -69,26 +69,12 @@ class AdminModel{
 
     static public function mostrarPost( $data ) {
 
-        //monstrar post por id
-        if( $data != null ){
-
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM post WHERE ID_Post = :id_post' );
+        $stmt = Connection :: connect() -> prepare( 'SELECT album_musica.ID_Album , musica.Nombre, musica.Img_Path, musica.Music_Path, categoria.Nombre as Nombre_cat, post.Comentario, post.Reacciones FROM `post` INNER JOIN musica INNER JOIN album_musica INNER JOIN categoria WHERE post.ID_Musica = musica.ID_Musica and musica.ID_Musica = album_musica.ID_Musica and categoria.ID_Categoria = musica.ID_Categoria and post.ID_Usuario = :id_usr;' );
                 
-            $stmt -> bindparam( ':id_post', $data[ 'id_post' ] );
-            $stmt -> execute();
+        $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+        $stmt -> execute();
             
-            return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
-
-        }
-        //mostrar todas las post
-        else{
-        
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM post' );
-            $stmt -> execute();
-            
-            return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
-        
-        }
+        return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
 
     }
 

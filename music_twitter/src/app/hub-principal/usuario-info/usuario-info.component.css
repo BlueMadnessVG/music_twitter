@@ -1,0 +1,177 @@
+.usuario_info{
+
+   position: relative;
+   border-bottom: 1px solid var(--default-font-color);
+   padding-bottom: 4vh;
+
+}
+
+.foto_portada{
+
+    width: 100%;
+    height: 15vh;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+
+.user-img{
+
+    position: absolute;
+    margin-left: 1.5rem;
+    margin-top: -3.2rem;
+
+}
+
+.user-img img {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+
+.user_data {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 20vh;
+    margin-top: 10px;
+    color: var(--default-font-color);
+
+}
+
+.Nombre {
+
+    font-weight: bolder;
+    margin: 0;
+
+}
+
+.Categoria{
+
+    margin: 0;
+
+}
+
+.commentario{
+
+    margin: 0;
+    padding-top: 10px;
+    font-size: 1rem;
+
+}
+
+.Descripcion {
+    margin: 0;
+    padding-top: 5px;
+    padding-right: 10px;
+    font-size: medium;
+    color: #51525a;
+}
+
+.posts{
+
+    margin-top: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: #1d1f29;
+    padding: 0.5rem;
+    border-radius: 1rem;
+
+}
+
+.posts:hover {
+
+    background-color: #303240;
+
+}
+
+.post{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.post_img_container {
+    position: relative;
+    display: flex;
+}
+
+.post_img_container img {
+
+    width: 13vh;
+    height: 13vh;
+    border-radius: 50%;
+
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.post_img_container:hover img {
+    opacity: 0.3;
+}
+
+.post_img_container:hover .post_player{
+
+    opacity: 1;
+
+}
+
+.post_player {
+
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+.post_btn_player {
+
+    background: none;
+    color: var(--secundary-color);
+    border: none;
+
+    font-size: 2.5rem;
+
+}
+
+.post_info{
+    display: flex;
+    flex-direction: column;
+    color: var(--default-font-color);
+    width: 100%;
+}
+
+.btns_post{
+
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.post_btn{
+
+    background: none;
+    color: var(--secundary-color);
+    border: none;
+
+    font-size: 1.5rem;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+.post_btn p{
+    font-size: 1.2rem;
+}

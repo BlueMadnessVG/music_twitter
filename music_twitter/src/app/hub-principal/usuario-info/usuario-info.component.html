@@ -1,1 +1,46 @@
-<p>usuario-info works!</p>
+<div class="usuario_container">
+
+    <div class="usuario_info">
+        <img class="foto_portada" src="https://pbs.twimg.com/profile_banners/939408677085372418/1630953206/600x200">
+
+        <div class="user-img">
+            <img [src] = "  user_info[0].Foto_Perfil  ">
+        </div>
+
+        <div class="user_data">
+            <h1 class="Nombre"> {{ user_info[0].Nombre_Usuario }} </h1>
+            <p class="Descripcion" > {{ user_info[0].Descripcion }} </p>
+        </div>
+    </div>
+
+    <div class="posts" *ngFor="let post of user_posts; let i = index">
+
+        <div class="post" >
+            <div class="post_img_container">
+                <img [src] = " post.Img_Path ">
+                        
+                <div class="post_player">
+                    <button class="post_btn_player" (click)="SelectSong( post.ID_Album , i)"> <i class="bi bi-play-circle"></i> </button>
+                </div>
+            </div>
+
+            <div class="post_info">
+                <div class="music_info">
+                    <h1 class="Nombre"> {{ post.Nombre }} </h1>
+                    <h3 class="Descripcion"> {{ post.Nombre_cat }} </h3>
+                </div>
+
+                <p class="commentario"> {{ post.Comentario }} </p>
+
+                <div class="btns_post">
+                    <button class="post_btn" *ngIf="!reaccion"> <p> {{ post.Reacciones }} </p> <i class="bi bi-heart"></i> </button>
+                    <button class="post_btn" *ngIf="reaccion"> <p> {{ post.Reacciones }} </p> <i class="bi bi-heart-fill"></i> </button>
+                    <button class="post_btn"> <i class="bi bi-chat-right"></i> </button>
+                    <button class="post_btn"> <i class="bi bi-bookmark-plus-fill"></i> </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

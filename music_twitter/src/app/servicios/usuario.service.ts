@@ -25,6 +25,8 @@ import { ObtenerAmigosModel } from "../modelos/ObtenerAmigos.model";
 import { TObtenerCategorias } from "../modelos/TObternerCategorias.model";
 import { guardarMusicaModel } from "../modelos/guardarMusica.model";
 import { publicarPostModel } from "../modelos/publicarPost.model";
+import { TInfoUsuario } from "../modelos/TInfoUsuario.model";
+import { TObtenerPosts } from "../modelos/TObtenerPosts.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -179,6 +181,9 @@ export class UsrService {
       )
     }
 
+  /* servicios de musica */
+
+  /* servicios de usuario */
 
     public dataSource = new BehaviorSubject< number >( 0 );
 
@@ -186,7 +191,24 @@ export class UsrService {
       this.dataSource.next(data);
     }
 
-  /* servicios de musica */
+    obtnerInfoUsuario( data: any ) : Observable < TInfoUsuario > {
+      return this.client.post < TInfoUsuario > (
+        this.urlApi + "?u=ObtenerInfoUsuario",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
+    obtenerPosts( data: any ) :Observable < TObtenerPosts > {
+      return this.client.post < TObtenerPosts > (
+        this.urlApi + "?u=MostrarPost",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+  /* servicios de usuario */
 
     //Servicio para Login , Regresa un Token
     login(data: LoginModel): Observable<TUsuario> {

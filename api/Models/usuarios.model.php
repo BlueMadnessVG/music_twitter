@@ -136,6 +136,22 @@ class UsuarioModel{
 
     }
 
+    static public function infoUsuario( $data ) {
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT Nombre_Usuario, Foto_Perfil, Descripcion FROM `usuario` WHERE ID_Usuario = :id_usr; ' );
+            $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+            $stmt -> execute();
+
+            return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
     // --------------------------------------    PUBLICACIONES    --------------------------------------
 
     static public function Usr_registrarPost( $data ) {
@@ -145,8 +161,19 @@ class UsuarioModel{
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
         $stmt -> bindparam( ':comment', $data[ 'comment' ] );
         $stmt -> bindparam( ':id_music', $data[ 'id_music' ] );
-
         $stmt -> execute();
+
+        $stmt2 = Connection :: connect() -> prepare( 'SELECT * FROM `album` WHERE ID_Usuario = :id_usr LIMIT 1;' );
+        $stmt2 -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+        $stmt2 -> execute();
+
+        $id_playlist = ($stmt2 -> fetch( PDO::FETCH_ASSOC ));
+
+        $stmt3 = Connection :: connect() -> prepare( 'INSERT INTO album_musica VALUES ( :id_playlist, :id_music )' );
+        $stmt3 -> bindparam( ':id_music', $data[ 'id_music' ] );
+        $stmt3 -> bindparam( ':id_playlist', $id_playlist['ID_Album'] );
+        $stmt3 -> execute();
+
         return ' ¡ Post Publicado con Exito ! ';
 
     }
@@ -262,7 +289,7 @@ static public function ExisteToken( $datos ) {
 
  //Mostrar Usuario Especifico
  static  public function MostrarUsuarioEspecifico( $id ) {
-    $stmt = Connection::connect()->prepare( 'SELECT ID_Usuario,Correo,Nombre_Usuario,Fecha_Nacimiento,Foto_Perfil,Descripcion,Followers,Following,Rol FROM usuario where Correo=:correo' );
+    $stmt = Connection::connect()->prepare( 'SELECT ID_Usuario,Correo,Nombre_Usuario,Fecha_Nacimiento,Foto_Perfil,Descripcion,Rol FROM usuario where Correo=:correo' );
     $stmt->bindParam( ':correo', $id );
     $stmt->execute();
     if ( $stmt != null )

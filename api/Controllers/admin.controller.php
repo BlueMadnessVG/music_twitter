@@ -87,11 +87,15 @@ class AdminController{
 
         try {
 
-            $collection = AdminModel :: mostrarPost( $data );
+            if( isset( $data[ 'id_usr' ] ) ) {
 
-            $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $collection );
-            echo json_encode( $json );//se codifica para mandarlo pa atras
-            return;
+                $collection = AdminModel :: mostrarPost( $data );
+
+                $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $collection );
+                echo json_encode( $json );//se codifica para mandarlo pa atras
+                return;
+                
+            }
 
         }
         catch ( Exception $e1 ) {

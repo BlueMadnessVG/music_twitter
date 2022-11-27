@@ -66,6 +66,7 @@ export class MusicPlayerComponent implements OnInit {
     ).subscribe(
       (data : any) => {
           this.files = data.data;
+          console.log(this.files);
           if( this.files.length ) {
             this.openFile( this.files[this.index], this.index );
           }
