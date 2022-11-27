@@ -15,7 +15,7 @@ import { UsuarioInfoComponent } from './hub-principal/usuario-info/usuario-info.
 import { PagPrincComponent } from './pag-princ/pag-princ.component';
 
 const routes: Routes = [
-  {path:'principal',component:PagPrincComponent},
+  {path:'principal',component:PagPrincComponent,canActivate:[]},
   {path:'', component:InicioComponent,canActivate:[GuardLoginGuard],
     children: [
       {path:'inicio', component : FeedComponent,

@@ -175,3 +175,53 @@
 .dropdown-item i{
     margin-right: 5px;
 }
+.titulo{
+  display: inline-block;
+  font-size: 40px;
+  margin-left: 40px;
+  margin-top: 30px;
+  color: white;
+}
+
+.slogan{
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 40px;
+  margin-top: 80px;
+  color: white;
+
+}
+
+.container{
+  background-color: #1b1d2a;
+  border-radius: 20px;
+}
+
+.container2{
+border: 2px solid #9a32ef;
+border-radius: 30px;
+margin-top: 150px;
+
+
+}
+
+.textillo{
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 40px;
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+}
+
+.pie{
+  width: 100%;
+  font-size: 20px ;
+  color:white;
+margin-top: 157px;
+background-color:#1b1d2a ;
+text-align: center;
+height: 40px;
+padding-top: 10px;
+border-radius: 20px;
+}

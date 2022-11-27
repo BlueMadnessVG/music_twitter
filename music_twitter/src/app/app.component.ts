@@ -37,8 +37,7 @@ export class AppComponent {
   onLogOut(){
     localStorage.removeItem('data');
     localStorage.removeItem('token');
-    this.route.navigate(['/entra']);
-    window.location.reload();
+    this.route.navigate(['/principal']);
   }
 
   showProfile(){
