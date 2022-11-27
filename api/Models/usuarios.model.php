@@ -82,6 +82,18 @@ class UsuarioModel{
 
     }
 
+    static public function agregarMusicaPlayList( $data ){
+
+        $stmt =  Connection :: connect() -> prepare( 'INSERT INTO album_musica VALUES ( :id_playlist, :id_musica)' );
+
+        $stmt -> bindparam( ':id_musica', $data[ 'id_musica' ] );
+        $stmt -> bindparam( ':id_playlist', $data[ 'id_playlist' ] );
+        
+        $stmt -> execute();
+        return ' ¡ Mensaje enviado con exito ! ';
+
+    }
+
     // --------------------------------------    MENSAJES    --------------------------------------
 
     static public function enviarMensaje( $data ) {
@@ -189,6 +201,27 @@ class UsuarioModel{
 
         $stmt -> execute();
         return ' ¡ Post Modificado con Exito ! ';
+    }
+
+    static public function obtenerFeed( $data ) {
+
+        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario ORDER BY RAND() DESC LIMIT 50;' );
+        $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt->fetchAll( PDO::FETCH_ASSOC );
+        return null;
+    }
+
+    static public function obtenerFeedAmigos( $data ) {
+
+        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario INNER JOIN amigo INNER JOIN lista_amigos WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario AND lista_amigos.ID_Amigo = amigo.ID_Amigo AND amigo.ID_Usuario = :id_usr AND usuario.ID_Usuario != :id_usr LIMIT 50;' );
+        $stmt -> bindparam( 'id_usr', $data[ 'id_usr' ] );
+        $stmt -> execute();
+
+        if ( $stmt != null )
+            return $stmt->fetchAll( PDO::FETCH_ASSOC );
+        return null;
     }
 
     // --------------------------------------    DAR DE BAJA    --------------------------------------

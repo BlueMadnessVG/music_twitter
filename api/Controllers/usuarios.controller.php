@@ -103,6 +103,25 @@ class UsuarioController{
 
     }
 
+    static public function agregarMusicaPlayList( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_musica' ] ) && isset( $data[ 'id_playlist' ] ) ) {
+
+                    $data = UsuarioModel :: agregarMusicaPlayList( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
+
     // --------------------------------------    MENSAJES    --------------------------------------
 
     static public function enviarMensaje( $data ) {
@@ -463,6 +482,34 @@ class UsuarioController{
             self::Error($e);
         }
     }
+
+    
+    static public function obtenerFeed($data){
+        try{
+
+            $datos=UsuarioModel::obtenerFeed($data);
+            $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
+            echo json_encode( $json );
+            return;
+
+        }catch(Exception $e){
+            self::Error($e);
+        }
+    }
+
+    static public function obtenerFeedAmigos($data){
+        try{
+
+            $datos=UsuarioModel::obtenerFeedAmigos($data);
+            $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
+            echo json_encode( $json );
+            return;
+
+        }catch(Exception $e){
+            self::Error($e);
+        }
+    }
+
 
 
 }

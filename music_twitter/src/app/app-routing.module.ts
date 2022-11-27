@@ -18,12 +18,7 @@ const routes: Routes = [
   {path:'principal',component:PagPrincComponent,canActivate:[]},
   {path:'', component:InicioComponent,canActivate:[GuardLoginGuard],
     children: [
-      {path:'inicio', component : FeedComponent,
-        children: [
-          {path:'recomendados', component: PlayListComponent},
-          {path:'amigos', component: PlayListComponent},
-        ]
-      },
+      {path:'inicio', component : FeedComponent,canActivate:[GuardLoginGuard]},
       {path:'playList', component : PlayListComponent,canActivate:[GuardLoginGuard]},
       {path:'amigos', component : AmigosComponent,canActivate:[GuardLoginGuard]},
       {path:'usuario_info', component: UsuarioInfoComponent, canActivate:[GuardLoginGuard]}

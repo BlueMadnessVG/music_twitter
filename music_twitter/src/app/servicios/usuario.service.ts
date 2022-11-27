@@ -27,6 +27,8 @@ import { guardarMusicaModel } from "../modelos/guardarMusica.model";
 import { publicarPostModel } from "../modelos/publicarPost.model";
 import { TInfoUsuario } from "../modelos/TInfoUsuario.model";
 import { TObtenerPosts } from "../modelos/TObtenerPosts.model";
+import { TAgregarMusicaPlaylist } from "../modelos/TAgregarMusicaPlayList.model";
+import { TObtenerFeed } from "../modelos/TObtenerFeed.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -178,7 +180,11 @@ export class UsrService {
         this.urlApi + "?u=Usr_RegistrarPost",
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
-      )
+      ).pipe(
+        tap( () => {
+          this.refresh.next();
+        } )
+     );
     }
 
   /* servicios de musica */
@@ -203,6 +209,30 @@ export class UsrService {
     obtenerPosts( data: any ) :Observable < TObtenerPosts > {
       return this.client.post < TObtenerPosts > (
         this.urlApi + "?u=MostrarPost",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    obtenerFeed(  ) : Observable < TObtenerFeed > {
+      return this.client.post < TObtenerFeed > (
+        this.urlApi + "?u=ObtenerFeed",
+        ''
+      )
+    }
+
+    obtenerFeedAmigos( data: any ) : Observable < TObtenerFeed > {
+      return this.client.post < TObtenerFeed > (
+        this.urlApi + "?u=ObtenerFeedAmigos",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    agregarMusicaPlaylist( data: any ) : Observable < TAgregarMusicaPlaylist > {
+      console.log(data);
+      return this.client.post < TAgregarMusicaPlaylist > (
+        this.urlApi + "?u=AgregarMusicaPlayList",
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )

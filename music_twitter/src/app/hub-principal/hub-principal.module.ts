@@ -21,6 +21,7 @@ import { ModalsModule } from '../modals/modals.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule} from '@angular/material/menu';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
@@ -49,6 +50,7 @@ import { UsuarioInfoComponent } from './usuario-info/usuario-info.component';
     MatRippleModule,
     MatSliderModule,
     MatTableModule,
+    MatMenuModule,
     MatPaginatorModule,
     HttpClientModule,
 

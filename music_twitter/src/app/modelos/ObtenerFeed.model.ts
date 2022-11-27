@@ -1,7 +1,9 @@
-export interface post{
+export interface ObtenerFeedModel {
 
-    ID_Album: number,
     ID_Musica: number,
+    ID_Usuario: number,
+    Foto_Perfil: string,
+    Nombre_Usuario: string,
     Nombre: string,
     Img_Path: string,
     Music_Path: string,
@@ -10,4 +12,3 @@ export interface post{
     Reacciones: number
 
 }
-    

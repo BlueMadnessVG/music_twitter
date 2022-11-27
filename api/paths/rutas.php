@@ -168,6 +168,18 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
 
+        } else if ( array_filter( $arrayRutas )[2] == '?u=AgregarMusicaPlayList' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> agregarMusicaPlayList( $datosArray );
+
+            }
+
         } 
         
         // --------------------------------------    CRUD DE USUARIOS    --------------------------------------
@@ -287,7 +299,31 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
 
-        } 
+        } else if ( array_filter( $arrayRutas )[2] == '?u=ObtenerFeed' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> obtenerFeed( $datosArray );
+
+            }
+
+        } else if ( array_filter( $arrayRutas )[2] == '?u=ObtenerFeedAmigos' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> obtenerFeedAmigos( $datosArray );
+
+            }
+
+        }
         
         // --------------------------------------    CRUD DE MUSICA    --------------------------------------
 

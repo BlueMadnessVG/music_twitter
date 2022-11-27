@@ -71,6 +71,7 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     ).subscribe(
       ( data: any ) => {
         this.amigos = data.data;
+        console.log(this.amigos);
       }
     )
 

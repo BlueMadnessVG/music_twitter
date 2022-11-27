@@ -22,7 +22,7 @@
               <input [type]="hidepass ? 'password':'text'" name="" id="@" formControlName="pass">
               <button type="button" style="border: none;width: 25px;height: 25px; border-radius: 50%;" mat-icon-button matSuffix (click)="hidepass = !hidepass"
               [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepass">
-              <mat-icon>{{ hidepass ? "visibility_off" : "visibility" }}</mat-icon>
+              
             </button>
               <p> Confirmar Contraseña </p>
               <input [type]="hidepass2 ? 'password':'text'" name="" id="@" formControlName="pass2">

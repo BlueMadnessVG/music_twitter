@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ObtenerPlayListModel } from 'src/app/modelos/ObtenerPlayList.model';
 import { MusicService } from 'src/app/servicios/music.service';
 import { UsrService } from 'src/app/servicios/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'usuario-info',
@@ -15,6 +17,7 @@ export class UsuarioInfoComponent implements OnInit {
   user_info!: any;
   user_posts!: Array<any>;
   reaccion!: boolean;
+  user_playlists!: Array<any>;
 
   constructor( private usuarioService : UsrService, private musicService: MusicService ) { }
 
@@ -29,6 +32,13 @@ export class UsuarioInfoComponent implements OnInit {
       }
       
       this.ObtenerInfo( this.user_id );
+      this.ObtenerPlayList();
+    } )
+    
+    this.subscription = this.usuarioService.refresh.subscribe( () => {
+
+      this.ObtenerPosts( this.user_id );
+
     } )
 
   }
@@ -55,8 +65,23 @@ export class UsuarioInfoComponent implements OnInit {
 
   }
 
-  ObtenerPosts( id_usuario: number ){
+  ObtenerPlayList() {
 
+    this.usuarioService.obtenerPlayList(
+      new ObtenerPlayListModel(
+        JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
+      )
+    ).subscribe( (data: any) => {
+
+      this.user_playlists = data.data;
+      this.user_playlists.shift();
+      console.log(this.user_playlists);
+
+    });
+
+  }
+
+  ObtenerPosts( id_usuario: number ){
     this.usuarioService.obtenerPosts( 
       { id_usr: id_usuario }
     ).subscribe( (data) => {
@@ -76,6 +101,27 @@ export class UsuarioInfoComponent implements OnInit {
         index: index
       }
     );
+  }
+
+  addPlayList( id_album: number, id_music: number ){
+    console.log("album: ", id_album, "musica: ", id_music);
+
+    this.usuarioService.agregarMusicaPlaylist(
+      { 
+        id_playlist: id_album,
+        id_musica: id_music
+      }
+    ).subscribe( (data) => {
+      console.log(data.data);
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Musica Agregada a la playlist',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    } )
   }
 
 }
