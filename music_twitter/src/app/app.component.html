@@ -2,7 +2,7 @@
 <div class="nav">
 
     <div class="header_left">
-      <h3 class="title"> SoundClon </h3>
+      <a href="/" style="text-decoration:none;"><h3 style="margin-top: 20px" class="title"> SoundClon </h3></a>
     </div>
 
     <div  class="header_main" >
@@ -48,14 +48,28 @@
               Cerrar sesión
             </a>
           </li>
+          <li *ngIf="isadmin">
+            <hr>
+            <b style="margin-left:15px;">ADMINISTRADOR</b>
+            <a class="dropdown-item" href="/GestionUsuarios">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Control de usuarios
+            </a>
+          </li>
+          <li *ngIf="isadmin">
+            <a class="dropdown-item" href="/GestionCategorias">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Control de categorías
+            </a>
+          </li>
         </ul>
         <!-- MENU DE USUARIO -->
 
     </div>
 <!--*-->
     <div  class="header_rigth" *ngIf="!loggedin()">
-      <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signUpModal">  SignUp </button>
-      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">  Login </button>
+      <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signUpModal">  Registrate </button>
+      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">  Inicio de sesión </button>
     </div>
 
 </div>

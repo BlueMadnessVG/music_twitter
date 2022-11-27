@@ -13,12 +13,16 @@ export class AppComponent {
   datosUser!:TUsuario;
   loggedUser !: string;
   imgurl:any;
+  isadmin=false;
   loggedin() {
 
     if( localStorage.getItem('data') != null ){
       this.loggedUser = localStorage.getItem('data')!;
       this.datosUser= JSON.parse(localStorage.getItem('data')!);
       this.imgurl = this.datosUser.data.Foto_Perfil;
+      if(this.datosUser.data.Rol==2){
+        this.isadmin=true;
+      }
     }
 
 

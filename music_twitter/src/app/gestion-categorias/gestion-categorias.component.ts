@@ -5,7 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { categorias } from '../modelos/categorias.model';
 import { UsrService } from '../servicios/usuario.service';
-import { TCategorias } from '../modelos/TCategorias.model';
 import Swal from 'sweetalert2';
 import { AdminService } from '../servicios/admin.service';
 import { ModalAddcategoriaComponent } from '../modal-addcategoria/modal-addcategoria.component';

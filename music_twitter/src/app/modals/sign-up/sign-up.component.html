@@ -1,15 +1,37 @@
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-top:30px;">Únete a Soundclon</h1>
+        <button type="button" class="btn-close" style="background-color:white;" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+
+        <form [formGroup]="frmsign" (ngSubmit)="submit()">
+          <div class="inputs">
+            <p> Ingresa un correo electrónico </p>
+            <input type="email" name="" id="user" formControlName="Correo">
+            <br>
+            <p> Ingresa un nombre de usuario </p>
+            <input type="text" name="" id="user" formControlName="usuario">
+            <br>
+            <p> Cuéntanos un poco sobre ti </p>
+            <input type="text" name="" id="user" formControlName="descripcion" placeholder="Agrega una breve descripción sobre ti">
+          </div>
+          <div class="inputs pass">
+              <p> Contraseña </p>
+              <input [type]="hidepass ? 'password':'text'" name="" id="@" formControlName="Pass">
+              <button type="button" style="border: none" mat-icon-button matSuffix (click)="hidepass = !hidepass"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepass">
+              <mat-icon>{{ hidepass ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+              <p> Confirmar Contraseña </p>
+              <input [type]="hidepass ? 'password':'text'" name="" id="pass" formControlName="@">
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Registrarte</button>
       </div>
     </div>
 </div>
