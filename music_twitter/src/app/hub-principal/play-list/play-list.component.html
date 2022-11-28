@@ -34,11 +34,11 @@
     <div class="offcanvas-header header" *ngIf="Id_Album">
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         <div class="playlist-tittle">
-            <img class="img_album" [src] = "  PlayLists[this.Id_Album - 1].Img_Path  ">
+            <img class="img_album" [src] = "  PlayLists[aux].Img_Path  ">
 
             <div class="playlist-data">
-                <h1 class="offcanvas-title"  id="offcanvasRightLabel"> {{ PlayLists[this.Id_Album - 1].Nombre_Album }} </h1>
-                <h4 class="playlist-autor"> <b> {{ PlayLists[this.Id_Album - 1].Nombre_Usuario }} </b>  <i class="bi bi-dot"></i> {{ files.length }} Canciones  </h4>
+                <h1 class="offcanvas-title"  id="offcanvasRightLabel"> {{ PlayLists[aux].Nombre_Album }} </h1>
+                <h4 class="playlist-autor"> <b> {{ PlayLists[aux].Nombre_Usuario }} </b>  <i class="bi bi-dot"></i> {{ files.length }} Canciones  </h4>
             </div>
 
         </div>

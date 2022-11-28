@@ -106,13 +106,11 @@ export class UsrService {
   /* servicios de musica */
 
     obtenerMusica(data: ObtenerMusicaModel): Observable < TMusica > {
-
       return this.client.post< TMusica > (
         this.urlApi + "?u=obtenerMusicaPlayList",
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )
-
     }
 
     obtenerMusicaUsuario(data: any): Observable < TMusicaUsuario > {

@@ -22,6 +22,7 @@ export class PlayListComponent implements OnInit {
   files!: Array<any>;
   Selected_playlist!: number;
   subcription !: Subscription;
+  aux!: number
 
   constructor( private usuarioService : UsrService, private musicService: MusicService) { }
 
@@ -68,6 +69,7 @@ export class PlayListComponent implements OnInit {
   ShowMusic(id_album: number) {
 
     this.Id_Album = id_album;
+    this.aux = this.PlayLists.map( object => object.ID_Album ).indexOf(id_album);
 
     this.usuarioService.obtenerMusica(
       new ObtenerMusicaModel(
