@@ -29,6 +29,7 @@ import { TInfoUsuario } from "../modelos/TInfoUsuario.model";
 import { TObtenerPosts } from "../modelos/TObtenerPosts.model";
 import { TAgregarMusicaPlaylist } from "../modelos/TAgregarMusicaPlayList.model";
 import { TObtenerFeed } from "../modelos/TObtenerFeed.model";
+import { TComentarios } from "../modelos/TComentarios.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -285,5 +286,11 @@ export class UsrService {
       );
     }
 
-
+    getComentarios(data:any):Observable<TComentarios>{
+      return this.client.post<TComentarios>(
+        this.urlApi + '?u=GetComentarios',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+    }
 }

@@ -205,7 +205,7 @@ class UsuarioModel{
 
     static public function obtenerFeed( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario ORDER BY RAND() DESC LIMIT 50;' );
+        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario ORDER BY RAND() DESC LIMIT 50;' );
         $stmt -> execute();
 
             if ( $stmt != null )
@@ -215,7 +215,7 @@ class UsuarioModel{
 
     static public function obtenerFeedAmigos( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario INNER JOIN amigo INNER JOIN lista_amigos WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario AND lista_amigos.ID_Amigo = amigo.ID_Amigo AND amigo.ID_Usuario = :id_usr AND usuario.ID_Usuario != :id_usr LIMIT 50;' );
+        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario INNER JOIN amigo INNER JOIN lista_amigos WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario AND lista_amigos.ID_Amigo = amigo.ID_Amigo AND amigo.ID_Usuario = :id_usr AND usuario.ID_Usuario != :id_usr LIMIT 50;' );
         $stmt -> bindparam( 'id_usr', $data[ 'id_usr' ] );
         $stmt -> execute();
 
@@ -554,6 +554,19 @@ static public function Modpwd( $data ) {
     $stmt->execute();
     return '¡Se Modifico Correctamente la Contraseña!';
 }
+
+static public function getcomentarios( $data ) {
+
+    $stmt = Connection :: connect() -> prepare( 'select Comentario,fecha_comentario,usuario.Nombre_Usuario,usuario.Foto_Perfil from comentario inner join usuario where comentario.id_usuario=usuario.ID_Usuario and Comentario.ID_Publicacion=:id_post order by comentario.fecha_comentario desc' );
+    $stmt->bindParam(':id_post',$data['id_post']);
+    $stmt -> execute();
+
+        if ( $stmt != null )
+            return $stmt->fetchAll( PDO::FETCH_ASSOC );
+    return "¡error al obtener los comentarios...";
+}
+
+
 
 }
 ?>

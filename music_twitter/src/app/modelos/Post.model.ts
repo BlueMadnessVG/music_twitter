@@ -1,5 +1,5 @@
 export interface post{
-
+    ID_Post:number,
     ID_Album: number,
     ID_Musica: number,
     Nombre: string,
@@ -10,4 +10,3 @@ export interface post{
     Reacciones: number
 
 }
-    

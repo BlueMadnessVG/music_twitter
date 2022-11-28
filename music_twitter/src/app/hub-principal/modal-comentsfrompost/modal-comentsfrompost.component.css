@@ -40,9 +40,46 @@
   transition-duration: .2s;
 }
 
-
+.usuario-publico{
+  width: 100%;
+}
 
 .inputs input:focus, .inputs input:hover{
   background: none;
   border: 1px solid var(--secundary-color);
+}
+.avatar
+{
+
+  width: 60px;
+  height:60px;
+  border-radius: 50%;
+  margin-left: 3px;
+margin-top:5px;
+}
+.nombreusr{
+  margin-left: 3px;
+}
+.comentarioxd{
+  font-size: 18px;
+  color: white !important;
+  text-align: justify;
+  margin-left: 3px;
+  margin-bottom: 3px;
+}
+
+.scroll{
+  overflow-y: hidden;
+}
+
+.comment-separado{
+  border: 1px solid rgba(154, 50, 239, 0.85);
+  border-radius: 10px;
+  margin-bottom:5px;
+  width: 90%;
+}
+
+.modal-footer
+{
+  justify-content:flex-start;
 }

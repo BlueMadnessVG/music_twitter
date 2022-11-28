@@ -18,11 +18,11 @@ export class UsuarioInfoComponent implements OnInit {
   user_posts!: Array<any>;
   reaccion!: boolean;
   user_playlists!: Array<any>;
-
+  comentarios!:Array<any>;
   constructor( private usuarioService : UsrService, private musicService: MusicService ) { }
 
   ngOnInit(): void {
-  
+
     this.subscription = this.usuarioService.dataSource.subscribe( (data) => {
 
       if( data != 0 ){
@@ -30,11 +30,11 @@ export class UsuarioInfoComponent implements OnInit {
       }else{
         this.user_id = JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario;
       }
-      
+
       this.ObtenerInfo( this.user_id );
       this.ObtenerPlayList();
     } )
-    
+
     this.subscription = this.usuarioService.refresh.subscribe( () => {
 
       this.ObtenerPosts( this.user_id );
@@ -44,7 +44,7 @@ export class UsuarioInfoComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    
+
     if( this.subscription ){
       this.subscription.unsubscribe();
     }
@@ -52,7 +52,7 @@ export class UsuarioInfoComponent implements OnInit {
   }
 
   ObtenerInfo( id_usuario: number ){
-    
+
     this.usuarioService.obtnerInfoUsuario(
       { id_usr: id_usuario}
     ).subscribe( (data) =>{
@@ -82,7 +82,7 @@ export class UsuarioInfoComponent implements OnInit {
   }
 
   ObtenerPosts( id_usuario: number ){
-    this.usuarioService.obtenerPosts( 
+    this.usuarioService.obtenerPosts(
       { id_usr: id_usuario }
     ).subscribe( (data) => {
 
@@ -96,7 +96,7 @@ export class UsuarioInfoComponent implements OnInit {
   SelectSong(id_album: number, index: number) {
     this.musicService.stop();
     this.musicService.MusicTrigger.emit(
-      { 
+      {
         ID_Album: id_album,
         index: index
       }
@@ -107,7 +107,7 @@ export class UsuarioInfoComponent implements OnInit {
     console.log("album: ", id_album, "musica: ", id_music);
 
     this.usuarioService.agregarMusicaPlaylist(
-      { 
+      {
         id_playlist: id_album,
         id_musica: id_music
       }

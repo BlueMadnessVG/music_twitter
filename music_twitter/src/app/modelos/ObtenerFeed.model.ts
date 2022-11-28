@@ -1,5 +1,5 @@
 export interface ObtenerFeedModel {
-
+  ID_Post:number,
     ID_Musica: number,
     ID_Usuario: number,
     Foto_Perfil: string,

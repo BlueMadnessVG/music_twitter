@@ -510,6 +510,25 @@ class UsuarioController{
         }
     }
 
+    static public function getcomentarios( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_post' ] ) ) {
+
+                    $data = UsuarioModel :: getcomentarios( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
+
 
 
 }
