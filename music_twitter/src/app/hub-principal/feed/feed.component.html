@@ -9,7 +9,7 @@
 
         <div class="post" >
 
-            <div class="user_info" (click)="ShowProfile( post.ID_Usuario )">
+            <div class="user_info" (click)=" ShowProfile( post.ID_Usuario ) ">
                 <img [src] = " post.Foto_Perfil ">
                 <h2 class="Nombre"> {{ post.Nombre_Usuario }} </h2>
             </div>
@@ -33,7 +33,8 @@
                 <p class="commentario">  {{ post.Comentario }}  </p>
     
                 <div class="btns_post">
-                    <button class="post_btn"> <p>  {{ post.Reacciones }}  </p> <i class="bi bi-heart"></i> </button>
+                    <button class="post_btn" *ngIf="!isReacted( post.ID_Post )"> <p>  {{ post.Reacciones }}  </p> <i class="bi bi-heart"></i> </button>
+                    <button class="post_btn" *ngIf="isReacted( post.ID_Post )"> <p> {{ post.Reacciones }} </p> <i class="bi bi-heart-fill"></i> </button>
                     <button class="post_btn"> <i class="bi bi-chat-right"></i> </button>
                     <button type="button" class="post_btn add_playlist"  [matMenuTriggerFor]="menu"> <i class="bi bi-bookmark-plus-fill"></i> </button>
                     <mat-menu #menu="matMenu">

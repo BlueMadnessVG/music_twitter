@@ -213,6 +213,17 @@ class UsuarioModel{
         return null;
     }
 
+    static public function obtenerReacciones( $data ) {
+
+        $stmt = Connection :: connect() -> prepare( 'SELECT id_publicacion FROM `reacciones_publicacion` WHERE id_usuario = :id_usr;' );
+        $stmt -> bindparam( 'id_usr', $data[ 'id_usr' ] );
+        $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt->fetchAll( PDO::FETCH_ASSOC );
+        return null;
+    }
+
     static public function obtenerFeedAmigos( $data ) {
 
         $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario INNER JOIN amigo INNER JOIN lista_amigos WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario AND lista_amigos.ID_Amigo = amigo.ID_Amigo AND amigo.ID_Usuario = :id_usr AND usuario.ID_Usuario != :id_usr LIMIT 50;' );

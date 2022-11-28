@@ -14,6 +14,7 @@ export class UsuarioInfoComponent implements OnInit {
 
   user_id!: number;
   subscription!: Subscription;
+  user_reactions!: Array<any>;
   user_info!: any;
   user_posts!: Array<any>;
   reaccion!: boolean;
@@ -54,7 +55,7 @@ export class UsuarioInfoComponent implements OnInit {
   ObtenerInfo( id_usuario: number ){
 
     this.usuarioService.obtnerInfoUsuario(
-      { id_usr: id_usuario}
+      { id_usr: id_usuario }
     ).subscribe( (data) =>{
 
       this.user_info = data.data;
@@ -88,9 +89,24 @@ export class UsuarioInfoComponent implements OnInit {
 
       this.user_posts = data.data;
       console.log(this.user_posts);
+      this.ObtenerReacciones();
 
     } )
 
+  }
+
+  ObtenerReacciones() {
+
+    this.usuarioService.obtenerReacciones(
+      { id_usr: JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario }
+    ).subscribe( (data) => {
+      this.user_reactions = data.data;
+    } )
+
+  }
+
+  isReacted( id_post: string ) {
+    return this.user_reactions.some( x => x.id_publicacion === id_post );
   }
 
   SelectSong(id_album: number, index: number) {

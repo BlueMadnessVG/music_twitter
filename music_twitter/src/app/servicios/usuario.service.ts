@@ -29,6 +29,7 @@ import { TInfoUsuario } from "../modelos/TInfoUsuario.model";
 import { TObtenerPosts } from "../modelos/TObtenerPosts.model";
 import { TAgregarMusicaPlaylist } from "../modelos/TAgregarMusicaPlayList.model";
 import { TObtenerFeed } from "../modelos/TObtenerFeed.model";
+import { TReacciones } from "../modelos/TReacciones.model";
 import { TComentarios } from "../modelos/TComentarios.model";
 @Injectable( {
 
@@ -231,9 +232,16 @@ export class UsrService {
     }
 
     agregarMusicaPlaylist( data: any ) : Observable < TAgregarMusicaPlaylist > {
-      console.log(data);
       return this.client.post < TAgregarMusicaPlaylist > (
         this.urlApi + "?u=AgregarMusicaPlayList",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    obtenerReacciones( data: any ) : Observable < TReacciones > {
+      return this.client.post < TReacciones > (
+        this.urlApi + "?u=obtenerReacciones",
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )

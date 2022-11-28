@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { MusicState } from 'src/app/modelos/Music.model';
+import { Subscription } from 'rxjs';
 import { ObtenerPlayListModel } from 'src/app/modelos/ObtenerPlayList.model';
 import { MusicService } from 'src/app/servicios/music.service';
 import { UsrService } from 'src/app/servicios/usuario.service';
@@ -16,7 +16,9 @@ export class FeedComponent implements OnInit {
   feed: boolean = true;
   user_playlists!: Array<any>;
   feed_posts!: Array<any>;
-  
+  feed_reactions!: Array<any>;
+  subscription!: Subscription;
+
   currentFile: any = {};
   state: boolean = false;
 
@@ -27,10 +29,23 @@ export class FeedComponent implements OnInit {
     this.ObtenerPlayList();
     this.ObtenerFeed();
 
+    this.subscription = this.usuarioService.refresh.subscribe( () => {
+
+      this.ObtenerFeed();
+
+    } )
+
+  }
+
+  ngOnDestroy() {
+
+    if( this.subscription ){
+      this.subscription.unsubscribe();
+    }
+
   }
 
   ObtenerFeed() {
-    console.log(this.feed);
     if( this.feed ){
       this.usuarioService.obtenerFeed().subscribe( (data) => {
         this.feed_posts = data.data;
@@ -43,10 +58,26 @@ export class FeedComponent implements OnInit {
       ).subscribe( (data) => {
         this.feed_posts = data.data;
         console.log(this.feed_posts);
+        this.ObtenerReacciones();
       } )
     }
 
   }
+
+  ObtenerReacciones() {
+
+    this.usuarioService.obtenerReacciones(
+      { id_usr: JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario }
+    ).subscribe( (data) => {
+      this.feed_reactions = data.data;
+    } )
+
+  }
+
+  isReacted( id_post: string ) {
+    return this.feed_reactions.some( x => x.id_publicacion === id_post );
+  }
+
 
   ObtenerPlayList() {
 

@@ -483,6 +483,22 @@ class UsuarioController{
         }
     }
 
+    static public function obtenerReacciones($data){
+        try{
+            if(isset($data["id_usr"])){
+                $datos=UsuarioModel::obtenerReacciones($data);
+                $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
+                echo json_encode( $json );
+                return;
+            }else{
+                header( 'HTTP/1.0 500 ' );
+                    echo 'Datos incompletos';
+            }
+        }catch(Exception $e){
+            self::Error($e);
+        }
+    }
+
     
     static public function obtenerFeed($data){
         try{
