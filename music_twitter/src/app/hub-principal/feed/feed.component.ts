@@ -26,12 +26,14 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.ObtenerReacciones();
     this.ObtenerPlayList();
     this.ObtenerFeed();
 
     this.subscription = this.usuarioService.refresh.subscribe( () => {
 
       this.ObtenerFeed();
+      this.ObtenerReacciones();
 
     } )
 
@@ -58,7 +60,6 @@ export class FeedComponent implements OnInit {
       ).subscribe( (data) => {
         this.feed_posts = data.data;
         console.log(this.feed_posts);
-        this.ObtenerReacciones();
       } )
     }
 

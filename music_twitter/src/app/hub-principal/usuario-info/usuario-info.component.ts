@@ -31,7 +31,7 @@ export class UsuarioInfoComponent implements OnInit {
       }else{
         this.user_id = JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario;
       }
-
+      this.ObtenerReacciones();
       this.ObtenerInfo( this.user_id );
       this.ObtenerPlayList();
     } )
@@ -39,6 +39,7 @@ export class UsuarioInfoComponent implements OnInit {
     this.subscription = this.usuarioService.refresh.subscribe( () => {
 
       this.ObtenerPosts( this.user_id );
+      this.ObtenerReacciones();
 
     } )
 
@@ -89,7 +90,6 @@ export class UsuarioInfoComponent implements OnInit {
 
       this.user_posts = data.data;
       console.log(this.user_posts);
-      this.ObtenerReacciones();
 
     } )
 
