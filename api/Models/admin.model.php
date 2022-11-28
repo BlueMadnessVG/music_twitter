@@ -264,7 +264,7 @@ class AdminModel{
         //monstrar categoria por id
         if( $data != null ){
 
-                $stmt = Connection :: connect() -> prepare( 'SELECT * FROM categoria WHERE ID_Categoria = :id_categoria' );
+                $stmt = Connection :: connect() -> prepare( 'SELECT * FROM categoria WHERE ID_Categoria = :id_categoria');
             
                 $stmt -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
                 $stmt -> execute();
@@ -274,7 +274,7 @@ class AdminModel{
         }
         //mostrar todas las categorias
         else{
-                $stmt = Connection :: connect() -> prepare( 'SELECT * FROM categoria' );
+                $stmt = Connection :: connect() -> prepare( 'SELECT * FROM categoria WHERE Estatus = "A"'  );
 
                 $stmt -> execute();
         

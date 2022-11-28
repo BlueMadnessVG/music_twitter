@@ -38,6 +38,7 @@ export class AppComponent {
     localStorage.removeItem('data');
     localStorage.removeItem('token');
     this.route.navigate(['/principal']);
+    window.location.reload();
   }
 
   showProfile(){
