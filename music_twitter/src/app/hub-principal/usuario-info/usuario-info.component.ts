@@ -45,6 +45,15 @@ export class UsuarioInfoComponent implements OnInit {
 
   }
 
+  sendid(data:any){
+   
+
+    this.usuarioService.ObtencionComentarios.emit(
+      {id_post:data
+      }
+    );
+  }
+
   ngOnDestroy() {
 
     if( this.subscription ){

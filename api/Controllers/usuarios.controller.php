@@ -533,13 +533,13 @@ class UsuarioController{
 
                     $data = UsuarioModel :: getcomentarios( $data );
 
-                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    $json = array ( 'message' => '¡ Operacion Exitosa con los comentarios !', 'status' => 200, 'data' => $data  );
                     echo json_encode( $json );
                     return;
 
                 }
         }
-        catch ( Exeption $e ) {
+        catch ( Exception $e ) {
                     $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
         }
 

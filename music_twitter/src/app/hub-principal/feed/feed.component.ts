@@ -100,7 +100,7 @@ export class FeedComponent implements OnInit {
     console.log("album: ", id_album, "musica: ", id_music);
 
     this.usuarioService.agregarMusicaPlaylist(
-      { 
+      {
         id_playlist: id_album,
         id_musica: id_music
       }
@@ -115,12 +115,18 @@ export class FeedComponent implements OnInit {
       })
     } )
   }
-  
+
   ShowProfile( id_usuario: number ){
     this.usuarioService.sendData(id_usuario);
     this.route.navigate(['/usuario_info']);
   }
 
+  sendid(data:any){
+    this.usuarioService.ObtencionComentarios.emit(
+      {id_post:data
+      }
+    );
+  }
 
   playStream( url: any ) {
 

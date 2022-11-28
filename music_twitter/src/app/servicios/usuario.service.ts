@@ -194,11 +194,13 @@ export class UsrService {
   /* servicios de usuario */
 
     public dataSource = new BehaviorSubject< number >( 0 );
-
+    public idpostdata=new BehaviorSubject <number>(0);
     sendData( data: number ){
       this.dataSource.next(data);
     }
-
+    sendDataPost(data:number){
+      this.idpostdata.next(data);
+    }
     obtnerInfoUsuario( data: any ) : Observable < TInfoUsuario > {
       return this.client.post < TInfoUsuario > (
         this.urlApi + "?u=ObtenerInfoUsuario",
@@ -295,10 +297,22 @@ export class UsrService {
     }
 
     getComentarios(data:any):Observable<TComentarios>{
+      console.log("hola"+data)
       return this.client.post<TComentarios>(
         this.urlApi + '?u=GetComentarios',
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )
     }
-}
+
+    comentarpost(data:any): Observable<TComentarios> {
+
+      return this.client.post<TComentarios>(
+        this.urlApi + '?u=ComentarPost',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+    @Output() ObtencionComentarios: EventEmitter<any> = new EventEmitter();
+
+  }

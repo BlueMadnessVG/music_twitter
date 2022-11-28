@@ -23,29 +23,16 @@
       </div>
 
       </div>
-      <div class="comentarios">
-        <div class="publicacion-realizada" *ngFor="let data of comentarios">
-          <div class="comment-separado">
-              <div >
-                  <img src={{data.Foto_Perfil}} alt="img"class="avatar">
-              </div>
-              <div class="nombreusr">
-                  <h4>{{data.Nombre_Usuario}} - {{data.fecha_comentario}}</h4>
-              </div>
-              <p class="comentarioxd">{{data.Comentario}}</p>
-          </div>
 
-      </div>
-
-      </div>
 
     </div>
 
     <div class="modal-footer">
-      <form [formGroup]="frmcoment"></form>
+      <form [formGroup]="frmcoment">
       <label for="user" style="margin-right:40px;">Comparte tu opinión con todos los demás</label>
-      <input type="text"id="user" formControlName="comentario" style="border-radius:10px;width:80%" placeholder="Agrega un comentario aquí">
-      <button type="button" class="btn btn-primary" ><i class="bi bi-send-fill"></i></button>
+      <input type="text" formControlName="comentario" style="border-radius:10px;width:80%" placeholder="Agrega un comentario aquí">
+      <button type="button" (click)="valid()" class="btn btn-primary" ><i class="bi bi-send-fill"></i></button>
+    </form>
     </div>
 
   </div>

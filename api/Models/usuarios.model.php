@@ -425,7 +425,7 @@ static public function comentarpost($data){
         $stmt = Connection::connect()->prepare( "insert into comentario values(null,:idpost,:idusu,:comentario,default,0,'A')");
         $stmt->bindParam( ':idpost', $data['id_post']);
         $stmt->bindParam( ':idusu', $data['id_usuario']);
-        $stmt->bindParam( ':comentario', $data['id_post']);
+        $stmt->bindParam( ':comentario', $data['comentario']);
         $stmt->execute();
         return 'Comentario registrado correctamente';
 
@@ -567,7 +567,7 @@ static public function Modpwd( $data ) {
 }
 
 static public function getcomentarios( $data ) {
-
+    
     $stmt = Connection :: connect() -> prepare( 'select Comentario,fecha_comentario,usuario.Nombre_Usuario,usuario.Foto_Perfil from comentario inner join usuario where comentario.id_usuario=usuario.ID_Usuario and Comentario.ID_Publicacion=:id_post order by comentario.fecha_comentario desc' );
     $stmt->bindParam(':id_post',$data['id_post']);
     $stmt -> execute();
