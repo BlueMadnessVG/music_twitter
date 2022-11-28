@@ -46,12 +46,30 @@ export class UsuarioInfoComponent implements OnInit {
   }
 
   sendid(data:any){
-   
-
     this.usuarioService.ObtencionComentarios.emit(
       {id_post:data
       }
     );
+  }
+  quitarlike(id_post:any){
+    this.usuarioService.quitarlike({
+      id_post:id_post,
+      id_usuario:JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
+    }).subscribe((x)=>{
+
+      this.ObtenerReacciones();
+      this.isReacted(id_post);
+    })
+  }
+  ponerlike(id_post:any){
+    this.usuarioService.ponerlike({
+      id_post:id_post,
+      id_usuario:JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
+    }).subscribe((x)=>{
+
+      this.ObtenerReacciones();
+      this.isReacted(id_post);
+    })
   }
 
   ngOnDestroy() {

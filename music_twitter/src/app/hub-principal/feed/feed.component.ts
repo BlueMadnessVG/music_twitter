@@ -79,6 +79,27 @@ export class FeedComponent implements OnInit {
     return this.feed_reactions.some( x => x.id_publicacion === id_post );
   }
 
+  quitarlike(id_post:any){
+    this.usuarioService.quitarlike({
+      id_post:id_post,
+      id_usuario:JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
+    }).subscribe((x)=>{
+
+      this.ObtenerReacciones();
+      this.isReacted(id_post);
+    })
+  }
+  ponerlike(id_post:any){
+    this.usuarioService.ponerlike({
+      id_post:id_post,
+      id_usuario:JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
+    }).subscribe((x)=>{
+
+      this.ObtenerReacciones();
+      this.isReacted(id_post);
+    })
+  }
+
 
   ObtenerPlayList() {
 

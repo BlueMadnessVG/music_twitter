@@ -406,7 +406,7 @@ class UsuarioController{
     static public function delreacpost($data){
 
         try{
-            if(isset($data["id_post"]) && isset($data["id_usu"])){
+            if(isset($data["id_post"]) && isset($data["id_usuario"])){
                 $datos=UsuarioModel::delreacpost($data);
                 $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
                 echo json_encode( $json );

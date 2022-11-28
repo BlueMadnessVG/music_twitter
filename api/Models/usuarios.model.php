@@ -440,7 +440,7 @@ static public function reaccionarpost($data){
 
 try{
 
-$stmt = Connection::connect()->prepare( "update post set reacciones=reacciones+1 where ID_Post=:idpost");
+$stmt = Connection::connect()->prepare( "update post set Reacciones=reacciones+1 where ID_Post=:idpost");
         $stmt->bindParam( ':idpost', $data['id_post']);
         $stmt->execute();
         
@@ -503,7 +503,7 @@ static public function delreacpost($data){
         $stmt->execute();
         $stmt = Connection::connect()->prepare( "delete from reacciones_publicacion where id_publicacion=:idpost and id_usuario=:idusu");
         $stmt->bindParam( ':idpost', $data['id_post']);
-        $stmt->bindParam( ':idusu', $data['id_usu']);
+        $stmt->bindParam( ':idusu', $data['id_usuario']);
         $stmt->execute();
         return 'Reaccion de post borrada correctamente';
         

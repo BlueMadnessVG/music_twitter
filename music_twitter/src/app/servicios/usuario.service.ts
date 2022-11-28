@@ -311,6 +311,18 @@ export class UsrService {
         { headers: { 'Content-Type': 'application/json' } }
       );
     }
+
+    ponerlike(data:any){
+      return this.client.post(
+        this.urlApi+'?u=ReaccionarPost',JSON.stringify(data)
+      )
+    }
+    quitarlike(data:any){
+      return this.client.post(
+        this.urlApi+'?u=DelReacPost',JSON.stringify(data)
+      )
+    }
+
     @Output() ObtencionComentarios: EventEmitter<any> = new EventEmitter();
 
   }
