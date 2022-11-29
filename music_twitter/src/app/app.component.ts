@@ -32,13 +32,21 @@ export class AppComponent {
 
   constructor( private usuarioService: UsrService, private route: Router ) {
 
+    if( !this.loggedin() ){
+      this.route.navigate(['/principal']);
+    }
+
   }
 
   onLogOut(){
     localStorage.removeItem('data');
     localStorage.removeItem('token');
+    
+    this.loggedUser = '';
+    this.isadmin = false;
+    this.imgurl = undefined;
+    
     this.route.navigate(['/principal']);
-    window.location.reload();
   }
 
   showProfile(){
