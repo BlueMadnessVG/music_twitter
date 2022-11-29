@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Teditperfil } from '../modelos/Teditperfil.model';
 import { AdminService } from '../servicios/admin.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-editar-perfil',
   templateUrl: './editar-perfil.component.html',
@@ -16,7 +17,7 @@ export class EditarPerfilComponent implements OnInit {
   public rutafoto:any;
   public message!:string;
   reader = new FileReader();
-  constructor(private fb:FormBuilder,private AdminService:AdminService) { }
+  constructor(private fb:FormBuilder,private AdminService:AdminService,private route:Router) { }
 
   ngOnInit(): void {
     this.editarperfil=JSON.parse(localStorage.getItem("data")!);
@@ -75,7 +76,7 @@ export class EditarPerfilComponent implements OnInit {
          container: 'my-swal',
        },
      })
-     window.location.reload();
+     this.route.navigate(['/inicio']);
     })
   }
 
