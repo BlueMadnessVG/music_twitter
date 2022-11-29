@@ -40,7 +40,10 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subcription.unsubscribe();
+
+    if( this.subcription ){
+      this.subcription.unsubscribe();
+    }
     console.log("observable cerrado");
   }
 

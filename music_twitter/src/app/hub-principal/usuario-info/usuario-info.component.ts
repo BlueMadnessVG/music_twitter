@@ -45,6 +45,14 @@ export class UsuarioInfoComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+
+    if( this.subscription ){
+      this.subscription.unsubscribe();
+    }
+
+  }
+
   sendid(data:any){
     this.usuarioService.ObtencionComentarios.emit(
       {id_post:data
@@ -59,6 +67,8 @@ export class UsuarioInfoComponent implements OnInit {
 
       this.ObtenerReacciones();
       this.isReacted(id_post);
+      this.user_posts[ this.user_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones =  Number(this.user_posts[ this.user_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones) - 1;
+
     })
   }
   ponerlike(id_post:any){
@@ -69,15 +79,9 @@ export class UsuarioInfoComponent implements OnInit {
 
       this.ObtenerReacciones();
       this.isReacted(id_post);
+      this.user_posts[ this.user_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones =  Number(this.user_posts[ this.user_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones) + 1;
+
     })
-  }
-
-  ngOnDestroy() {
-
-    if( this.subscription ){
-      this.subscription.unsubscribe();
-    }
-
   }
 
   ObtenerInfo( id_usuario: number ){
@@ -155,12 +159,18 @@ export class UsuarioInfoComponent implements OnInit {
         id_musica: id_music
       }
     ).subscribe( (data) => {
-      console.log(data.data);
-
       Swal.fire({
         position: 'top-end',
         icon: 'success',
         title: 'Musica Agregada a la playlist',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }, ( error ) => {
+      Swal.fire({
+        position: 'top-end',
+        title: 'La musica ya esta agregada en la playlist',
+        icon: 'warning',
         showConfirmButton: false,
         timer: 1500
       })

@@ -79,7 +79,7 @@ export class FeedComponent implements OnInit {
     return this.feed_reactions.some( x => x.id_publicacion === id_post );
   }
 
-  quitarlike(id_post:any){
+  quitarlike(id_post : any){
     this.usuarioService.quitarlike({
       id_post:id_post,
       id_usuario:JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
@@ -87,9 +87,13 @@ export class FeedComponent implements OnInit {
 
       this.ObtenerReacciones();
       this.isReacted(id_post);
+
+      this.feed_posts[ this.feed_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones =  Number(this.feed_posts[ this.feed_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones) - 1;
+
     })
   }
-  ponerlike(id_post:any){
+
+  ponerlike(id_post : any){
     this.usuarioService.ponerlike({
       id_post:id_post,
       id_usuario:JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario
@@ -97,6 +101,9 @@ export class FeedComponent implements OnInit {
 
       this.ObtenerReacciones();
       this.isReacted(id_post);
+
+      this.feed_posts[ this.feed_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones =  Number(this.feed_posts[ this.feed_posts.map( object => object.ID_Post ).indexOf(id_post) ].Reacciones) + 1;
+
     })
   }
 

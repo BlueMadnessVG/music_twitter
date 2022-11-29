@@ -28,7 +28,14 @@ subscription!: Subscription;
 
 
   }
+  
+  ngOnDestroy() {
 
+    if( this.subscription ){
+      this.subscription.unsubscribe();
+    }
+
+  }
 
   createForm() {
     //Inicializamos frmlogin con validators
@@ -47,14 +54,6 @@ subscription!: Subscription;
   });
   }
 
-
-  ngOnDestroy() {
-
-    if( this.subscription ){
-      this.subscription.unsubscribe();
-    }
-
-  }
 valid(){
   this.frmcoment.valid?this.comentar(): Swal.fire('Error', 'Por favor ingrese un comentario e inténtelo de nuevo', 'error');
 }

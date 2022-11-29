@@ -7,6 +7,7 @@ import { MusicService } from 'src/app/servicios/music.service';
 import { MusicState } from 'src/app/modelos/Music.model';
 import { state } from '@angular/animations';
 import { ObtenerPlayListModel } from 'src/app/modelos/ObtenerPlayList.model';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class PlayListComponent implements OnInit {
   files!: Array<any>;
   Selected_playlist!: number;
   subcription !: Subscription;
-  aux!: number
+  aux!: number;
 
   constructor( private usuarioService : UsrService, private musicService: MusicService) { }
 
@@ -33,6 +34,13 @@ export class PlayListComponent implements OnInit {
       this.ObtenerPlayList();
     } )
 
+  }
+
+  ngOnDestroy(): void {
+    if( this.subcription ){
+      this.subcription.unsubscribe();
+    }
+    console.log("observable cerrado");
   }
 
   ObtenerPlayList() {
@@ -70,6 +78,7 @@ export class PlayListComponent implements OnInit {
 
     this.Id_Album = id_album;
     this.aux = this.PlayLists.map( object => object.ID_Album ).indexOf(id_album);
+    console.log(this.aux);
 
     this.usuarioService.obtenerMusica(
       new ObtenerMusicaModel(
@@ -78,10 +87,29 @@ export class PlayListComponent implements OnInit {
     ).subscribe(
       (data : any) => {
           this.files = data.data;
-          console.log(this.files);
-          console.log(this.files.length);
       }
     )
+  }
+
+  Delete_PlayList( id_music: any , id_album: any ) {
+    
+    this.usuarioService.eliminarPlayList( 
+      { id_playlist: id_album ,
+        id_music: id_music}
+    ).subscribe( (data) => {
+      console.log( data );
+      this.files = data.data;
+      
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '¡ Musica Removida !',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    } )
+
   }
 
 }

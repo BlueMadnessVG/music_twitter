@@ -53,7 +53,9 @@ export class MusicPlayerComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subcription.unsubscribe();
+    if( this.subcription ){
+      this.subcription.unsubscribe();
+    }
     console.log("observable cerrado");
   }
 

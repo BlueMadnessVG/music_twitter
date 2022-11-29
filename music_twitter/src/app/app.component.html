@@ -2,7 +2,7 @@
 <div class="nav">
 
     <div class="header_left">
-      <a href="/principal" style="text-decoration:none;"><h3 style="margin-top: 20px" class="title"> SoundClon </h3></a>
+      <a routerLink="/inicio" style="text-decoration:none;"><h3 style="margin-top: 20px" class="title"> SoundClon </h3></a>
     </div>
 
     <div  class="header_main" >
@@ -31,13 +31,13 @@
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="/CambioPassword">
+            <a class="dropdown-item" routerLink="/CambioPassword">
               <i class="fa-solid fa-key"></i>
               Cambiar contraseña
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="/editarperfil">
+            <a class="dropdown-item" routerLink="/editarperfil">
               <i class="fa-solid fa-list"></i>
               Editar perfil
             </a>
@@ -51,13 +51,13 @@
           <li *ngIf="isadmin">
             <hr>
             <b style="margin-left:15px;">ADMINISTRADOR</b>
-            <a class="dropdown-item" href="/GestionUsuarios">
+            <a class="dropdown-item" routerLink="/GestionUsuarios">
               <i class="fa-solid fa-right-from-bracket"></i>
               Control de usuarios
             </a>
           </li>
           <li *ngIf="isadmin">
-            <a class="dropdown-item" href="/GestionCategorias">
+            <a class="dropdown-item" routerLink="/GestionCategorias">
               <i class="fa-solid fa-right-from-bracket"></i>
               Control de categorías
             </a>

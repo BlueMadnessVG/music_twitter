@@ -34,6 +34,29 @@ class UsuarioModel{
 
     }
 
+    static public function eliminarMusicaPlaylist( $data ){
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'DELETE FROM `album_musica` WHERE `album_musica`.`ID_Album` = :id_playlist AND `album_musica`.`ID_Musica` = :id_music;' );
+            $stmt -> bindparam( ':id_playlist', $data[ 'id_playlist' ] );
+            $stmt -> bindparam( ':id_music', $data[ 'id_music' ] );
+            $stmt -> execute();
+
+            $stmt2 = Connection :: connect() -> prepare( 'SELECT musica.* FROM musica INNER JOIN album_musica WHERE album_musica.ID_Musica = musica.ID_Musica AND album_musica.ID_Album = :id_playlist;' );
+            $stmt2 -> bindparam( ':id_playlist', $data[ 'id_playlist' ] );
+            $stmt2 -> execute();
+
+            if ( $stmt2 != null )
+                return $stmt2 -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
     static public function obtenerMusicaUsuario( $data ){
 
         try{

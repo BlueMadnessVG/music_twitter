@@ -31,6 +31,7 @@ import { TAgregarMusicaPlaylist } from "../modelos/TAgregarMusicaPlayList.model"
 import { TObtenerFeed } from "../modelos/TObtenerFeed.model";
 import { TReacciones } from "../modelos/TReacciones.model";
 import { TComentarios } from "../modelos/TComentarios.model";
+import { TEliminarPlaylist } from "../modelos/TEliminarCancion.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -111,6 +112,15 @@ export class UsrService {
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )
+    }
+
+    eliminarPlayList( data: any ) : Observable < TEliminarPlaylist > {
+      return this.client.post< TEliminarPlaylist > (
+        this.urlApi + "?u=eliminarMusicaPlaylist",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
     }
 
     obtenerMusicaUsuario(data: any): Observable < TMusicaUsuario > {

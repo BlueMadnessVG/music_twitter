@@ -33,7 +33,7 @@
                 <p class="commentario">  {{ post.Comentario }}  </p>
 
                 <div class="btns_post">
-                    <button class="post_btn" *ngIf="!isReacted( post.ID_Post )"(click)="ponerlike(post.ID_Post)"> <p>  {{ post.Reacciones }}  </p> <i class="bi bi-heart"></i> </button>
+                    <button class="post_btn" *ngIf="!isReacted( post.ID_Post )" (click)=" ponerlike(post.ID_Post) "> <p>  {{ post.Reacciones }}  </p> <i class="bi bi-heart"></i> </button>
                     <button class="post_btn" *ngIf="isReacted( post.ID_Post )" (click)="quitarlike(post.ID_Post)"> <p> {{ post.Reacciones }} </p> <i class="bi bi-heart-fill"></i> </button>
                     <button class="post_btn"data-bs-toggle="modal" data-bs-target="#coments" (click)="sendid(post.ID_Post)"> <i class="bi bi-chat-right"></i> </button>
                     <button type="button" class="post_btn add_playlist"  [matMenuTriggerFor]="menu"> <i class="bi bi-bookmark-plus-fill"></i> </button>

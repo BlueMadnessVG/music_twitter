@@ -58,6 +58,8 @@
 
                 <p> {{ file.Nombre }} </p>
 
+                <button class="delete_btn" (click)="Delete_PlayList( file.ID_Musica, Id_Album )" *ngIf="aux != 0"> <i class="bi bi-trash-fill"></i> </button>
+
             </div>
             
         </div>
