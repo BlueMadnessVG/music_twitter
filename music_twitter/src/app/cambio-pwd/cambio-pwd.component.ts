@@ -4,6 +4,7 @@ import { TUsuario } from '../modelos/TUsuario.model';
 import { Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UsrService } from '../servicios/usuario.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cambio-pwd',
   templateUrl: './cambio-pwd.component.html',
@@ -14,7 +15,7 @@ export class CambioPwdComponent implements OnInit {
   hide = true;
   hide2 = true;
   hide3 = true;
-  constructor(private fb:FormBuilder,private usrService:UsrService) { }
+  constructor(private fb:FormBuilder,private usrService:UsrService, private route: Router) { }
 
   datosUsuario:TUsuario = JSON.parse(localStorage.getItem('data')!);
 
@@ -56,10 +57,9 @@ export class CambioPwdComponent implements OnInit {
       })
       .subscribe(
         (x) => {
-          Swal.fire('Enhorabuena', x.data.toString(), 'success').then(
-            function () {
-              window.location.reload();
-            }
+          Swal.fire('Enhorabuena', x.data.toString(), 'success').then( () => {
+            this.route.navigate( ["/inicio"] );
+          }
           );
         },
         (error) => Swal.fire('Error', 'Algo salió mal, por favor intentelo de nuevo', 'error')
