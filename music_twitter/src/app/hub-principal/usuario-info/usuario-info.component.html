@@ -10,6 +10,12 @@
         <div class="user_data">
             <h1 class="Nombre"> {{ user_info[0].Nombre_Usuario }} </h1>
             <p class="Descripcion" > {{ user_info[0].Descripcion }} </p>
+            
+            <div *ngIf = " agregar_amigo ">
+                <button class="follow_btn" *ngIf=" !isFollowing() " (click)="AddFollow()" > <i class="bi bi-person-plus"></i> Follow </button>
+                <button class="follow_btn" *ngIf=" isFollowing() " (click)="DeleteFollow()" > <i class="bi bi-person-plus"></i> Unfollow </button>
+            </div>
+
         </div>
     </div>
 

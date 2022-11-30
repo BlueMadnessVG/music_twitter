@@ -20,6 +20,10 @@ export class UsuarioInfoComponent implements OnInit {
   reaccion!: boolean;
   user_playlists!: Array<any>;
   comentarios!:Array<any>;
+  lista_amigos!: Array<any>;
+
+  agregar_amigo: boolean = false;
+
   constructor( private usuarioService : UsrService, private musicService: MusicService ) { }
 
   ngOnInit(): void {
@@ -34,6 +38,12 @@ export class UsuarioInfoComponent implements OnInit {
       this.ObtenerReacciones();
       this.ObtenerInfo( this.user_id );
       this.ObtenerPlayList();
+
+      if( this.user_id !=  JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario ) {
+        this.agregar_amigo = true;
+        this.ObtenerListaAmigos();
+      }
+
     } )
 
     this.subscription = this.usuarioService.refresh.subscribe( () => {
@@ -96,6 +106,23 @@ export class UsuarioInfoComponent implements OnInit {
 
     } )
 
+  }
+
+  ObtenerListaAmigos() {
+
+    this.usuarioService.obtenerListaAmgios(
+      { id_usr: JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario }
+    ).subscribe( (data) => {
+
+      this.lista_amigos = data.data;
+      console.log("hola", data.data);
+
+    } )
+
+  }
+
+  isFollowing( ) {
+    return this.lista_amigos.some( x => x.ID_Amigo === this.user_id );
   }
 
   ObtenerPlayList() {
@@ -175,6 +202,64 @@ export class UsuarioInfoComponent implements OnInit {
         timer: 1500
       })
     } )
+  }
+
+  AddFollow() {
+
+    this.usuarioService.AgregarAmigo( 
+      { id_lista: this.lista_amigos[0].lista,
+        id_usr: this.user_id }
+    ).subscribe( (data) => {
+
+      this.ObtenerListaAmigos();
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Usuario Agregado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }, ( error ) => {
+      Swal.fire({
+        position: 'top-end',
+        title: 'Hubo un error, intente de nuevo mas tarde',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    } )
+
+  }
+
+  DeleteFollow() {
+
+    this.usuarioService.EliminarAmigo( 
+      { id_lista: this.lista_amigos[0].lista,
+        id_usr: this.user_id }
+    ).subscribe( (data) => {
+
+      this.ObtenerListaAmigos();
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Usuario eliminado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }, ( error ) => {
+      Swal.fire({
+        position: 'top-end',
+        title: 'Hubo un error, intente de nuevo mas tarde',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    } )
+
   }
 
 }

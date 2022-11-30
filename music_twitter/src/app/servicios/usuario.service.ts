@@ -32,6 +32,7 @@ import { TObtenerFeed } from "../modelos/TObtenerFeed.model";
 import { TReacciones } from "../modelos/TReacciones.model";
 import { TComentarios } from "../modelos/TComentarios.model";
 import { TEliminarPlaylist } from "../modelos/TEliminarCancion.model";
+import { TListaAmigos } from "../modelos/TListaAmigos.model";
 @Injectable( {
 
     providedIn: 'root',
@@ -255,6 +256,34 @@ export class UsrService {
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )
+    }
+
+    obtenerListaAmgios( data: any ) :Observable < TListaAmigos > {
+      return this.client.post < TListaAmigos > (
+        this.urlApi + "?u=obtenerListaAmigos",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    AgregarAmigo( data : any ) : Observable < TAgregarMusicaPlaylist > {
+
+      return this.client.post < TAgregarMusicaPlaylist > (
+        this.urlApi + "?u=agregarAmigos",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
+    EliminarAmigo( data : any ): Observable < TAgregarMusicaPlaylist > {
+
+      return this.client.post < TAgregarMusicaPlaylist > (
+        this.urlApi + "?u=eliminarAmigo",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
     }
 
   /* servicios de usuario */

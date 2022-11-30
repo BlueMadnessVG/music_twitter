@@ -103,6 +103,64 @@ class UsuarioController{
 
     }
 
+    static public function obtenerListaAmigos( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_usr' ] ) ) {
+
+                    $data = UsuarioModel :: obtenerListaAmigos( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
+
+    static public function agregarAmigos( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_usr' ] ) && isset( $data[ 'id_lista' ] ) ) {
+
+                    $data = UsuarioModel :: agregarAmigos( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
+
+    static public function eliminarAmigo( $data ) {
+
+        try {
+                if ( isset( $data[ 'id_usr' ] ) && isset( $data[ 'id_lista' ] ) ) {
+
+                    $data = UsuarioModel :: eliminarAmigo( $data );
+
+                    $json = array ( 'message' => '¡ Operacion Exitosa !', 'status' => 200, 'data' => $data  );
+                    echo json_encode( $json );
+                    return;
+
+                }
+        }
+        catch ( Exeption $e ) {
+                    $json = array( 'message' => 'Le faltan datos compalero', 'status' => 500, 'data' => $e );
+        }
+
+    }
+
+
     static public function agregarMusicaPlayList( $data ) {
 
         try {
