@@ -258,6 +258,14 @@ export class UsrService {
       )
     }
 
+    obtenerLista( data: any ) :Observable < TListaAmigos > {
+      return this.client.post < TListaAmigos > (
+        this.urlApi + "?u=obtenerLista",
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
     obtenerListaAmgios( data: any ) :Observable < TListaAmigos > {
       return this.client.post < TListaAmigos > (
         this.urlApi + "?u=obtenerListaAmigos",

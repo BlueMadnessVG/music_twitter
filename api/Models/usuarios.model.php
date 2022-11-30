@@ -117,11 +117,27 @@ class UsuarioModel{
 
     }
  
+    static public function obtenerLista( $data ){
+        try{
+            $stmt = Connection :: connect() -> prepare( 'SELECT ID_Amigo FROM `amigo` WHERE ID_Usuario = :id_usr;' );
+            $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+            $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
     static public function obtenerListaAmigos( $data ){
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT amigo.ID_Amigo AS lista, lista_amigos.ID_Amigo FROM `lista_amigos` INNER JOIN amigo WHERE lista_amigos.ID_Amigos = amigo.ID_Amigo AND amigo.ID_Usuario = :id_usr;' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT lista_amigos.ID_Amigo FROM `lista_amigos` INNER JOIN amigo WHERE lista_amigos.ID_Amigos = amigo.ID_Amigo AND amigo.ID_Usuario = :id_usr;' );
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> execute();
 

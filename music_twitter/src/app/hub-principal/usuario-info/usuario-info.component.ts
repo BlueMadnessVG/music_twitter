@@ -21,6 +21,7 @@ export class UsuarioInfoComponent implements OnInit {
   user_playlists!: Array<any>;
   comentarios!:Array<any>;
   lista_amigos!: Array<any>;
+  id_lista!: any;
 
   agregar_amigo: boolean = false;
 
@@ -41,6 +42,7 @@ export class UsuarioInfoComponent implements OnInit {
 
       if( this.user_id !=  JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario ) {
         this.agregar_amigo = true;
+        this.ObtenerLista();
         this.ObtenerListaAmigos();
       }
 
@@ -56,7 +58,7 @@ export class UsuarioInfoComponent implements OnInit {
   }
 
   ngOnDestroy() {
-
+    console.log("entro aqui");
     if( this.subscription ){
       this.subscription.unsubscribe();
     }
@@ -103,6 +105,21 @@ export class UsuarioInfoComponent implements OnInit {
       this.user_info = data.data;
       console.log(this.user_info[0]);
       this.ObtenerPosts( id_usuario );
+
+      
+
+    } )
+
+  }
+
+  ObtenerLista() {
+
+    this.usuarioService.obtenerLista( 
+      { id_usr: JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario } 
+    ).subscribe( (data) => {
+
+      this.id_lista = data.data[0];
+      console.log( "lista", this.id_lista["ID_Amigo"] );
 
     } )
 
@@ -207,7 +224,7 @@ export class UsuarioInfoComponent implements OnInit {
   AddFollow() {
 
     this.usuarioService.AgregarAmigo( 
-      { id_lista: this.lista_amigos[0].lista,
+      { id_lista: this.id_lista["ID_Amigo"] ,
         id_usr: this.user_id }
     ).subscribe( (data) => {
 
@@ -236,7 +253,7 @@ export class UsuarioInfoComponent implements OnInit {
   DeleteFollow() {
 
     this.usuarioService.EliminarAmigo( 
-      { id_lista: this.lista_amigos[0].lista,
+      { id_lista: this.id_lista["ID_Amigo"],
         id_usr: this.user_id }
     ).subscribe( (data) => {
 
