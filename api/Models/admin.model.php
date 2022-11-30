@@ -135,7 +135,7 @@ class AdminModel{
             $stmt = Connection :: connect() -> prepare( 'SELECT * FROM usuario' );
             $stmt -> execute();
             
-            return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
+            return $stmt -> fetchAll( PDO::FETCH_ASSOC );
         
         }
 
@@ -153,9 +153,43 @@ class AdminModel{
         $stmt -> bindparam( ':descripcion', $data[ 'descripcion' ] );
         $stmt -> execute();
         $datosUser = UsuarioModel::MostrarUsuarioEspecifico( $data[ 'correo' ] );
+        self::subirTUMusica($datosUser['ID_Usuario']);
+       $return= self::registrarfollow($datosUser['ID_Usuario']);
+        return $return;
 
-        return 'Usuario registrado correctamente';
+    }
 
+    static private function subirTUMusica($id){
+        $stmt = Connection :: connect() -> prepare( 'insert into album values (null,:id,"Tu Musica","../../../../../assets/images/album_default.jpg",default,"A")' );
+
+        $stmt -> bindparam( ':id', $id );
+        $stmt -> execute();
+       self:: obtenerultimotumusica($id);
+        
+       
+
+      
+        return 'album registrado';
+    }
+
+    static private function obtenerultimotumusica($id){
+        $stmt = Connection :: connect() -> prepare( ' select ID_Album from album where ID_Usuario=:id;' );
+
+        $stmt -> bindparam( ':id', $id );
+        $stmt -> execute();
+        $album= $stmt -> fetch( PDO::FETCH_ASSOC );
+        $stmt = Connection :: connect() -> prepare( ' insert into albums_usuario values(:idalbum,:id)' );
+        $stmt -> bindparam( ':id', $id );
+        $stmt -> bindparam( ':idalbum', $album['ID_Album'] );
+        $stmt -> execute();
+    }
+
+    static private function registrarfollow($id){
+        $stmt = Connection :: connect() -> prepare( ' INSERT INTO amigo VALUES (null,:id) ' );
+
+        $stmt -> bindparam( ':id', $id );
+        $stmt -> execute();
+        return 'amigos registrado';
     }
 
     static public function modificarUsr( $data ) {
