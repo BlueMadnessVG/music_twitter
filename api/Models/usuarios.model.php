@@ -209,6 +209,25 @@ class UsuarioModel{
 
     }
 
+    static public function obtenerChatId( $data ) {
+
+        try{
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT ID_Chat FROM `chat_mensaje` WHERE (ID_Usuario1 = :id_usr AND ID_Usuario2 = :id_amigo) OR (ID_Usuario1 = :id_amigo AND ID_Usuario2 = :id_usr);' );
+            $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
+            $stmt -> bindparam( ':id_amigo', $data[ 'id_amigo' ] );
+            $stmt -> execute();
+
+            if ( $stmt != null )
+                return $stmt -> fetchAll( PDO::FETCH_ASSOC );
+            return null;
+
+        } catch( Exception $e1 ) {
+            return 'Error'.$e1->getMessage();
+        }
+
+    }
+
     // --------------------------------------    AMIGOS    --------------------------------------
 
     static public function obtenerAmigos( $data ) {

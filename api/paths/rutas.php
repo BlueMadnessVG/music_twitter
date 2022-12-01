@@ -47,6 +47,18 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
 
             }
 
+        }  else if ( array_filter( $arrayRutas )[ 2 ] == '?u=ObtenerChatId' ) {
+
+            if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+
+                $json = file_get_contents( 'php://input' );
+
+                $datosArray = json_decode( $json, true );
+                $objAdmin = new UsuarioController();
+                $objAdmin -> obtenerChatId( $datosArray );
+
+            }
+
         }
 
          // --------------------------------------    CRUD DE AMIGOS    --------------------------------------

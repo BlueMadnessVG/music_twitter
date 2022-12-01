@@ -19,7 +19,8 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
 
   chatSelect !: number;
   datasource! :TUsuario;
-  id_usr! : number;
+  id_usr!: number;
+  id_chat!: number;
 
   frmMensaje!: FormGroup;
   subcription !: Subscription;
@@ -34,8 +35,6 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     this.id_usr = JSON.parse( localStorage.getItem('data') || '{}' ).data.ID_Usuario;
     this.createForm();
     this.obtenerAmigos();
-
-    this.getMessages();
 
   }
 
@@ -69,6 +68,19 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
   }
 
 
+  obtenerChatId() {
+
+    this.usuarioService.obtenerChatId(
+      { id_usr: this.id_usr,
+        id_amigo: this.chatSelect
+      }
+    ).subscribe( (data) =>{
+      console.log(data.data[0].ID_Chat);
+      this.id_chat = data.data[0].ID_Chat;
+    } )
+
+  }
+
   createForm() {
 
     this.frmMensaje = this.fb.group ( {
@@ -84,6 +96,7 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
 
     this.chatSelect = id_amigo;
     this.obtenerChat();
+    this.obtenerChatId();
 
   }
 
@@ -148,7 +161,7 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
 
   async takeMessage( message: string ){
 
-    await this.db.object('chat/1').set({ ID_remitente: this.id_usr, ID_destinatario: this.chatSelect, Mensaje: message, Fecha: ' 2022-11-07 01:16:26 ' });
+    await this.db.object('chat/'+this.id_chat).set({ ID_remitente: this.id_usr, ID_destinatario: this.chatSelect, Mensaje: message, Fecha: ' 2022-11-07 01:16:26 ' });
 
   }
 

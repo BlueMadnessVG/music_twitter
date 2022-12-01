@@ -94,6 +94,16 @@ export class UsrService {
 
     };
 
+    obtenerChatId( data: any ):Observable <any> {
+      console.log(data);
+      return this.client.post< any > (
+        this.urlApi + '?u=ObtenerChatId',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
+
+    }
+
     obtenerAmigos(data: ObtenerAmigosModel): Observable < TAmigos > {
 
       return this.client.post< TAmigos > (
