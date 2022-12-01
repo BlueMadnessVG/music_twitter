@@ -26,6 +26,7 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
   subcription !: Subscription;
   mensajes: Mensaje[] = [];
   amigos!: amigos[];
+  openChat: boolean = false;
   observable!: AngularFireObject<any>;
 
   constructor( private fb : FormBuilder, private usuarioService : UsrService, private db : AngularFireDatabase ) { }
@@ -60,7 +61,7 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     return new Promise<any>( (resolve) => {
       this.db.object('chat').valueChanges().subscribe( (value: any )=> {
         console.log(value);
-        this.mensajes.push( value[1] );
+          this.mensajes.push( value[this.id_chat] as Mensaje );
         resolve(value);
       } );
     } );
@@ -77,6 +78,7 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     ).subscribe( (data) =>{
       console.log(data.data[0].ID_Chat);
       this.id_chat = data.data[0].ID_Chat;
+      this.getMessages();
     } )
 
   }
@@ -129,13 +131,14 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
   obtenerChat( ) {
 
     this.usuarioService.obtenerChat(
-      new ObtenerChatModel( 
+      new ObtenerChatModel(
         this.id_usr,
         this.chatSelect
        )
     ).subscribe(
       (data: any) => {
         this.mensajes = data.data;
+        this.mensajes.pop();
       }
     );
 

@@ -75,11 +75,6 @@ export class UsrService {
         JSON.stringify(data),
         { headers: { 'Content-Type': 'application/json' } }
       )
-      .pipe(
-          tap( () => {
-            this.refresh.next();
-          } )
-       );
 
     }
 
