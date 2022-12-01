@@ -2,7 +2,7 @@
 
     <div class="main_header">
         <a  [ngClass]=" feed  ? 'link_active' : '' " (click) = "changeFeed()" class="header_link "> RECOMENDADOS </a>
-        <a [ngClass]=" !feed  ? 'link_active' : '' " (click) = "changeFeed()" class="header_link"> AMIGOS </a>
+        <a [ngClass]=" !feed  ? 'link_active' : '' " (click) = "changeFeed()" class="header_link"> GENTE QUE SIGUES </a>
     </div>
 
     <div class="content" *ngFor="let post of feed_posts">

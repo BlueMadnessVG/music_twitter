@@ -194,7 +194,7 @@ class UsuarioModel{
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM chat WHERE (id_remitente = :id_usr AND id_destinatario = :id_amigo) OR (id_remitente = :id_amigo AND id_destinatario = :id_usr)' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT * FROM chat WHERE (id_remitente = :id_usr AND id_destinatario = :id_amigo) OR (id_remitente = :id_amigo AND id_destinatario = :id_usr) ORDER BY Fecha;' );
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> bindparam( ':id_amigo', $data[ 'id_amigo' ] );
             $stmt -> execute();
@@ -342,7 +342,7 @@ static public function login($datos){
 try {
     if ( isset( $datos[ 'Correo' ] ) && isset( $datos[ 'Pass' ] ) ) {
         $pass = hash( 'sha512', $datos[ 'Pass' ] );
-        $stmt = Connection::connect()->prepare( 'select * from usuario where Correo=:Correo and Contraseña=:Password ' );
+        $stmt = Connection::connect()->prepare( 'select * from usuario where Correo=:Correo and Contraseña=:Password and Estatus="A"' );
         $stmt->bindParam( ':Correo', $datos[ 'Correo' ] );
         $stmt->bindParam( ':Password', $pass );
         $stmt->execute();
@@ -365,7 +365,7 @@ try {
 
         } else {
             header( 'HTTP/1.0 401 Not Authorized ' );
-            return 'El Correo o la Contraseña no Coinciden!';
+            return 'Cuenta inhabilitada o inexsistente, intentelo de nuevo';
         }
     } else {
         header( 'HTTP/1.0 401 Not Authorized ' );

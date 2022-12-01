@@ -74,7 +74,7 @@ export class GestionUsuariosComponent implements OnInit {
 bajastatus(data:number,correo:string){
   Swal.fire({
     title: 'Alerta',
-    html: '¿Está seguro de realizar la operación?',
+    html: '¿Está seguro de realizar la operación? Por favor ingrese el motivo de baneo',
     input:'text',
     showDenyButton: true,
     icon: 'info',

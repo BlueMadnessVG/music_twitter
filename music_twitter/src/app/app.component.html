@@ -6,10 +6,11 @@
     </div>
 
     <div  class="header_main" >
-      <div class="search-bar" *ngIf="loggedin()">
+    <!--  <div class="search-bar" *ngIf="loggedin()">
         <input type="text" placeholder="Search post or user" autocomplete="off" class="search-bar-tipe">
         <i class="fa-solid fa-magnifying-glass icon"></i>
       </div>
+      -->
     </div>
 
     <div *ngIf="loggedin()" class="header_right">
@@ -25,25 +26,25 @@
 
         <ul class="dropdown-menu dropdown-menu-dark">
           <li>
-            <a class="dropdown-item" (click)="showProfile()">
+            <a style="cursor:pointer" class="dropdown-item" (click)="showProfile()">
               <i class="bi bi-person-fill"></i>
               Ver Perfil
             </a>
           </li>
           <li>
-            <a class="dropdown-item" routerLink="/CambioPassword">
+            <a style="cursor:pointer" class="dropdown-item" routerLink="/CambioPassword">
               <i class="fa-solid fa-key"></i>
               Cambiar contraseña
             </a>
           </li>
           <li>
-            <a class="dropdown-item" routerLink="/editarperfil">
+            <a style="cursor:pointer" class="dropdown-item" routerLink="/editarperfil">
               <i class="fa-solid fa-list"></i>
               Editar perfil
             </a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="onLogOut()">
+            <a style="cursor:pointer" class="dropdown-item" (click)="onLogOut()">
               <i class="fa-solid fa-right-from-bracket"></i>
               Cerrar sesión
             </a>

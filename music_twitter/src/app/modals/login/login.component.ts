@@ -11,8 +11,9 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   frmLogin!: FormGroup;
-  constructor(private fb: FormBuilder, private usuarioService:UsrService, private route: Router) {
+  hidepass2=true;
 
+  constructor(private fb: FormBuilder, private usuarioService:UsrService, private route: Router) {
   }
 
   ngOnInit(): void {
@@ -51,16 +52,17 @@ iniciar_sesion(){
           this.usuarioService.saveToken(x.data);
           this.route.navigate(['/inicio']);
         },
-        (error) =>
+        (error) =>{
+
           Swal.fire({
             title: 'Error de inicio de sesión',
-            html: 'Error: ' + 'Datos introducidos inválidos, por favor, inténtelo de nuevo',
+            html: 'Error: ' + 'Datos no válidos o cuenta inexistente, intentelo de nuevo... ',
             icon: 'error',
             customClass: {
               container: 'my-swal',
             },
           })
-      );
+        });
   }
 
 }

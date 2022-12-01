@@ -21,8 +21,8 @@ initform(){
 
   this.frmsign = this.fb.group({
     correo: ['', [Validators.required, Validators.email]],
-    pass: ['', Validators.required],
-    pass2: ['', Validators.required],
+    pass: ['', [Validators.required,Validators.minLength(8)]],
+    pass2: ['', [Validators.required,Validators.minLength(8)]],
     usuario: ['', Validators.required],
     descripcion: ['', Validators.required],
   });

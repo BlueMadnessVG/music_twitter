@@ -9,23 +9,23 @@
         <form [formGroup]="frmsign" (ngSubmit)="submit()">
           <div class="inputs">
             <p> Ingresa un correo electrónico </p>
-            <input type="email" name="" id="user" formControlName="correo">
+            <input type="email" name="" id="user" formControlName="correo" placeholder="correo@correo.com">
             <br>
             <p> Ingresa un nombre de usuario </p>
-            <input type="text" name="" id="user" formControlName="usuario">
+            <input type="text" name="" id="user" formControlName="usuario"placeholder="Ingresa un nombre de usuario">
             <br>
             <p> Cuéntanos un poco sobre ti </p>
             <input type="text" name="" id="user" formControlName="descripcion" placeholder="Agrega una breve descripción sobre ti">
           </div>
           <div class="inputs pass">
               <p> Contraseña </p>
-              <input [type]="hidepass ? 'password':'text'" name="" id="@" formControlName="pass">
+              <input [type]="hidepass ? 'password':'text'" name="" id="@" formControlName="pass"placeholder="Mínimo de 8 caracteres">
               <button type="button" style="border: none;width: 25px;height: 25px; border-radius: 50%;" mat-icon-button matSuffix (click)="hidepass = !hidepass"
               [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepass">
-              
+              <mat-icon>{{ hidepass ? "visibility_off" : "visibility" }}</mat-icon>
             </button>
               <p> Confirmar Contraseña </p>
-              <input [type]="hidepass2 ? 'password':'text'" name="" id="@" formControlName="pass2">
+              <input [type]="hidepass2 ? 'password':'text'" name="" id="@" formControlName="pass2"placeholder="Confirma tu contraseña">
               <button type="button" style="border: none;width: 25px;height: 25px; border-radius: 50%;" mat-icon-button matSuffix (click)="hidepass2 = !hidepass2"
               [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepass2">
               <mat-icon>{{ hidepass2 ? "visibility_off" : "visibility" }}</mat-icon>

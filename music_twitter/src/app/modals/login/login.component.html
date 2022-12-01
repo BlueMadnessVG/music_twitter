@@ -16,7 +16,11 @@
           </div>
           <div class="inputs pass">
               <p> Contraseña </p>
-              <input type="password" name="" id="pass" formControlName="Pass">
+              <input [type]="hidepass2 ? 'password':'text'" name="" id="pass" formControlName="Pass">
+              <button type="button" style="border: none;width: 25px;height: 25px; border-radius: 50%;" mat-icon-button matSuffix (click)="hidepass2 = !hidepass2"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepass2">
+              <mat-icon>{{ hidepass2 ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
           </div>
         </form>
 
