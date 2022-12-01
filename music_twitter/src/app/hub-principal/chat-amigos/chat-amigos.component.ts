@@ -8,6 +8,7 @@ import { amigos } from 'src/app/modelos/Amigos.model';
 import { ObtenerChatModel } from 'src/app/modelos/ObtenerChat.model';
 import { ObtenerAmigosModel } from 'src/app/modelos/ObtenerAmigos.model';
 import { Mensaje } from 'src/app/modelos/mensaje.model';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/compat/database';
 
 @Component({
   selector: 'chat-amigos',
@@ -22,10 +23,11 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
 
   frmMensaje!: FormGroup;
   subcription !: Subscription;
-  mensajes!: Mensaje[];
+  mensajes: Mensaje[] = [];
   amigos!: amigos[];
+  observable!: AngularFireObject<any>;
 
-  constructor( private fb : FormBuilder, private usuarioService : UsrService ) { }
+  constructor( private fb : FormBuilder, private usuarioService : UsrService, private db : AngularFireDatabase ) { }
 
   ngOnInit(): void {
 
@@ -33,9 +35,7 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     this.createForm();
     this.obtenerAmigos();
 
-    this.subcription = this.usuarioService.refresh.subscribe( () => {
-        this.obtenerChat();
-    } )
+    this.getMessages();
 
   }
 
@@ -46,6 +46,28 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     }
     console.log("observable cerrado");
   }
+
+  /* chat asincrono */
+  async getMessages(){
+    await this.getChatFromFireBase().then( (value : any) => {
+      console.log(value);
+      console.log( this.mensajes );
+    } )
+
+  }
+
+  getChatFromFireBase() {
+
+    return new Promise<any>( (resolve) => {
+      this.db.object('chat').valueChanges().subscribe( (value: any )=> {
+        console.log(value);
+        this.mensajes.push( value[1] );
+        resolve(value);
+      } );
+    } );
+
+  }
+
 
   createForm() {
 
@@ -105,8 +127,9 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
     );
 
   }
-  EnviarMensaje() {
 
+  EnviarMensaje() {
+    let message = this.frmMensaje.controls['Mensaje'].value;
     this.usuarioService.enviarMensaje(
       new EnviarMensajeModel(
         this.id_usr,
@@ -115,8 +138,17 @@ export class ChatAmigosComponent implements OnInit, OnDestroy {
       )
     ).subscribe(
       (x) => {
+
+        this.takeMessage(message);
+
       }
     );
+
+  }
+
+  async takeMessage( message: string ){
+
+    await this.db.object('chat/1').set({ ID_remitente: this.id_usr, ID_destinatario: this.chatSelect, Mensaje: message, Fecha: ' 2022-11-07 01:16:26 ' });
 
   }
 

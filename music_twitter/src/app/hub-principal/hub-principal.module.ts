@@ -30,6 +30,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { UsuarioInfoComponent } from './usuario-info/usuario-info.component';
 import { ModalComentsfrompostComponent } from './modal-comentsfrompost/modal-comentsfrompost.component';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database'; 
 @NgModule({
   declarations: [
     InicioComponent,
@@ -59,6 +60,7 @@ import { ModalComentsfrompostComponent } from './modal-comentsfrompost/modal-com
     FormsModule,
 
     AngularFireModule,
+    AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase, "cloud")
   ]
