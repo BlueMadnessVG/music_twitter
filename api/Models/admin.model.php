@@ -335,6 +335,7 @@ class AdminModel{
         $stmt -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
 
         $stmt -> execute();
+
         return '¡ Categoria Modificada con Exito !';
 
     }

@@ -234,7 +234,7 @@ class UsuarioModel{
 
         try{
 
-            $stmt = Connection :: connect() -> prepare( 'SELECT lista_amigos.ID_Amigo, usuario.Nombre_Usuario, usuario.Descripcion, usuario.Foto_Perfil FROM lista_amigos INNER JOIN amigo INNER JOIN usuario WHERE amigo.ID_Usuario = :id_usr AND amigo.ID_Amigo = lista_amigos.ID_Amigos AND usuario.ID_Usuario = lista_amigos.ID_Amigo; ' );
+            $stmt = Connection :: connect() -> prepare( 'SELECT lista_amigos.ID_Amigo, usuario.Nombre_Usuario, usuario.Descripcion, usuario.Foto_Perfil FROM lista_amigos INNER JOIN amigo INNER JOIN usuario WHERE amigo.ID_Usuario = :id_usr AND amigo.ID_Amigo = lista_amigos.ID_Amigos AND usuario.ID_Usuario = lista_amigos.ID_Amigo and usuario.Estatus="A"; ' );
             $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
             $stmt -> execute();
 
@@ -305,7 +305,7 @@ class UsuarioModel{
 
     static public function obtenerFeed( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario ORDER BY RAND() DESC LIMIT 50;' );
+        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario and usuario.Estatus="A" ORDER BY RAND() DESC LIMIT 50;' );
         $stmt -> execute();
 
             if ( $stmt != null )
