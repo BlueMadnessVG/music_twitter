@@ -61,8 +61,8 @@ export class GestionCategoriasComponent implements OnInit {
         },
         complete: () => {},
         next: (response) => {
+          response.data.shift();
           this.dataSource.data = response.data;
-          console.log(response);
           this.flag = true;
         },
       });

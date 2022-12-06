@@ -308,7 +308,7 @@ class AdminModel{
         }
         //mostrar todas las categorias
         else{
-                $stmt = Connection :: connect() -> prepare( 'SELECT * FROM categoria WHERE Estatus = "A"'  );
+                $stmt = Connection :: connect() -> prepare( 'SELECT * FROM categoria WHERE Estatus = "A" AND ID_Categoria != 0'  );
 
                 $stmt -> execute();
         
@@ -335,6 +335,11 @@ class AdminModel{
         $stmt -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
 
         $stmt -> execute();
+
+        $stmt2 = Connection :: connect() -> prepare( ' UPDATE musica SET ID_Categoria = 0 WHERE ID_Categoria = :id_categoria ' );
+        $stmt2 -> bindparam( ':id_categoria', $data[ 'id_categoria' ] );
+
+        $stmt2 -> execute();
 
         return '¡ Categoria Modificada con Exito !';
 
