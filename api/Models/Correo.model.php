@@ -67,4 +67,26 @@ class CorreoModel{
       $this->mail->send();
       return  'El correo se envio correctamente';
       }
+
+      function Notificarbaneopost($correo,$motivo,$post){
+
+        //Recipients
+        $this->mail->setFrom( $this->mail->Username , 'Equipo de Soundclon');
+          //Add a recipient
+        $this->mail->addAddress($correo);               //Name is optional
+    
+        //Content
+        $this->mail->isHTML(true);                                  //Set email format to HTML
+        $this->mail->Subject = 'ELIMINACIÓN DE PUBLICACIÓN';
+        $this->mail->Body    = "LAMENTAMOS INFORMARLE QUE SU PUBLICACIÓN <b>$post</b> HA SIDO DADA DE BAJA POR UN ADMINISTRADOR <br> Lamentamos los inconvenientes que esto pueda causar<br><b>Motivo</b>:<p style='color:red;'>$motivo</p>";
+        $this->mail->CharSet = 'UTF-8';
+        $this->mail->AltBody = 'Tu post ha sido baneado de Soundclon, motivo: '.$motivo;
+    
+        $this->mail->send();
+        return  'El correo se envio correctamente';
+        }
+
+
+
+
 }

@@ -709,7 +709,15 @@ if ( count( array_filter( $arrayRutas ) ) == 1 ) {//EJ localhost/api
                }
     
     
-              }else {
+              }else if ( array_filter( $arrayRutas )[ 2 ] == '?u=GetPostAdmin' ) {
+
+                if ( isset( $_SERVER[ 'REQUEST_METHOD' ] ) && $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+                    
+                    $objadmin = new AdminController();
+                    $objadmin->GetPostAdmin();
+               }
+              }
+              else {
             echo 'No existe la ruta especifica!';
         }
     }

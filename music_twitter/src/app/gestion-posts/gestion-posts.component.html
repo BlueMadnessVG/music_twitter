@@ -1,18 +1,18 @@
-<!-- <div class="container" data-aos="fade-up" #Gestion>
-  <h2>Gestion de Usuarios</h2>
+<div class="container" data-aos="fade-up" #Gestion>
+  <h2>Gestion de Publicaciones</h2>
   <div  class="mat-elevation-z8" style="background:white;margin:0 auto;height: 80px;">
     <div class="example-container " style="font-size:16px"  appearance="fill">
       <mat-form-field class="example-full-width"appearance="fill" style="width: 60%;float: left; margin: 10px;">
-        <mat-label>Buscar a un usuario</mat-label>
+        <mat-label>Buscar Publicación</mat-label>
 
-        <input type="search"    matInput placeholder="Ingrese una Palabra"    (keyup) ="applyFilter($event)"  required>
+        <input type="search"     matInput placeholder="Ingrese un usuario"    (keyup) ="applyFilter($event)"  required>
         <mat-icon matPrefix>search</mat-icon>
 
 
     </mat-form-field>
 
-     <button class="btn btn-primary" style="float:right;margin-top: 25px;"> <mat-icon style="vertical-align:middle;">add</mat-icon>Registrar usuario</button>
-   
+    <!--  <button class="btn btn-primary" style="float:right;margin-top: 25px;"> <mat-icon style="vertical-align:middle;">add</mat-icon>Registrar usuario</button>
+    -->
       <br>
     <br>
     </div>
@@ -22,34 +22,33 @@
 <div  *ngIf="flag" >
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z3" >
 
-    <ng-container matColumnDef="ID_Usuario">
+    <ng-container matColumnDef="ID_Post">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let items">{{items.ID_Post}}</td>
+    </ng-container>
+   <!-- <ng-container matColumnDef="ID_Usuario">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
       <td mat-cell *matCellDef="let items">{{items.ID_Usuario}}</td>
     </ng-container>
-
-    <ng-container matColumnDef="urlImg">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> IMG </th>
-      <td mat-cell *matCellDef="let items"><img class="roundedImage" src="{{items.Foto_Perfil}}" ></td>
-    </ng-container>
-
+    -->
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Usuario </th>
       <td mat-cell *matCellDef="let items">{{items.Nombre_Usuario}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="Correo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
-      <td mat-cell *matCellDef="let items">{{items.Correo}}</td>
+    <ng-container matColumnDef="urlImg" class="celda-img">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> IMG </th>
+      <td mat-cell *matCellDef="let items"><img class="roundedImage" src="{{items.Img_Path}}" ></td>
     </ng-container>
 
-   <ng-container matColumnDef="Fecha_Nacimiento">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha_Nac </th>
-      <td mat-cell *matCellDef="let items">{{items.Fecha_Nacimiento}}</td>
+    <ng-container matColumnDef="Titulo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+      <td mat-cell *matCellDef="let items">{{items.nombrerola}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="ID_Rol">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
-      <td mat-cell *matCellDef="let items">{{items.Rol}}</td>
+    <ng-container matColumnDef="Categoria">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+      <td mat-cell *matCellDef="let items">{{items.Nombre}}</td>
     </ng-container>
 
     <ng-container matColumnDef="Estatus">
@@ -57,9 +56,10 @@
       <td mat-cell *matCellDef="let items">{{items.Estatus}}</td>
     </ng-container>
 
+
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones</th>
-  <td mat-cell *matCellDef="let items"><button class="btn btn-warning"(click)="ChStatus(items)">Cambiar estatus<mat-icon>thumbs_up_down</mat-icon></button></td>
+  <td mat-cell *matCellDef="let items"><button class="btn btn-warning" style="background-color:red"(click)="ChStatus(items)">Eliminar<mat-icon>delete_forever</mat-icon></button></td>
     </ng-container>
 
 
@@ -75,4 +75,3 @@
 </div>
 
 </div>
- -->

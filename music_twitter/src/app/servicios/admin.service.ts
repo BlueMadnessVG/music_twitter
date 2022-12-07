@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject, tap } from 'rxjs';
 import { TCategorias } from '../modelos/TCategorias.model';
 import { Teditperfil } from '../modelos/Teditperfil.model';
+import { TPostGestion } from '../modelos/TPostGestion.model';
 import { usersdata } from '../modelos/usersdata.model';
 import { Usuario } from '../modelos/usuario.model';
 @Injectable({
@@ -80,5 +81,12 @@ sendcorreodesban(data:any){
   return this.cliente.post(this.urlApi+'?u=EnviarCorreodesBan',JSON.stringify(data));
 }
 
+GetPostAdmin():Observable<TPostGestion>{
+  return this.cliente.post<TPostGestion>(this.urlApi+'?u=GetPostAdmin',null);
+}
+DelPost(data:any){
+  return this.cliente.post(this.urlApi+'?u=DelPost',JSON.stringify(data));
+  
+}
 
 }

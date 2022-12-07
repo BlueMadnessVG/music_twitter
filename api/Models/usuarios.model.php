@@ -305,7 +305,7 @@ class UsuarioModel{
 
     static public function obtenerFeed( $data ) {
 
-        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario and usuario.Estatus="A" ORDER BY RAND() DESC LIMIT 50;' );
+        $stmt = Connection :: connect() -> prepare( 'SELECT musica.ID_Musica, usuario.ID_Usuario, usuario.Foto_Perfil, usuario.Nombre_Usuario, musica.Nombre , musica.Img_Path, musica.Music_Path, categoria.Nombre AS Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN categoria INNER JOIN usuario WHERE post.ID_Musica = musica.ID_Musica AND musica.ID_Categoria = categoria.ID_Categoria AND usuario.ID_Usuario = post.ID_Usuario and usuario.Estatus="A" and post.Estatus="A" ORDER BY RAND() DESC LIMIT 50;' );
         $stmt -> execute();
 
             if ( $stmt != null )
@@ -637,6 +637,8 @@ static public function delpost($data){
         $stmt = Connection::connect()->prepare( "update post set Estatus='I' where ID_Post=:idpost");
         $stmt->bindParam( ':idpost', $data['id_post']);
         $stmt->execute();
+        $objCorreo= new CorreoModel();
+       $objCorreo->Notificarbaneopost($data['correo'],$data['motivo'],$data['nombre_post']);
         return 'Publicación borrada correctamente';
         
     }catch(Exception $e){

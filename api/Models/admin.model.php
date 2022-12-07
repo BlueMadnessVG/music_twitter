@@ -75,7 +75,7 @@ class AdminModel{
 
         $id_playlist = ($stmt2 -> fetch( PDO::FETCH_ASSOC ));
 
-        $stmt = Connection :: connect() -> prepare( 'SELECT album_musica.ID_Album, musica.ID_Musica , musica.Nombre, musica.Img_Path, musica.Music_Path, categoria.Nombre as Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN album_musica INNER JOIN categoria WHERE post.ID_Musica = musica.ID_Musica and musica.ID_Musica = album_musica.ID_Musica and categoria.ID_Categoria = musica.ID_Categoria and post.ID_Usuario = :id_usr and album_musica.ID_Album = :id_playlist;' );
+        $stmt = Connection :: connect() -> prepare( 'SELECT album_musica.ID_Album, musica.ID_Musica , musica.Nombre, musica.Img_Path, musica.Music_Path, categoria.Nombre as Nombre_cat, post.Comentario, post.Reacciones,post.ID_Post FROM `post` INNER JOIN musica INNER JOIN album_musica INNER JOIN categoria WHERE post.ID_Musica = musica.ID_Musica and musica.ID_Musica = album_musica.ID_Musica and categoria.ID_Categoria = musica.ID_Categoria and post.ID_Usuario = :id_usr and album_musica.ID_Album = :id_playlist; and post.Estatus="A"' );
         
 
         $stmt -> bindparam( ':id_usr', $data[ 'id_usr' ] );
@@ -260,6 +260,18 @@ class AdminModel{
         }
 
     }
+//PEND
+    static public function GetPostAdmin( ) {
+
+            $stmt = Connection :: connect() -> prepare( 'SELECT ID_Post, post.ID_Usuario,usuario.Nombre_Usuario,musica.Nombre as nombrerola,musica.Img_Path,categoria.Nombre,post.Estatus,usuario.Correo from post inner join usuario inner join musica inner join categoria where post.ID_Usuario=usuario.ID_Usuario and post.ID_Musica=musica.ID_Musica and musica.ID_Categoria=categoria.ID_Categoria and post.Estatus="A";' );
+            $stmt -> execute();
+            
+            return $stmt -> fetchAll( PDO::FETCH_ASSOC );;
+
+        
+       
+    }
+
 
     static public function registrarAlb( $data ) {
 

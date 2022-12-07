@@ -42,6 +42,24 @@ class AdminController{
 
     }
 
+    static public function GetPostAdmin() {
+
+        try {
+
+            $collection = AdminModel :: GetPostAdmin();
+
+            $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $collection );
+            echo json_encode( $json );//se codifica para mandarlo pa atras
+            return $json;
+
+        }
+        catch ( Exception $e1 ) {
+                $json = array( 'message' => 'Le faltan datos compañero', 'status' => 500, 'data' => $e1 );
+                echo json_encode( $json );
+        }
+
+    }
+
     static public function registrarMus( $data ) {
 
         try {

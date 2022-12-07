@@ -63,6 +63,12 @@
               Control de categorías
             </a>
           </li>
+          <li *ngIf="isadmin">
+            <a class="dropdown-item" routerLink="/GestionPosts">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Control de publicaciones
+            </a>
+          </li>
         </ul>
         <!-- MENU DE USUARIO -->
 

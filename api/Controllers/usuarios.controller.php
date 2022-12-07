@@ -543,11 +543,11 @@ class UsuarioController{
     static public function delpost($data){
 
         try{
-            if(isset($data["id_post"])){
+            if(isset($data["id_post"]) && isset($data['id_usuario']) && isset($data['nombre_post']) && isset($data['correo']) && isset($data['motivo'])){
                 $datos=UsuarioModel::delpost($data);
                 $json = array( 'message'=>'¡Operacion Exitosa!', 'status'=>200, 'data'=> $datos );
                 echo json_encode( $json );
-                return;
+                return $json;
             }else{
                 header( 'HTTP/1.0 500 ' );
                     echo 'Datos incompletos';
